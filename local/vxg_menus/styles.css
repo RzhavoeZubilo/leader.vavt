@@ -1,0 +1,22 @@
+.path-admin-local-vxg_menus .choosed-icon{
+    background: wheat;
+    border-radius: 8px;
+}
+
+.path-admin-local-vxg_menus .modal-body .icon {
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 5px;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    margin-right: .5rem;
+    cursor: pointer;
+}
+
+.path-admin-local-vxg_menus .icon.selected_icon {
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+}

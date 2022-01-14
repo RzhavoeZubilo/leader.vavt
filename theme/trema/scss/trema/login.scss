@@ -1,0 +1,51 @@
+body#page-login-index {
+    #region-main {
+        padding-top: 0;
+    }
+
+    #page-wrapper {
+        position: relative;
+        min-height: 100vh;
+        height: auto;
+    }
+
+    #page {
+        #card-login,
+        #card-login-instructions {
+            margin-top: 50px;
+        }
+    }
+
+    #page.has-navbar {
+        #card-login {
+            margin-top: 110px;
+        }
+    }
+
+    .card {
+        @extend %border-frequency;
+    }
+
+    .card-header {
+        background-color: transparent;
+    }
+
+    &.style-particles {
+        canvas.particles-js-canvas-el {
+            position: absolute;
+            top: 0;
+            z-index: -1;
+            background-color: $particles-bg;
+        }
+    }
+
+    &.style-image {
+        #page-wrapper {
+            background-image: url($login-backgroundimage);
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+}
+

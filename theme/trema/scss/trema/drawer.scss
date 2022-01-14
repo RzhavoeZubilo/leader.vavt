@@ -1,0 +1,74 @@
+#nav-drawer {
+    top: 4rem;
+    padding: 1rem;
+    height: calc(100% - 4rem);
+    background: #29292a;
+
+    nav.list-group {
+        border-top: 1px solid #444;
+        padding-top: 0.5rem;
+
+        &:first-child {
+            border: none;
+            padding-top: 0;
+        }
+
+        .list-group-item {
+            border: none;
+            color: #aaa;
+            background-color: transparent;
+            transition: all 0.5s ease;
+
+            .icon {
+                font-size: 20px;
+                margin-right: 1rem;
+            }
+
+            &.active {
+                color: $white;
+            }
+
+            &:hover,
+            &:focus {
+                color: lighten($primary, 30%);
+                background-color: rgba($primary, 0.05);
+            }
+        }
+    }
+}
+
+[data-region="drawer-toggle"] button {
+    &:hover,
+    &:focus,
+    &:active {
+        i.fa {
+            animation: shake 1200ms;
+        }
+    }
+}
+
+[data-parent-key="mycourses"].list-group-item {
+    padding-left: 2.5rem;
+}
+
+@mixin shake ($n) {
+    0% {
+        transform: rotateZ(0);
+    }
+    $pos: 1;
+    @for $i from 1 through 9 {
+        $pos: $pos * -1;
+        $m: ($n / $i) * $pos;
+        #{ $i * 10% }
+        {
+            transform: rotateZ($m * 1deg);
+        }
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+@keyframes shake {
+    @include shake(30);
+}

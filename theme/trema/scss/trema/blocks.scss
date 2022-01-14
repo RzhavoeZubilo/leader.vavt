@@ -1,0 +1,19 @@
+#page .block {
+    border: none;
+    border-top: 2px solid #2ea5d7;
+}
+
+//Admin Blocks
+#side-admin-blocks {
+    width: 100%;
+    background: rgba($primary, 0.2);
+
+    #block-region-side-admin {
+        min-height: 150px;
+        height: 100%;
+        width: 100%;
+    }
+    .card {
+        background: rgba($primary, 0.2);
+    }
+}

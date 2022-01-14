@@ -1,0 +1,72 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_trema/mydashboard_admin
+
+    Admin dashboard present in mydashboard layout.
+
+    Context variables required for this template:
+    * disk - size of the Moodledata directory
+    * activecourses - active courses
+    * totalcourses - total number of courses
+    * activeenrolments - enrolments in active courses
+    * enrolments - total enrolments
+    * issuestatus - number of issues
+}}
+<div id="mydashboard-admin" class="container-fluid">
+    <div class="row text-center">
+        <div class="col-sm-3">
+            <div class="card-body">
+                <i class="fa fa-4x fa-database float-right p-1"></i>
+                <h4>{{disk}}</h4>
+                <h6>{{#str}}diskusage, theme_trema{{/str}}</h6>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card-body">
+                <i class="fa fa-4x fa-graduation-cap float-right p-1"></i>
+                <h4>{{activecourses}} - {{totalcourses}}</h4>
+                <h6>{{#str}}activecourses, theme_trema{{/str}} - {{#str}}total, theme_trema{{/str}}</h6>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card-body">
+                <i class="fa fa-4x fa-users float-right p-1"></i>
+                <h4>{{activeenrolments}} - {{enrolments}}</h4>
+                <h6>{{#str}}activeenrollments, theme_trema{{/str}} - {{#str}}total, theme_trema{{/str}}</h6>
+            </div>
+        </div>
+
+        {{#issuestatus.warning}}
+        <div class="col-sm-3">
+            <div class="card-body">
+                <i class="fa fa-4x fa-ambulance float-right p-1"></i>
+                <a href="{{config.wwwroot}}/report/performance/index.php">
+                    <div class="m-2 position-relative">
+                        <b class="text-uppercase">{{#str}}alert, theme_trema{{/str}}</b>
+                            <span class="count-container badge-danger" data-region="count-container"
+                            style="top: -.5rem; right: auto;" title="{{#str}}alert, theme_trema{{/str}}">{{issuestatus.warning}}</span>
+                    </div>
+                    <h6>{{#str}}systemsecurity, theme_trema{{/str}}</h6>
+                </a>
+            </div>
+        </div>
+        {{/issuestatus.warning}}
+    </div>
+</div>

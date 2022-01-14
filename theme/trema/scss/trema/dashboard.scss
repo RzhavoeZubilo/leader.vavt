@@ -1,0 +1,90 @@
+body.pagelayout-mydashboard {
+
+    #region-main > .card > .card-body {
+        padding: 0;
+    }
+
+    #mydashboard-admin {
+        .card-body {
+
+            .fa {
+                color: rgba($primary, 0.15);
+            }
+        }
+    }
+
+    .progress-text.has-percent {
+        font-size: 15px;
+    }
+
+    .block_myoverview {
+        .courses-view-course-item.card {
+            max-width: 275px;
+            box-shadow: 5px 5px 9px -4px rgba($primary, .1);
+            border-bottom: solid 3px $primary;
+
+            .card-img-top {
+                height: 100px;
+            }
+
+            .courseimage {
+                background-position: center right;
+            }
+        }
+    }
+
+    #page {
+        #page-header {
+            > .col-12 > .card {
+                background: transparent;
+            }
+        }
+
+        .btn-link {
+            background: none;
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-radius: .2rem;
+            color: rgba(55, 58, 60, .8);
+            width: auto;
+            height: auto;
+            line-height: 1;
+            padding: .5rem;
+            &:hover {
+                background: rgba($secondary, .8);
+            }
+        }
+
+        .btn.btn-outline-secondary {
+
+            color: $gray-800;
+            background-color: transparent;
+            &:hover,
+            &:focus {
+                color: $gray-600;
+                outline: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+body#page-message-index {
+    #page-header,
+    #mydashboard-admin,
+    #side-admin-blocks {
+        display: none;
+    }
+
+    #region-main {
+        margin-top: 0;
+
+        .message-app.main {
+            min-height: 500px;
+            margin-bottom: 1rem;
+
+            .btn-link {
+                max-width: 95%;
+            }
+        }
+    }
+}

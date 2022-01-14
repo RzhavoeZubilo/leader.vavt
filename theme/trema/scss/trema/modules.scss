@@ -1,0 +1,209 @@
+body.path-mod-quiz {
+    #page {
+
+        #region-main > .card > .card-body {
+            padding: 0;
+            .que {
+                margin-bottom: 0;
+
+                .info {
+                    background: $white;
+                    border: none;
+                    border-top: 2px solid $secondary;
+                    width: 9rem;
+                    padding: 1rem;
+                    margin: 0;
+                }
+
+                .content {
+                    border-left: 1px solid rgba(0, 0, 0, .1);
+                    margin-left: 9rem;
+
+                    .formulation {
+                        background: $white;
+                        padding: 0;
+                        margin-bottom: 0;
+                        border-top: 2px solid $primary;
+
+                        .qtext {
+                            font-weight: bold;
+                            font-size: 1rem;
+                            padding: 1rem 2rem;
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        }
+
+                        .ablock {
+                            margin: 0;
+                            padding: 1rem 2rem;
+                        }
+                    }
+                }
+
+                @media (max-width: 769px) {
+                    .info {
+                        width: auto;
+                        text-align: center;
+                    }
+                    .content {
+                        border-left: none;
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            /* Cloze question*/
+            .que.multianswer .formulation {
+                padding: 1rem 2rem;
+
+                select {
+                    width: auto;
+                    display: inherit;
+                    height: 2rem;
+                }
+
+                input[type="text"] {
+                    width: auto;
+                }
+            }
+
+            .dropdown-toggle {
+                color: black;
+            }
+        }
+
+        #mod_quiz_navblock {
+            .qnbutton {
+                padding: 0;
+                text-align: center;
+                color: $black !important;
+            }
+
+            button[type="submit"] {
+                white-space: normal;
+                line-height: 1.5;
+                padding: 1rem;
+                height: auto;
+            }
+        }
+    }
+}
+
+body#page-mod-quiz-attempt,
+body#page-mod-quiz-review {
+    #region-main {
+        padding: 0;
+    }
+}
+
+body.path-mod-assign.pagelayout-embedded {
+    #page {
+        padding-top: 0;
+
+        [data-region="grading-navigation"] {
+            padding-top: 0;
+        }
+
+        [data-region="user-info"] {
+            em.nowrap {
+                line-height: 1rem;
+            }
+
+            .img-rounded {
+                margin-top: 10px;
+            }
+        }
+
+        [data-region="grading-actions-form"] {
+            float: left;
+        }
+
+        .form-autocomplete-downarrow {
+            float: none;
+            top: 0;
+        }
+
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"],
+        .btn {
+            line-height: 2rem;
+            height: 2rem;
+            margin: 0;
+        }
+    }
+}
+
+body.path-mod-forum {
+    .forumsearch {
+        #search {
+            width: auto;
+        }
+        #searchforums {
+            margin: 0;
+        }
+    }
+
+    #region-main {
+        #forummenu {
+            .urlselect {
+                width: auto;
+            }
+
+            .btn {
+                margin: 0 3px;
+            }
+        }
+
+        [data-container="discussion-tools"] {
+            margin-bottom: 0 !important;
+
+            .discussion-settings-menu {
+                margin-bottom: 0;
+
+                button {
+                    line-height: 1.5;
+                    font-weight: 400;
+                    letter-spacing: normal;
+                    height: auto;
+                    text-transform: none;
+                    margin-bottom: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        .forumpost {
+            @extend %border-frequency;
+
+            margin-bottom: .9rem !important;
+
+            &:after {
+                height: 0.1rem;
+            }
+
+            &:before {
+                height: 1rem;
+                top: -1rem;
+            }
+
+            .btn-link {
+                margin-bottom: 0;
+                color: $secondary;
+                line-height: 1.5;
+                font-weight: 400;
+                letter-spacing: normal;
+                height: auto;
+                text-transform: none;
+                padding: 0;
+            }
+        }
+
+        .firstpost {
+            margin-top: 1rem;
+
+            &:before {
+                content: none;
+            }
+        }
+    }
+}

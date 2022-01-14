@@ -1,0 +1,49 @@
+.course-card-view {
+    box-shadow: 5px 5px 9px -4px rgba($black, .1);
+    padding-bottom: 4rem;
+    max-width: 16rem;
+    min-width: 12rem;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        box-shadow: 6px 6px 10px -4px rgba($black, .2);
+
+        .course-card-img div {
+            transform: scale(1.05, 1.05);
+        }
+    }
+
+    .course-card-img div {
+        height: 6.5rem;
+        background-position: top right;
+        background-size: cover;
+        transition: all .3s ease-in-out;
+    }
+
+    .teachers {
+        font-size: .9rem;
+    }
+
+    .card-see-more {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+        .btn {
+            width: 90%;
+        }
+    }
+}
+@media (max-width: 769px) {
+    #page .card-see-more .btn {
+        height: auto;
+        font-size: .7rem;
+    }
+}
+body#page-enrol-index {
+    .box.generalbox > div {
+        @extend .course-card-view;
+        position: relative;
+    }
+}

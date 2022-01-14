@@ -1,0 +1,1229 @@
+/* stylelint-disable declaration-no-important */
+/* stylelint-disable max-line-length */
+
+/*------------------------------------
+  Page
+  -------------------------------------*/
+
+/* Change the breakpoint if setting 'breakpoint' is active. */
+@if variable-exists(breakpoint) {
+    @if $breakpoint == 'yes' {
+        #region-main-settings-menu.has-blocks,
+        #region-main.has-blocks {
+            display: inline-block;
+            width: calc(100% - #{$blocks-plus-gutter});
+            @include media-breakpoint-down(md) {
+                width: 100%;
+                /* MDL-63102 - Remove extra space at bottom.
+                If modifying make sure block-region is horizontally stacked when in full screen */
+                display: block;
+            }
+        }
+        [data-region="blocks-column"] {
+            width: $blocks-column-width;
+            @include media-breakpoint-down(md) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* Change the block column width on the Dashboard if setting 'blockcolumnwidthdashboard' is different from setting 'blockcolumnwidth'. */
+@if variable-exists(blockcolumnwidthdashboard) and variable-exists(blockcolumnwidth) {
+    @if $blockcolumnwidthdashboard != $blockcolumnwidth {
+        /* Distinguish again if setting 'breakpoint' is active.
+           This if-construction has duplicated code by purpose for the sake of readability. */
+        @if variable-exists(breakpoint) and $breakpoint == 'yes' {
+            #page-my-index #region-main-settings-menu.has-blocks,
+            #page-my-index #region-main.has-blocks {
+                display: inline-block;
+                width: calc(100% - #{$blocks-plus-gutter-dashboard});
+                @include media-breakpoint-down(md) {
+                    width: 100%;
+                    /* MDL-63102 - Remove extra space at bottom.
+                    If modifying make sure block-region is horizontally stacked when in full screen */
+                    display: block;
+                }
+            }
+            #page-my-index [data-region="blocks-column"] {
+                width: $blocks-column-width-dashboard;
+                @include media-breakpoint-down(md) {
+                    width: 100%;
+                }
+            }
+        }
+        @else {
+            #page-my-index #region-main-settings-menu.has-blocks,
+            #page-my-index #region-main.has-blocks {
+                display: inline-block;
+                width: calc(100% - #{$blocks-plus-gutter-dashboard});
+                @include media-breakpoint-down(lg) {
+                    width: 100%;
+                    /* MDL-63102 - Remove extra space at bottom.
+                    If modifying make sure block-region is horizontally stacked when in full screen */
+                    display: block;
+                }
+            }
+            #page-my-index [data-region="blocks-column"] {
+                width: $blocks-column-width-dashboard;
+                @include media-breakpoint-down(lg) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+/*------------------------------------
+  Login page
+  -------------------------------------*/
+
+body.loginbackgroundimage #page {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+/* Add media breakpoint to only load images on screens with a medium size and up.
+ * Check if variable exists to only add code to images that were uploaded.
+ * Note: Building this code with a @for loop did not work. */
+@include media-breakpoint-up(md) {
+    @if variable-exists(loginbackgroundimage1) {
+        body.loginbackgroundimage1 #page {
+            background-image: url($loginbackgroundimage1);
+        }
+    }
+    @if variable-exists(loginbackgroundimage2) {
+        body.loginbackgroundimage2 #page {
+            background-image: url($loginbackgroundimage2);
+        }
+    }
+    @if variable-exists(loginbackgroundimage3) {
+        body.loginbackgroundimage3 #page {
+            background-image: url($loginbackgroundimage3);
+        }
+    }
+    @if variable-exists(loginbackgroundimage4) {
+        body.loginbackgroundimage4 #page {
+            background-image: url($loginbackgroundimage4);
+        }
+    }
+    @if variable-exists(loginbackgroundimage5) {
+        body.loginbackgroundimage5 #page {
+            background-image: url($loginbackgroundimage5);
+        }
+    }
+    @if variable-exists(loginbackgroundimage6) {
+        body.loginbackgroundimage6 #page {
+            background-image: url($loginbackgroundimage6);
+        }
+    }
+    @if variable-exists(loginbackgroundimage7) {
+        body.loginbackgroundimage7 #page {
+            background-image: url($loginbackgroundimage7);
+        }
+    }
+    @if variable-exists(loginbackgroundimage8) {
+        body.loginbackgroundimage8 #page {
+            background-image: url($loginbackgroundimage8);
+        }
+    }
+    @if variable-exists(loginbackgroundimage9) {
+        body.loginbackgroundimage9 #page {
+            background-image: url($loginbackgroundimage9);
+        }
+    }
+    @if variable-exists(loginbackgroundimage10) {
+        body.loginbackgroundimage10 #page {
+            background-image: url($loginbackgroundimage10);
+        }
+    }
+    @if variable-exists(loginbackgroundimage11) {
+        body.loginbackgroundimage11 #page {
+            background-image: url($loginbackgroundimage11);
+        }
+    }
+    @if variable-exists(loginbackgroundimage12) {
+        body.loginbackgroundimage12 #page {
+            background-image: url($loginbackgroundimage12);
+        }
+    }
+    @if variable-exists(loginbackgroundimage13) {
+        body.loginbackgroundimage13 #page {
+            background-image: url($loginbackgroundimage13);
+        }
+    }
+    @if variable-exists(loginbackgroundimage14) {
+        body.loginbackgroundimage14 #page {
+            background-image: url($loginbackgroundimage14);
+        }
+    }
+    @if variable-exists(loginbackgroundimage15) {
+        body.loginbackgroundimage15 #page {
+            background-image: url($loginbackgroundimage15);
+        }
+    }
+    @if variable-exists(loginbackgroundimage16) {
+        body.loginbackgroundimage16 #page {
+            background-image: url($loginbackgroundimage16);
+        }
+    }
+    @if variable-exists(loginbackgroundimage17) {
+        body.loginbackgroundimage17 #page {
+            background-image: url($loginbackgroundimage17);
+        }
+    }
+    @if variable-exists(loginbackgroundimage18) {
+        body.loginbackgroundimage18 #page {
+            background-image: url($loginbackgroundimage18);
+        }
+    }
+    @if variable-exists(loginbackgroundimage19) {
+        body.loginbackgroundimage19 #page {
+            background-image: url($loginbackgroundimage19);
+        }
+    }
+    @if variable-exists(loginbackgroundimage20) {
+        body.loginbackgroundimage20 #page {
+            background-image: url($loginbackgroundimage20);
+        }
+    }
+    @if variable-exists(loginbackgroundimage21) {
+        body.loginbackgroundimage21 #page {
+            background-image: url($loginbackgroundimage21);
+        }
+    }
+    @if variable-exists(loginbackgroundimage22) {
+        body.loginbackgroundimage22 #page {
+            background-image: url($loginbackgroundimage22);
+        }
+    }
+    @if variable-exists(loginbackgroundimage23) {
+        body.loginbackgroundimage23 #page {
+            background-image: url($loginbackgroundimage23);
+        }
+    }
+    @if variable-exists(loginbackgroundimage24) {
+        body.loginbackgroundimage24 #page {
+            background-image: url($loginbackgroundimage24);
+        }
+    }
+    @if variable-exists(loginbackgroundimage25) {
+        body.loginbackgroundimage25 #page {
+            background-image: url($loginbackgroundimage25);
+        }
+    }
+}
+
+/* Design for the text that can be added to the background images of the login page. */
+#loginbackgroundimagetext span {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+/* This will only be needed if the setting "loginform" is checked */
+@if variable-exists(loginform) {
+    @if $loginform == 'yes' {
+        /* Make background of login panel slightly transparent */
+        #page-login-index #region-main-box {
+            div.card {
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 3px;
+            }
+            .card-header > img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        #page-login-index #page {
+            margin-top: 0;
+        }
+        /* Adjust the design for the loginbackgroundimagetext. */
+        #loginbackgroundimagetext span {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 3px;
+        }
+    }
+}
+
+/*------------------------------------
+  Page header
+  -------------------------------------*/
+
+/*
+ * Navbar
+ */
+/* Make page navbar dark if setting "darknavabr" is set to yes. */
+@if variable-exists(darknavbar) {
+    @if $darknavbar == 'yes' {
+        .navbar {
+            .navbar-nav .nav-link .icon,
+            .navbar-nav .nav-link,
+            .usertext,
+            .dropdown-toggle,
+            .site-name,
+            .login,
+            .login a {
+                color: #fff;
+            }
+            .navbar-nav .nav-link .icon:hover,
+            .usertext:hover,
+            .dropdown-toggle:hover,
+            .site-name:hover {
+                color: $brand-primary;
+            }
+            .navbar-brand:not(.has-logo) .site-name:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
+
+/*------------------------------------
+  User menu
+  -------------------------------------*/
+
+/* Don't display switched role information in the user menu
+ * if setting 'showswitchedroleincourse' is active */
+@if variable-exists(showswitchedroleincourse) {
+    @if $showswitchedroleincourse == 'yes' {
+        .userswitchedrole .usermenu {
+            .usertext {
+                float: inherit;
+                text-align: inherit;
+                margin-right: inherit;
+                height: inherit;
+            }
+            span.meta.role {
+                display: none;
+            }
+            .avatar img {
+                margin-left: 1rem;
+                margin-right: .5rem;
+            }
+        }
+    }
+}
+
+
+/*------------------------------------
+  Nav drawer menu
+  -------------------------------------*/
+
+/*
+ * We separate or junk sections together by dividing
+ * them either by a solid or a dotted line. For the course
+ * sections, we display no borders to make clear they are a
+ * separate unit.
+ */
+
+#nav-drawer {
+    /* Remove border radius from the menu items. */
+    .list-group-item {
+        border-radius: 0;
+    }
+
+    /* Reduce space between pix icons and text as this is too much. */
+    .media-left {
+        padding-right: 2px;
+    }
+
+    /*
+     * General left menu.
+     */
+    /* Course home menu. */
+    .list-group-item[data-key="coursehome"] {
+        padding: .75rem 1.25rem;
+        /* As this node is a heading node, no icon is needed and the media span can be hidden. */
+        .media-left {
+            display: none;
+        }
+    }
+
+    /* Menu item: my courses. */
+    .list-group-item[data-key="mycourses"] {
+        margin-top: 15px;
+        /* As this node is a heading node, no icon is needed and the media span can be hidden. */
+        .media-left {
+            display: none;
+        }
+    }
+
+    /* Remove border of child nodes which should appear as one block. */
+    .list-group-item[data-parent-key="mycourses"],
+    .list-group-item[href*="#section-"]:not([href*="#section-0"]),
+    .list-group-item[href*="&section="]:not([href*="&section=0"]) {
+        border-top: none;
+    }
+}
+
+/* If the setting navdrawerfullwidth is enabled, we want the nav drawer menu to be displayed full size on small screens. */
+@if variable-exists(navdrawerfullwidth) {
+    @if $navdrawerfullwidth == 'yes' {
+        @include media-breakpoint-down(sm) {
+            #nav-drawer {
+                width: 100%;
+            }
+            #nav-drawer.closed {
+                left: -100%;
+            }
+        }
+    }
+}
+
+
+/*------------------------------------
+  Course page
+  -------------------------------------*/
+
+/* Special style for small screens (768px and down) to show more course content because of reduced paddings. */
+@include media-breakpoint-down(sm) {
+    .path-course-view #region-main .card-body {
+        padding: 0.5rem 0;
+    }
+}
+
+
+/*------------------------------------
+  Course header
+  -------------------------------------*/
+
+/*
+ * If set in showswitchedroleincourse, the switched role information will be displayed
+ * in the course header instead of next to the user name.
+ */
+
+.switched-role-infobox span.switched-role {
+    font-weight: bold;
+    padding-left: 0.5em;
+}
+
+/* If showsettingsincourse is enabled, we have to style the cog icon a bit different. */
+@if variable-exists(showsettingsincourse) {
+    @if $showsettingsincourse == 'yes' {
+        #page-header {
+            /* If the setting is enabled we do not need the triangle icon, because there is no menu
+             * popping up next to the cog icon. */
+            .context-header-settings-menu .dropdown-toggle::after {
+                display: none;
+            }
+        }
+    }
+}
+
+
+/*------------------------------------
+  Course content
+  -------------------------------------*/
+
+/*
+ * Sections
+ */
+
+/* Check if setting theme_boost_campus|section0title is set.
+   If set, then revert the styles from .accesshide and set the style to be the same as other section titles. */
+@if variable-exists(section0title) {
+    @if $section0title == 'yes' {
+        body.path-course-view #section-0 h3.accesshide {
+            position: inherit;
+            left: inherit;
+            font-weight: $headings-font-weight;
+            font-size: $h3-font-size;
+            width: initial;
+            height: initial;
+            clip-path: none;
+        }
+    }
+}
+
+.course-content {
+    /* Selectors for course format "Topics", "Weeks" and "Periods" */
+    ul.topics,
+    ul.weeks,
+    ul.periods {
+        /* Set section dividing border-color to brand-primary. */
+        li.section.main {
+            border: none;
+            border-bottom: 1px solid $brand-primary;
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+            margin: 0;
+        }
+        /* Remove the border from last section in non editing mode. */
+        li.section.main:last-child {
+            border-bottom: none;
+        }
+        /* Reduce indent of hidden sections as this is not aligned with visible ones. */
+        li.section.main.hidden {
+            .section {
+                padding: 0;
+            }
+            .activity .activityinstance {
+                margin-left: 14px;
+            }
+        }
+        /* Change style of highlighted section to highlight more. */
+        li.section.main.current {
+            border-bottom: $brand-primary 4px solid;
+            border-top: $brand-primary 3px solid; /*1px less because of section dividing border. */
+            background: $gray-lightest;
+        }
+        /* Remove highlighting from Theme Boost. */
+        li.section.main.current::before {
+            display: none;
+        }
+        /* Section 0 needs no extra top padding. */
+        li#section-0 {
+            padding-top: 0;
+        }
+        /* Remove spacer from regular sections. */
+        img.icon.spacer {
+            display: none;
+        }
+        /* Make the summary aligned the same way as with option all section on one page. */
+        .summarytext {
+            margin-left: 25px;
+        }
+        /* Display icon of hidden activity or resource in grayscale.*/
+        .activity .contentwithoutlink .dimmed .activityicon,
+        .activity .activityinstance .dimmed .activityicon {
+            filter: grayscale(100%);
+        }
+        /* Add border to description text to differ it from module content. */
+        .section .contentafterlink {
+            border-left: 2px solid $gray-light;
+            padding-left: 10px;
+            font-size: .9rem;
+        }
+        /* Add border to description text for restricted activities and show it also to students.
+           This is needed because the classes for teachers and students differ. */
+        .section li:not(.label) .contentwithoutlink:not(:empty) {
+            border-left: 2px solid $gray-light;
+            padding-left: 10px;
+            font-size: .9rem;
+            display: block;
+            margin-left: 30px;
+            margin-top: .5em;
+            p {
+                margin: .5em 0;
+            }
+        }
+        /* Place meta information in a new line. */
+        .resourcelinkdetails {
+            display: block;
+            margin-left: 30px;
+        }
+    }
+    /* Increase padding from last section to section number control buttons. */
+    #changenumsections {
+        padding-top: 1rem;
+    }
+    /* Special styles for single section view. */
+    .single-section {
+        /* Align section title in single view left. */
+        h3.sectionname {
+            text-align: left;
+            padding-top: 1.5rem;
+        }
+        /* Reduce padding top of first and only section in this view. */
+        ul li.section.main {
+            padding-top: 1rem;
+        }
+        .section-navigation .mdl-left:not(:empty),
+        .section-navigation .mdl-right:not(:empty) {
+            background-color: $brand-primary;
+            padding: 2px 8px;
+            border-radius: 2px;
+            a {
+                /*Important to prevent link color of hidden section getting gray in the button. */
+                color: #fff !important;
+            }
+        }
+    }
+}
+/* Special styles for the editing mode. */
+.editing .course-content {
+    ul.topics,
+    ul.weeks,
+    ul.periods {
+        /* Add bottom border to last section in editing mode. */
+        li.section.main:last-child {
+            border-bottom: 1px solid $brand-primary;
+        }
+        /* Special rule for hidden sections in editing mode as indents are different in this view. */
+        li.section.main.hidden {
+            .section-handle {
+                padding-left: 0;
+            }
+            li.activity .mod-indent-outer {
+                padding-left: 1rem;
+            }
+            ul.section {
+                padding-left: 1rem;
+            }
+        }
+    }
+}
+
+/*
+ * Activities and resources
+ */
+/* Add a decent background to intro text */
+#intro {
+    background-color: $gray-lightest;
+    margin-bottom: 1em;
+    border-left: 3px solid $brand-primary;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/* Do not display the intro box if it does not contain any content. */
+#intro:empty {
+    display: none;
+}
+/* Adjust the activity navigation buttons to suit to the topics navigation buttons. */
+#next-activity-link,
+#prev-activity-link {
+    background-color: $brand-primary;
+    padding: 4px 8px;
+    border-radius: 2px;
+    color: #fff;
+}
+
+/* If showsettingsincourse is enabled */
+@if variable-exists(showsettingsincourse) {
+    @if $showsettingsincourse == 'yes' {
+        /* We do not show the cog icon on the participants page as the settings on this page are
+         * duplicated with the in-course course menu. */
+        .path-user #region-main-settings-menu {
+            display: none;
+        }
+        /* Hide the triangle down icon. */
+        #region-main-settings-menu .dropdown-toggle::after {
+            display: none;
+        }
+    }
+}
+
+/*
+ * Misc
+ * /
+/* Design blockquotes. */
+blockquote {
+    padding-left: 30px;
+}
+
+blockquote::before {
+    font-family: FontAwesome;
+    content: '\f10e';
+    font-size: 1.5em;
+    padding-right: 10px;
+    margin-left: -30px;
+}
+
+
+/*------------------------------------
+  Course categories
+  -------------------------------------*/
+
+/* Reduce the size and the font-weight of the headings */
+.course_category_tree {
+    h3 {
+        font-size: 1.45rem;
+        font-weight: normal;
+    }
+    h4 {
+        font-size: 1.2rem;
+        font-weight: normal;
+    }
+}
+
+
+/*------------------------------------
+  Blocks
+  -------------------------------------*/
+@if variable-exists(blockicon) {
+    @if $blockicon == 'yes' {
+        /* If setting blockicon is checked, add a default Font Awesome icon
+         * before the block title. */
+        .block .card-title::before {
+            font-family: FontAwesome;
+            content: '\f009';
+            font-size: 1.3rem;
+            padding-right: 7px;
+        }
+        /* Provide different, suitable Font Awesome icons for different Moodle blocks. */
+        .block_recent_activity .card-title::before {
+            content: '\f017';
+        }
+        .block_calendar_month .card-title::before,
+        .block_calendar_upcoming .card-title::before {
+            content: '\f133';
+        }
+        .block_people .card-title::before {
+            content: '\f0c0';
+        }
+        .block_quickmail .card-title::before {
+            content: '\f003';
+        }
+        .block_activity_module .card-title::before {
+            content: '\f12e';
+        }
+        .block_news_items .card-title::before {
+            content: '\f0a1';
+        }
+        .block_progress .card-title::before {
+            content: '\f0ae';
+        }
+        .block_private_files .card-title::before {
+            content: '\f114';
+        }
+        .block_comments .card-title::before {
+            content: '\f075';
+        }
+        .block_completion_status .card-title::before {
+            content: '\f0e4';
+        }
+        .block_search_forums .card-title::before {
+            content: '\f0e6';
+        }
+        .block_admin_bookmarks .card-title::before {
+            content: '\f097';
+        }
+        .block_adminblock .card-title::before {
+            content: '\f0fe';
+        }
+        .block_attendance .card-title::before {
+            content: '\f046';
+        }
+        .block_sharing_cart .card-title::before {
+            content: '\f07a';
+        }
+        .block_glossary_random .card-title::before {
+            content: '\f14b';
+        }
+        .block_selfcompletion .card-title::before {
+            content: '\f14a';
+        }
+        .block_badges .card-title::before {
+            content: '\f0a3';
+        }
+    }
+}
+
+/* Rule to reset the whitespace for buttons within blocks. */
+.block .btn {
+    white-space: normal;
+}
+
+
+/*------------------------------------
+  Profile Page
+  -------------------------------------*/
+
+#page-user-profile {
+    /* Hide the "Edit profile" link, because we added a breadcrumb button in the page header. */
+    .editprofile {
+        display: none;
+    }
+}
+/* Hide the "Reset page to default" button in non editing mode. */
+#page-user-profile .breadcrumb-button:first-of-type .singlebutton:first-of-type {
+    display: none;
+}
+/* Only show the "Reset page to default" button in editing mode. */
+#page-user-profile.editing .breadcrumb-button:first-of-type .singlebutton:first-of-type {
+    display: initial;
+}
+
+
+/*------------------------------------
+  Page Footer
+  -------------------------------------*/
+
+#page-footer {
+    /* Increase padding. */
+    padding-top: 30px !important;
+
+    /* Set footer blocks text color from white to dark gray. */
+    .block {
+        color: $gray-dark;
+        /* Set link and icon color from white to gray. */
+        a,
+        .icon {
+            color: $gray-dark;
+        }
+        /* Remove the underline decoration from footer blocks context menu items.*/
+        .dropdown-item.menu-action {
+            text-decoration: none;
+        }
+        /* Set the text decoration for the block controls to none to prevent an underscore from being displayed
+         * for a white space.
+         */
+        .block-controls a {
+            text-decoration: none;
+        }
+    }
+
+    /* Add bottom padding to the Moodle default footer links, reset usertour only if not empty.*/
+    .helplink,
+    .logininfo,
+    .homelink,
+    .tool_usertours-resettourcontainer:not(:empty) {
+        padding-bottom: 1rem;
+    }
+
+    /* If the setting footerhidehelplink is enabled, then hide the helplink. */
+    @if variable-exists(footerhidehelplink) {
+        @if $footerhidehelplink == 'yes' {
+            .helplink {
+                display: none;
+            }
+        }
+    }
+
+    /* If the setting footerhidelogininfo is enabled, then hide the logininfo. */
+    @if variable-exists(footerhidelogininfo) {
+        @if $footerhidelogininfo == 'yes' {
+            .logininfo {
+                display: none;
+            }
+        }
+    }
+
+    /* If the setting footerhidehomelink is enabled, then hide the homelink. */
+    @if variable-exists(footerhidehomelink) {
+        @if $footerhidehomelink == 'yes' {
+            .homelink {
+                display: none;
+            }
+        }
+    }
+
+    /* If the setting footerhideusertourslink is enabled, then hide the link to reset the user tour. */
+    @if variable-exists(footerhideusertourslink) {
+        @if $footerhideusertourslink == 'yes' {
+            .tool_usertours-resettourcontainer {
+                display: none;
+            }
+        }
+    }
+
+    /* Insert some separator lines for different contents in the footer. */
+    .performanceinfo,
+    .purgecaches,
+    .nav.navbar-nav {
+        border-top: 1px solid #fff;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    /* We need a top border only if there are footer block columns. */
+    @if variable-exists(footerblocks) {
+        @if $footerblocks != '0columns' {
+            .container-fluid:nth-of-type(2) > .row-fluid {
+                border-top: 1px solid #fff;
+                padding-top: 1rem;
+            }
+        }
+    }
+
+    /* If all Moodle links are hidden in the footer, we don't need a top line for the performance info.*/
+    @if variable-exists(footerhidehelplink) and variable-exists(footerhidelogininfo) and variable-exists(footerhidehomelink) {
+        @if $footerhidehelplink == 'yes' and $footerhidelogininfo == 'yes' and $footerhidehomelink == 'yes' {
+            .container-fluid:nth-of-type(2) > .row-fluid {
+                border-top: none;
+            }
+        }
+    }
+}
+
+
+/*------------------------------------
+  General improvements
+  -------------------------------------*/
+
+/* Mark broken links with red color. */
+a[href*="/brokenfile.php"] {
+    color: $brand-danger;
+}
+
+/* Add Font Awesome "broken chain" icon in front of broken link. */
+a[href*="/brokenfile.php"]::before {
+    font-family: FontAwesome;
+    content: "\f127" !important;
+    padding-right: 10px;
+}
+
+/* Add Font Awesome "email" icon in front of mailto links. */
+a[href^="mailto"]::before {
+    font-family: FontAwesome;
+    content: "\f003";
+    padding-right: 5px;
+}
+
+
+/*------------------------------------
+  Maintenance Info
+  -------------------------------------*/
+/* Improve the maintenance warning to be full width and to be displayed above the navdrawer navigation. */
+.maintenancewarning {
+    width: 100%;
+    text-align: center;
+    margin: 0 !important;
+    border-radius: 0;
+    border-width: 1px 0 1px 0;
+    bottom: 15px;
+}
+
+/*------------------------------------
+  Additional Regions
+  -------------------------------------*/
+/*
+ * Image area.
+ */
+.imagearea {
+    border-top: 1px solid #fff;
+    flex-shrink: 0;
+
+    img {
+        /* If setting imageareaitemsmaxheight is not empty. */
+        @if variable-exists(imageareaitemsmaxheight) {
+            /* set the value. */
+            max-height: #{$imageareaitemsmaxheight}px;
+        }
+        width: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/*
+ * Footnote.
+ */
+.footnote {
+    min-height: 50px;
+    border-top: 1px solid #fff;
+    flex-shrink: 0;
+}
+
+/*
+ * Info banner.
+ */
+/* This is needed because otherwise the top and bottom margin are not equal within the alert box. */
+#themeboostcampusperpinfobanner p,
+#themeboostcampustimedinfobanner p {
+    margin-bottom: 0;
+}
+
+
+/*------------------------------------
+  Additional Elements
+  -------------------------------------*/
+
+/* Moodle Core Back to top button */
+body.scrolled #goto-top-link {
+    /* For unknown reasons, the Moodle Core Back to top button is made unclickable by the Boost Campus footer.
+       We fix this by simply raising the z-index of the button. */
+    z-index: $zindex-tooltip;
+}
+
+/* Boost Campus Back to top button */
+#back-to-top {
+    display: none;
+    position: fixed;
+    padding: 0.5rem;
+    bottom: 0.5em;
+    right: 0.5em;
+    line-height: 1.7rem;
+    color: #fff;
+    background-color: $brand-primary;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+}
+#back-to-top::before {
+    vertical-align: 0.3rem;
+}
+
+/* In-course settings. */
+@if (variable-exists(showsettingsincourse)) {
+    #boost-campus-course-settings,
+    #boost-campus-activity-settings {
+        /* Initially do not display the settings. Visibility will be changed on click with incoursesettings.js. */
+        display: none;
+
+        /* Improve layout and look of the settings as they are now placed within the page header. */
+        margin-bottom: 1rem;
+        .tab-content .card {
+            border: none;
+        }
+
+        /* Improve styling of the tabs so that they look more like real tabs. */
+        .nav-tabs {
+            border: none;
+        }
+        .tab-content .card {
+            background-color: darken($body-bg, 5%);
+        }
+
+        /* Do some more tweaks on smaller screens and bigger screens differently as Moodle uses different styles. */
+        @include media-breakpoint-up(md) {
+            /* Add some space. */
+            padding: 0 1rem 1.3rem 1rem;
+
+            /* Highlight the active tab. */
+            .nav-tabs {
+                .active {
+                    background-color: darken($body-bg, 5%);
+                    border-color: darken($body-bg, 5%);
+                }
+            }
+        }
+        @include media-breakpoint-down(sm) {
+            /* Add some space. */
+            padding: 1rem 0 1.3rem 0;
+
+            /* Remove the border around the course settings card as it would be incomplete. */
+            &.card {
+                border: none;
+            }
+        }
+
+    }
+
+    /* As this is already placed within the activity content card, the border around the settings card should be removed. */
+    #boost-campus-activity-settings {
+        border: none;
+    }
+}
+
+/* Setting to move 'Switch role to...' menu item to the course settings - but only if
+   setting showsettingsincourse is also enabled. */
+@if (variable-exists(incoursesettingsswitchtoroleposition) and variable-exists(showsettingsincourse)) {
+    @if ($incoursesettingsswitchtoroleposition == 'yes' and $showsettingsincourse == 'yes') {
+        /* Hide the switch role to menu item within the user menu */
+        .usermenu {
+            .dropdown-menu a[data-title*="switchroleto"],
+            .dropdown-menu a[data-title*="switchrolereturn"] {
+                display: none;
+            }
+            /* As the last menu item is missing, we have to modify the dropdown menu container. */
+            .dropdown-menu.dropdown-menu-right {
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+            /* We have to add a border for the users who do not have a switch role menu item due to their capabilities. */
+            .dropdown-menu.dropdown-menu-right a:last-child {
+                border-bottom: 1px solid $gray-lighter;
+            }
+            .dropdown-menu-right div:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+/* Setting to show a hint for hidden courses. */
+/* Because the Font Awesome icon is set to fa-3x, we need a minimum size for the container. */
+.course-hidden-infobox,
+.switched-role-infobox,
+.course-guestaccess-infobox {
+    min-height: 4rem;
+}
+
+
+/*------------------------------------
+  Special Settings
+  -------------------------------------*/
+
+/* If the setting "hidefooteronloginpage" is enabled, hide the footer on the login page. */
+@if variable-exists(hidefooteronloginpage) {
+    @if $hidefooteronloginpage == 'yes' {
+        /* Because the footer will be hidden, but the footnote is visible, we have to adapt the position and size to
+           match the footnote dimensions. */
+        #page-login-index {
+            #page-wrapper {
+                margin-bottom: -50px;
+                padding-bottom: 0;
+            }
+            #page-wrapper::after {
+                min-height: 50px;
+            }
+            /* Hide the footer. */
+            #page-footer {
+                display: none;
+            }
+        }
+    }
+}
+
+@if variable-exists(helptextmodal) {
+    @if $helptextmodal == 'yes' {
+
+        th .boost-campus-modal-help-dialog .modal-body {
+            text-align: left;
+            font-weight: $font-weight-base;
+        }
+
+        .modal {
+            /* Set font-size to normal size as the modals inherit the font size from the element they are placed in.
+             * This is not intended and so we force the font size to be the normal size. */
+            font-size: $font-size-base;
+            .modal-body {
+                /* This is needed to display the text within the modal window as the help button is placed in
+                in a span with the class text-nowrap. */
+                white-space: normal !important;
+                ul {
+                    padding-left: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+
+/* ----------------------------------------------------------
+ VIDEO JS SKIN
+ ---------------------------------------------------------- */
+.video-js {
+    .vjs-menu-button-inline {
+        &.vjs-slider-active,
+        &:focus,
+        &:hover {
+            width: 10em;
+        }
+    }
+    &.vjs-no-flex .vjs-menu-button-inline {
+        width: 10em;
+    }
+    .vjs-control {
+        width: 3em;
+    }
+    .vjs-menu-button-inline::before {
+        width: 1.5em;
+    }
+    .vjs-time-control {
+        padding-left: 0;
+    }
+}
+.vjs-menu-button-inline .vjs-menu {
+    left: 3em;
+}
+.vjs-paused.vjs-has-started.video-js:not(.vjs-audio) .vjs-big-play-button {
+    display: block;
+}
+.video-js :not(.vjs-audio) {
+    &.vjs-ended .vjs-big-play-button,
+    &.vjs-paused .vjs-big-play-button {
+        display: block;
+    }
+}
+.video-js {
+    .vjs-mouse-display:after,
+    .vjs-play-progress::after {
+        padding: 0 0.4em 0.3em;
+    }
+    &.vjs-ended {
+        .vjs-loading-spinner {
+            display: none;
+        }
+    }
+}
+.video-js {
+    .vjs-big-play-button {
+        background-color: $brand-primary;
+        border-radius: 2px;
+    }
+    &:hover .vjs-big-play-button {
+        background-color: $brand-primary;
+    }
+    .vjs-big-play-button {
+        &:focus,
+        &:active {
+            background-color: $gray-dark;
+        }
+    }
+    .vjs-loading-spinner {
+        border-color: $brand-primary;
+    }
+    .vjs-control-bar2 {
+        background-color: transparent;
+    }
+    .vjs-control-bar {
+        background-color: $gray-dark !important;
+        color: #fff;
+    }
+    .vjs-play-progress,
+    .vjs-volume-level {
+        background-color: $brand-primary;
+    }
+    .vjs-big-play-button {
+        border-width: 2px;
+    }
+    .vjs-icon-play:before,
+    .vjs-big-play-button::before {
+        font-size: 1em;
+    }
+    .vjs-progress-holder {
+        font-size: 1.7em;
+        border-radius: 10px;
+        .vjs-play-progress {
+            border-radius: 10px;
+        }
+        .vjs-load-progress {
+            border-radius: 10px;
+            div {
+                border-radius: 10px;
+            }
+        }
+    }
+    .vjs-slider {
+        border-radius: 10px;
+    }
+}
+.vjs-volume-level {
+    border-radius: 10px;
+}
+.video-js {
+    .vjs-load-progress {
+        background: rgba(255, 255, 255, 0.5);
+    }
+    border-radius: 2px;
+    video {
+        border-radius: 2px;
+    }
+}
+.vjs-poster,
+.video-js .vjs-tech {
+    border-radius: 2px;
+}
+
+
+/*------------------------------------
+  Special: Additional Plugins
+  -------------------------------------*/
+
+/* Special styles for plugin local_boostnavigation. */
+#nav-drawer {
+    /* Remove border of child nodes which should appear as one block. */
+    .list-group-item[data-key^="localboostnavigationactivity"],
+    .list-group-item[data-parent-key^="localboostnavigationcustom"],
+    .list-group-item[data-key="localboostnavigationcoursesections"][data-collapse="0"] + .list-group-item[href$="#section-0"] {
+        border-top: none;
+    }
+}
+/* Special styles for plugin mod_attendance to fix problems with positioning of the table headers in editing mode when
+   the add a block widget is placed in the blocks column. */
+@if variable-exists(addablockposition) {
+    @if $addablockposition == 'positionblockregion' {
+        #page-mod-attendance-report .attendancereporttable .headcol {
+            left: 20px;
+        }
+        #page-mod-attendance-report.has-region-side-pre:not(.empty-region-side-pre) .attendancereporttable .headcol {
+            left: 20px;
+            width: 300px;
+        }
+    }
+}
