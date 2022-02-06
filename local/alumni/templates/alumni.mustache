@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <table class="generaltable  tablesorter" id="tablealumni">
+            <thead>
+            <tr>
+                <th>ФИО</th>
+                <th>Телефон</th>
+                <th>Веб-страница</th>
+                <th>Предприятие</th>
+                <th class="filter-select filter-exact" data-placeholder="Все">Регион</th>
+                <th class="filter-select filter-exact" data-placeholder="Все">Специализация</th>
+                <th>Должность</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#array}}
+                {{#.}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{phone}}</td>
+                    <td>{{webpage}}</td>
+                    <td>{{orgname}}</td>
+                    <td>{{region}}</td>
+                    <td>{{userapeciality}}</td>
+                    <td>{{userposition}}</td>
+                </tr>
+                {{/.}}
+            {{/array}}
+            </tbody>
+        </table>
+    </div>
+</div>
