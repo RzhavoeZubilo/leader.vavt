@@ -4,25 +4,27 @@
             <thead>
             <tr>
                 <th>ФИО</th>
-                <th>Телефон</th>
-                <th>Веб-страница</th>
+                <th>Сайт предприятия</th>
                 <th>Предприятие</th>
                 <th class="filter-select filter-exact" data-placeholder="Все">Регион</th>
                 <th class="filter-select filter-exact" data-placeholder="Все">Специализация</th>
                 <th>Должность</th>
+                <th>Польза</th>
+                <th class="sorter-false filter-false">Сообщение</th>
             </tr>
             </thead>
             <tbody>
             {{#array}}
                 {{#.}}
                 <tr>
-                    <td>{{name}}</td>
-                    <td>{{phone}}</td>
+                    <td>{{{name}}}</td>
                     <td>{{webpage}}</td>
                     <td>{{orgname}}</td>
                     <td>{{region}}</td>
                     <td>{{userapeciality}}</td>
                     <td>{{userposition}}</td>
+                    <td>{{polsa}}</td>
+                    <td style="text-align: right;">{{{msg}}}</td>
                 </tr>
                 {{/.}}
             {{/array}}

@@ -30,14 +30,17 @@ foreach ($data as $dat=>$d){
     $obj = new stdClass();
     $info = profile_user_record($d->id);
     if($info->showindirectory == 1){
-        $obj->name = $d->lastname.' '.$d->firstname;
+        $obj->name = '<a target="_blank" href="https://community-lp.vavt.ru/user/profile.php?id='.$d->id.'">'.$d->lastname.' '.$d->firstname.'</a>';
+//        $obj->name = $d->lastname.' '.$d->firstname;
         $obj->phone = $info->phone;
         $obj->webpage = $info->webpage;
         $obj->orgname = $info->orgname;
         $obj->region = $info->region;
         $obj->userapeciality = $info->userapeciality;
         $obj->userposition = $info->userposition;
+        $obj->polsa = $info->polsa;
 
+        $obj->msg = '<a target="_blank" href="https://community-lp.vavt.ru/message/index.php?id='.$d->id.'"><i class="icon fa fa-comment fa-fw " title="Сообщение" aria-label="Сообщение"></i></a>';
         $arr[] = $obj;
     }
 
