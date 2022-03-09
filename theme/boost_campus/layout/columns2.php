@@ -189,6 +189,8 @@ ORIGINAL END. */
 
 $templatecontext['firstcollectionlabel'] = $nav->get_collectionlabel();
 
+$templatecontext['pagecentercontent'] = $OUTPUT->blocks('pagecenter');
+
 // MODIFICATION START.
 // Set the template context for the footer and additional layouts.
 require_once(__DIR__ . '/includes/footer.php');
