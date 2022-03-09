@@ -14,7 +14,7 @@ $id = optional_param('id', '0', PARAM_INT);
 
 $PAGE->set_url('/local/faqwiki/view.php');
 
-$PAGE->set_title("Выпускники");
+$PAGE->set_title("База знаний");
 
 $data = $DB->get_record_sql("SELECT * FROM mdl_faqwiki WHERE id = {$id}");
 

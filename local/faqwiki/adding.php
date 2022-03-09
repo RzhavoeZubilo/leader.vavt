@@ -12,7 +12,7 @@ require_once($CFG->libdir . '/adminlib.php');
 
 $PAGE->set_url('/local/faqwiki/adding.php');
 
-$PAGE->set_title("Выпускники");
+$PAGE->set_title("База знаний");
 $PAGE->set_heading("База знаний сообщества");
 
 echo $OUTPUT->header();
@@ -76,7 +76,8 @@ if ($mform->is_cancelled()) {
     $toform->paragraph['format'] = 1;
 
     $toform->itemid = $id;
-    $toform->action = 'edit';
+    $toform->action = optional_param('action', '', PARAM_TEXT);
+//    $toform->action = 'edit';
 
 //    $toform->paragraph['itemid'] = ???;
 

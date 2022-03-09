@@ -11,7 +11,7 @@ define('MODULE_URL', '/local/faqwiki/index.php');
 //$PAGE->set_url('/local/alumni/index.php', array('id' => $course->id));
 $PAGE->set_url('/local/faqwiki/index.php');
 
-$PAGE->set_title("Выпускники");
+$PAGE->set_title("База знаний");
 $PAGE->set_heading("База знаний сообщества");
 
 $PAGE->requires->css(new moodle_url('/lib/tablesorter/css/theme.bootstrap_4.min.css'));
