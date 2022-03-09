@@ -12,16 +12,26 @@ require_once($CFG->libdir . '/adminlib.php');
 
 $PAGE->set_url('/blocks/vavt_news/adding.php');
 
-$PAGE->set_title("Выпускники");
-$PAGE->set_heading("База знаний сообщества");
+$PAGE->set_title("Новости");
+$PAGE->set_heading("Добавление новости");
 
 echo $OUTPUT->header();
 
 
 require_once('form/news_item.php');
-require_once('/local/faqwiki/lib_faqwiki.php');
+require_once('../../local/faqwiki/lib_faqwiki.php');
 
-$mform = new item();
+const EDITOR_OPTIONS = [
+    'changeformat' => 1,
+    'noclean'      => 0,
+    'trusttext'    => 0,
+
+    'subdirs' => 0,
+    'maxfiles' => EDITOR_UNLIMITED_FILES,
+    'accepted_types' => ['.jpg', '.jpeg', '.png']
+];
+
+$mform = new news_item();
 
 $redirectLink = '/blocks/vavt_news/index.php';
 
@@ -31,7 +41,7 @@ if ($mform->is_cancelled()) {
     redirect(new moodle_url($redirectLink));
 } else if ($data = $mform->get_data()) {
     //In this case you process validated data. $mform->get_data() returns data posted in form.
-
+print_object($data);
     $paragraph = $data->paragraph;
     unset($data->paragraph);
     $data->content = htmlentities($paragraph['text'], null, 'UTF-8');
@@ -43,42 +53,46 @@ if ($mform->is_cancelled()) {
         'usermodified' => $data->usermodified,
         'timemodified' => $data->timemodified
     ];
-
+exit;
     if($data->action == 'edit'){
         $ob->id = $data->itemid;
-        $DB->update_record('vavt_news', $ob);
+        $DB->update_record('block_vavt_news', $ob);
+        $itemid = $data->itemid;
     }else{
-        echo 'ADD';
-        $itemid = $DB->insert_record('vavt_news', $ob);
+        $itemid = $DB->insert_record('block_vavt_news', $ob);
+        $ob->id = $itemid;
     }
+print_object($paragraph);
+    $draftitemid = $paragraph['itemid'];
+    $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
+    $context = context_block::instance($fromid);
+
+    // picture
+    file_save_draft_area_files(
+        $data->picture,
+        $context->id,
+        'block_vavt_news',
+        'pictures',
+        $itemid,
+        ['subdirs' => 0]
+    );
+
+    $ob->params = serialize($data);
+    $DB->update_record('block_vavt_news', $ob);
 
     redirect($redirectLink, '', 1);
-
-//    // picture
-//    file_save_draft_area_files(
-//        $data->picture,
-//        $context->id,
-//        'mod_longread',
-//        'pictures',
-//        $itemid,
-//        ['subdirs' => 0]
-//    );
-//    $quote->set('params', serialize($data));
-//    $quote->update();
 
 } else {
     $id = optional_param('id', '0', PARAM_INT);
     // this branch is executed if the form is submitted but the data doesn't validate and the form should be redisplayed
     // or on the first display of the form.
-    $toform = $DB->get_record_sql("SELECT * FROM mdl_vavt_news WHERE id = {$id}");
+    $toform = $DB->get_record_sql("SELECT * FROM mdl_block_vavt_news WHERE id = {$id}");
     $params = (array)getParams($toform->params);
     $toform->paragraph['text'] = html_entity_decode( $params['content'], null, 'UTF-8');
     $toform->paragraph['format'] = 1;
 
     $toform->itemid = $id;
-    $toform->action = 'edit';
-
-//    $toform->paragraph['itemid'] = ???;
+    $toform->action = optional_param('action', '', PARAM_TEXT);
 
     unset($toform->params);
 
@@ -86,6 +100,7 @@ if ($mform->is_cancelled()) {
     $mform->set_data($toform);
     //displays the form
     $mform->display();
+
 }
 
 echo $OUTPUT->footer();

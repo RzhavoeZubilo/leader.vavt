@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="local/vavt_news/db" VERSION="20220120" COMMENT="XMLDB file for timeonline"
+<XMLDB PATH="blocks/vavt_news/db" VERSION="20220120" COMMENT="XMLDB file for timeonline"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
 
     <TABLES>
-        <TABLE NAME="vavt_news" COMMENT="community knowledge base">
+        <TABLE NAME="block_vavt_news" COMMENT="community knowledge base">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
                 <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
