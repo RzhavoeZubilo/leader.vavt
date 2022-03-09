@@ -131,6 +131,7 @@ $string['footerblockssetting_desc'] = 'You can chose if you want to enable the p
 $string['region-footer-left'] = 'Footer (left)';
 $string['region-footer-middle'] = 'Footer (middle)';
 $string['region-footer-right'] = 'Footer (right)';
+$string['region-pagecenter'] = 'По центру страницы';
 $string['region-side-pre'] = 'Right';
 // ...Hide footer links.
 $string['footerlinksheadingsetting'] = 'Default footer links';

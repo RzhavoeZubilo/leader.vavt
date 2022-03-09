@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-12">
+        <h5 style="font-weight: 700;">НОВОСТИ ({{cntnews}})</h5>
+        {{{btnallnews}}}
+    </div>
+</div>
+<div class="row">
+<div class="card-deck">
+    {{#match}}
+<!--        <div class="col-md-4">-->
+
+                <div class="card">
+<!--                    {{{imgsrc}}}-->
+                    <img src="{{imgsrc}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">{{{name}}}</h4>
+                        <p class="card-text">{{{text}}}</p>
+<!--                        <a href="#" class="btn btn-primary">ЧИТАТЬ НОВОСТЬ</a>-->
+                    </div>
+                    <div class="card-footer text-muted bckgnone">
+<!--                        <a href="{{readlnk}}" style="font-weight: 800;">ЧИТАТЬ НОВОСТЬ</a>-->
+                        {{{readlnk}}}
+                        <p><span>{{{user}}}</span> {{timemodified}}</p>
+                    </div>
+                </div>
+
+<!--        </div>-->
+    {{/match}}
+</div>
+</div>
+<style>
+    .block_vavt_news h5.card-title{
+        display: none !important;
+    }
+    .bckgnone{
+        background-color: rgba(0,0,0,.0);
+    }
+</style>

@@ -45,6 +45,8 @@ if (get_config('theme_boost_campus', 'footerblocks') == '1columns') {
     $regions[] = 'footer-middle';
     $regions[] = 'footer-right';
 }
+$regions[] = 'pagecenter';
+//$templatecontext['footerrightblocks'] = $OUTPUT->blocks('pagecenter');
 
 $THEME->layouts = [
     // Most backwards compatible layout without the blocks - this is the layout used by default.

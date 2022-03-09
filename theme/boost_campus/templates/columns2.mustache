@@ -94,20 +94,20 @@
     <div id="page" class="container-fluid d-print-block">
 
         {{#timedinfobannershowonselectedpage}}
-        <div id="themeboostcampustimedinfobanner" class="alert {{#timedibcss}}alert-{{{ timedibcss }}}{{/timedibcss}} mt-3" role="alert">
-          {{{ timedibcontent }}}
-        </div>
+            <div id="themeboostcampustimedinfobanner" class="alert {{#timedibcss}}alert-{{{ timedibcss }}}{{/timedibcss}} mt-3" role="alert">
+                {{{ timedibcontent }}}
+            </div>
         {{/timedinfobannershowonselectedpage}}
 
         {{#perpinfobannershowonselectedpage}}
-        <div id="themeboostcampusperpinfobanner" class="alert {{#perpibcss}}alert-{{{ perpibcss }}}{{/perpibcss}} {{#perpibdismiss}}alert-dismissible fade show{{/perpibdismiss}} mt-3" role="alert">
-          {{{ perpibcontent }}}
-          {{#perpibdismiss}}
-          <button type="button" id="themeboostcampusperpinfobannerclosebutton" class="close" data-dismiss="alert" aria-label="{{#str}}close, theme_boost_campus{{/str}}">
-              <span aria-hidden="true">&times;</span>
-           </button>
-           {{/perpibdismiss}}
-        </div>
+            <div id="themeboostcampusperpinfobanner" class="alert {{#perpibcss}}alert-{{{ perpibcss }}}{{/perpibcss}} {{#perpibdismiss}}alert-dismissible fade show{{/perpibdismiss}} mt-3" role="alert">
+                {{{ perpibcontent }}}
+                {{#perpibdismiss}}
+                    <button type="button" id="themeboostcampusperpinfobannerclosebutton" class="close" data-dismiss="alert" aria-label="{{#str}}close, theme_boost_campus{{/str}}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                {{/perpibdismiss}}
+            </div>
         {{/perpinfobannershowonselectedpage}}
 
         {{{ output.full_header }}}
@@ -120,12 +120,15 @@
                     {{/node}}
                 {{/incoursesettings}}
                 {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
-                    <div> {{{ output.region_main_settings_menu }}} </div>
-                </div>
+                    <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
+                        <div> {{{ output.region_main_settings_menu }}} </div>
+                    </div>
                 {{/hasregionmainsettingsmenu}}
                 {{{coursepageinformationbanners}}}
                 <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}} aria-label="{{#str}}content{{/str}}">
+                    {{#pagecentercontent}}
+                        {{{ pagecentercontent }}}
+                    {{/pagecentercontent}}
 
                     {{#hasregionmainsettingsmenu}}
                         <div class="region_main_settings_menu_proxy"></div>
@@ -141,10 +144,11 @@
                     {{{ output.course_content_footer }}}
 
                 </section>
+
                 {{#hasblocks}}
-                <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
-                    {{{ sidepreblocks }}}
-                </section>
+                    <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                        {{{ sidepreblocks }}}
+                    </section>
                 {{/hasblocks}}
             </div>
         </div>
@@ -158,32 +162,32 @@
 </body>
 </html>
 {{#js}}
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader'], function() {
+    M.util.js_pending('theme_boost/loader');
+    require(['theme_boost/loader'], function() {
     M.util.js_complete('theme_boost/loader');
-});
+    });
 
-M.util.js_pending('theme_boost/drawer');
-require(['theme_boost/drawer'], function(drawer) {
+    M.util.js_pending('theme_boost/drawer');
+    require(['theme_boost/drawer'], function(drawer) {
     drawer.init();
     M.util.js_complete('theme_boost/drawer');
-});
-{{#bcbttbutton}}
-require(['theme_boost_campus/backtotop'], function(mod) {
-    mod.init();
-});
-{{/bcbttbutton}}
-require(['theme_boost_campus/catchshortcuts'], function(mod) {
+    });
+    {{#bcbttbutton}}
+        require(['theme_boost_campus/backtotop'], function(mod) {
+        mod.init();
+        });
+    {{/bcbttbutton}}
+    require(['theme_boost_campus/catchshortcuts'], function(mod) {
     mod.init({{{catchshortcuts}}});
-});
-{{#incoursesettings}}
-    require(['theme_boost_campus/incoursesettings'], function(mod) {
-    mod.init();
     });
-{{/incoursesettings}}
-{{#perpinfobannershowonselectedpage}}
-    require(['theme_boost_campus/infobanner'], function(mod) {
-    mod.init({{{perbibconfirmdialogue}}});
-    });
-{{/perpinfobannershowonselectedpage}}
+    {{#incoursesettings}}
+        require(['theme_boost_campus/incoursesettings'], function(mod) {
+        mod.init();
+        });
+    {{/incoursesettings}}
+    {{#perpinfobannershowonselectedpage}}
+        require(['theme_boost_campus/infobanner'], function(mod) {
+        mod.init({{{perbibconfirmdialogue}}});
+        });
+    {{/perpinfobannershowonselectedpage}}
 {{/js}}

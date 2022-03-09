@@ -36,6 +36,18 @@ class news_item extends \moodleform
         $mform->addElement('text', 'name', "Заголовок");
         $mform->setType('name', PARAM_TEXT);
 
+        $mform->addElement(
+            'filemanager',
+            'picture',
+            "Картинка",
+            null,
+            [
+                'subdirs' => 0,
+                'maxfiles' => 1,
+                'accepted_types' => ['.jpg', '.jpeg', '.png']
+            ]
+        );
+
         $mform->addElement('editor', 'paragraph', 'Текст новости', null, $editoroptions);
 
         $this->add_action_buttons();

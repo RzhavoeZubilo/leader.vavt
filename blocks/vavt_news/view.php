@@ -8,20 +8,19 @@
 global $DB, $PAGE, $CFG, $OUTPUT;
 
 require_once('../../config.php');
-require_once('lib_faqwiki.php');
+require_once('lib_vavt_news.php');
 
 $id = optional_param('id', '0', PARAM_INT);
 
-$PAGE->set_url('/local/faqwiki/view.php');
+$PAGE->set_url('/blocks/vavt_news/view.php');
 
-$PAGE->set_title("База знаний");
+$PAGE->set_title("Новости");
 
-$data = $DB->get_record_sql("SELECT * FROM mdl_faqwiki WHERE id = {$id}");
+$data = $DB->get_record_sql("SELECT * FROM mdl_block_vavt_news WHERE id = {$id}");
 
 $PAGE->set_heading($data->name);
 
-$PAGE->navbar->add('База знаний сообщества', new \moodle_url('/local/faqwiki/index.php'));
-//$PAGE->navbar->add($namescreen, new \moodle_url('/mod/longread/view.php', array('id'=>$id, 'action'=>'editscreen', 'screenid'=>$screenid)));
+$PAGE->navbar->add('Новости', new \moodle_url('/blocks/vavt_news/index.php'));
 
 echo $OUTPUT->header();
 
@@ -42,4 +41,4 @@ $render = [
     'timemodified' => date('d.m.Y', $data->timemodified)
 ];
 
-echo $OUTPUT->render_from_template("local_faqwiki/item", $render);
+echo $OUTPUT->render_from_template("block_vavt_news/item", $render);
