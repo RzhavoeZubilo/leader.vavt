@@ -42,14 +42,16 @@ class block_vavt_news extends block_base
 
         $this->content         =  new stdClass;
 //        $this->content->text   = 'The content of our vavt_news block!';
-        $this->content->footer = 'Footer here...';
+
+        // footer блока
+        // $this->content->footer = 'Footer here...';
 
         $data = $DB->get_records_sql("SELECT * FROM mdl_block_vavt_news ORDER BY timemodified DESC LIMIT 3");
 
         require_once('lib_vavt_news.php');
         $render = getContentHTML($data, $typenews = 'block');
 
-        $btnallnews = \html_writer::start_tag('div', array('style' => 'display: flex; text-align: right'));
+        $btnallnews = \html_writer::start_tag('div', array());
         $btnallnews .= \html_writer::link(new \moodle_url('/blocks/vavt_news/index.php'), 'ВСЕ НОВОСТИ',
     array('type' => 'button', 'class' => 'btn btn-outline-primary', 'target' => '_blank'));
         $btnallnews .= \html_writer::end_tag('div');
