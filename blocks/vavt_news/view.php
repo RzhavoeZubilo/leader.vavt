@@ -13,6 +13,7 @@ require_once('lib_vavt_news.php');
 
 $id = optional_param('id', '0', PARAM_INT);
 
+$PAGE->set_context(context_system::instance());
 $PAGE->set_url('/blocks/vavt_news/view.php');
 $PAGE->set_title("Новости");
 
@@ -23,6 +24,8 @@ $PAGE->navbar->add('Новости', new \moodle_url('/blocks/vavt_news/index.ph
 
 echo $OUTPUT->header();
 
+$fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news']);
+$context = context_block::instance($fromid);
 
 $params = (array)getParams($data->params);
 
@@ -34,13 +37,15 @@ $userlnk = \html_writer::link(new \moodle_url('/user/profile.php', ['id' => $dat
 
 /////////////////////////
 // picture
-$fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
-$context = context_block::instance($fromid);
 
 $fs = get_file_storage();
 
 $picture = null;
 
+// ищем файлы в заданной filearea
+//$files = $fs->get_area_files($context->id, 'block_vavt_news', 'pictures');
+
+// ищем файлы в заданной директории по itemid
 $files = $fs->get_directory_files(
     $context->id, 'block_vavt_news',
     'pictures',
@@ -49,11 +54,11 @@ $files = $fs->get_directory_files(
     false,
     false
 );
-//$files = $fs->get_area_files($context->id, 'mod_longread', 'refimg');
 
 foreach ( $files as $file )
     $picture = $file;
 
+// первый способ получения ссылки на файл
 if ( !empty($picture) )
 {
     $files = array_pop($files);
@@ -66,24 +71,21 @@ if ( !empty($picture) )
         $id
     );
     $params['picture'] = true;
-} else $imgsrc = $CFG->wwwroot.'/blocks/vavt_news/templates/itemimg.png';
+} else
+    // заглушка, если картинка не была добавлена
+    $imgsrc = $CFG->wwwroot.'/blocks/vavt_news/templates/itemimg.png';
 
-$url = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(), $file->get_itemid(), $file->get_filepath(), $file->get_filename(), false);
+// второй способ получения ссылки на файл
+//$imgsrc = moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(), $file->get_itemid(), $file->get_filepath(), $file->get_filename(), false);
 
-/// ////////////////////
-
-
-
-
-
-
+/////////////////////////
+///
 $render = [
     'name' => $data->name,
     'text' => $params['content'],
     'user' => $userlnk,
     'timemodified' => date('d.m.Y', $data->timemodified),
-    'imgsrc'=>$imgsrc,
-    'url'=>$url
+    'imgsrc'=>$imgsrc
 ];
 
 echo $OUTPUT->render_from_template("block_vavt_news/item", $render);

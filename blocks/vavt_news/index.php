@@ -11,7 +11,7 @@ require_once('lib_vavt_news.php');
 
 
 $PAGE->set_url('/blocks/vavt_news/index.php');
-
+$PAGE->set_context(context_system::instance());
 $PAGE->set_title("Новости");
 $PAGE->set_heading("Новости");
 

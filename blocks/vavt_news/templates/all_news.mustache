@@ -1,5 +1,7 @@
 <div class="row" style="margin-top: 30px;">
-    {{{addbtn}}}
+    <div class="col-md-12" style="margin-bottom: 20px;">
+        {{{addbtn}}}
+    </div>
     <hr>
     <div class="col-md-12">
         <div class="card-deck vavt-all-news">
@@ -12,13 +14,10 @@
                 </div>
                 <div class="card-footer text-muted bckgnone">
                     {{{readlnk}}}
-                    <p>{{timemodified}}  <span>{{{user}}}</span>
-                        {{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}
-                    </p>
+                    <p>{{timemodified}}  <span>{{{user}}}</span></p>
+                    <p style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</p>
                 </div>
             </div>
-
-
         {{/match}}
         </div>
     </div>
@@ -30,5 +29,10 @@
         margin-bottom: 20px;
         min-width: 200px;
         max-width: 200px;
+    }
+    .vavt-all-news .card-img-top
+    {
+        object-fit: cover;
+        max-height: 180px;
     }
 </style>

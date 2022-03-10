@@ -52,16 +52,18 @@ function block_vavt_news_pluginfile($course, $birecord_or_cm, $context, $fileare
         // At this point there is no way to check SYSTEM context, so ignoring it.
     }
 
-    if ($filearea !== 'content') {
+    if ($filearea !== 'pictures') {
         send_file_not_found();
     }
+
+    $itemid = array_shift($args); // The first item in the $args array.
 
     $fs = get_file_storage();
 
     $filename = array_pop($args);
     $filepath = $args ? '/'.implode('/', $args).'/' : '/';
 
-    if (!$file = $fs->get_file($context->id, 'block_vavt_news', 'pictures', 0, $filepath, $filename) or $file->is_directory()) {
+    if (!$file = $fs->get_file($context->id, 'block_vavt_news', 'pictures', $itemid, $filepath, $filename) or $file->is_directory()) {
         send_file_not_found();
     }
 

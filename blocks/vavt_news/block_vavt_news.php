@@ -49,7 +49,7 @@ class block_vavt_news extends block_base
         require_once('lib_vavt_news.php');
         $render = getContentHTML($data, $typenews = 'block');
 
-        $btnallnews = \html_writer::start_tag('div', array('style' => 'text-align: right'));
+        $btnallnews = \html_writer::start_tag('div', array('style' => 'display: flex; text-align: right'));
         $btnallnews .= \html_writer::link(new \moodle_url('/blocks/vavt_news/index.php'), 'ВСЕ НОВОСТИ',
     array('type' => 'button', 'class' => 'btn btn-outline-primary', 'target' => '_blank'));
         $btnallnews .= \html_writer::end_tag('div');

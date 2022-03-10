@@ -12,7 +12,7 @@ require_once($CFG->libdir . '/adminlib.php');
 require_once($CFG->libdir.'/filelib.php');
 
 $PAGE->set_url('/blocks/vavt_news/adding.php');
-
+$PAGE->set_context(context_system::instance());
 $PAGE->set_title("Новости");
 $PAGE->set_heading("Добавление новости");
 
@@ -34,7 +34,7 @@ const EDITOR_OPTIONS = [
 
 $mform = new news_item();
 
-$redirectLink = '/blocks/vavt_news/index.php';
+$redirectLink = $CFG->wwwroot.'/blocks/vavt_news/index.php';
 
 //Здесь производится обработка и отображение формы
 if ($mform->is_cancelled()) {
@@ -55,17 +55,18 @@ if ($mform->is_cancelled()) {
         'timemodified' => $data->timemodified
     ];
 
-    if($data->action == 'edit'){
+    if($data->action == 0){
+        $itemid = $DB->insert_record('block_vavt_news', $ob);
+        $ob->id = $itemid;
+    } else {
         $ob->id = $data->itemid;
         $DB->update_record('block_vavt_news', $ob);
         $itemid = $data->itemid;
-    }else{
-        $itemid = $DB->insert_record('block_vavt_news', $ob);
-        $ob->id = $itemid;
     }
 
     $draftitemid = $paragraph['itemid'];
-    $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
+    // $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
+    $fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news']);
     $context = context_block::instance($fromid);
 
 
@@ -84,7 +85,7 @@ if ($mform->is_cancelled()) {
     $ob->params = serialize($data);
     $DB->update_record('block_vavt_news', $ob);
 
-    redirect($redirectLink, '', 1);
+     redirect($redirectLink, '', 100);
 
 } else {
     $id = optional_param('id', '0', PARAM_INT);

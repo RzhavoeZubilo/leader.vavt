@@ -19,11 +19,12 @@ echo $OUTPUT->header();
 
 $id = optional_param('id', '0', PARAM_INT);
 $action = optional_param('action', '', PARAM_TEXT);
+$contextid = optional_param('contextid', '0', PARAM_INT);
 
 if($id <> 0 && $action == 'deleteitem'){
 
     $fs = get_file_storage();
-    $contextid = 54;
+
     $fs->delete_area_files($contextid, 'block_vavt_news', 'pictures', $id);
 
     $DB->delete_records('block_vavt_news', array('id' => $id));

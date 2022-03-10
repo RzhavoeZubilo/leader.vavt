@@ -46,7 +46,8 @@ function getContentHTML($data, $typenews)
             array('target' => '_blank'));
 
         // picture
-        $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
+        // $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
+        $fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news']);
         $context = context_block::instance($fromid);
 
         $fs = get_file_storage();
@@ -100,7 +101,7 @@ function getContentHTML($data, $typenews)
             //        $dellnk = \html_writer::link(new \moodle_url('/local/faqwiki/adding.php', ['action' => 'del']), '<i class="fa fa-trash-o" aria-hidden="true" style="font-family: FontAwesome; margin-left: 15px;"></i>');
 
             $dellnk = \html_writer::link(
-                new \moodle_url('/blocks/vavt_news/deleteitem.php', ['id' => $d->id, 'action' => 'deleteitem']),
+                new \moodle_url('/blocks/vavt_news/deleteitem.php', ['id' => $d->id, 'action' => 'deleteitem', 'contextid'=>$context->id]),
                 '<i class="fa fa-trash-o" aria-hidden="true" style="font-family: FontAwesome; margin-left: 15px;"></i>',
                 [
                     'style' => 'margin-left: 10px;',
