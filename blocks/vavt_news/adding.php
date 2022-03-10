@@ -20,7 +20,7 @@ echo $OUTPUT->header();
 
 
 require_once('form/news_item.php');
-require_once('lib_faqwiki.php');
+require_once('lib_vavt_news.php');
 
 const EDITOR_OPTIONS = [
     'changeformat' => 1,
