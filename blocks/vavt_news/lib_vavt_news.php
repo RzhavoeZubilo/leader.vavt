@@ -74,7 +74,7 @@ function getContentHTML($data, $typenews)
                 $context->id,
                 'block_vavt_news',
                 'pictures',
-                NULL
+                $d->id
             );
 //            $this->config->text = file_rewrite_pluginfile_urls($this->config->text,
 //                'pluginfile.php',
