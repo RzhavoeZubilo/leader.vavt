@@ -2,11 +2,33 @@
     {{{addbtn}}}
     <hr>
     <div class="col-md-12">
+        <div class="card-deck vavt-all-news">
         {{#match}}
-            <h4 style="margin-top: 25px;">{{{name}}}</h4>
-            {{{text}}}
-            <br>
-            <p>{{timemodified}}  <span>{{{user}}}</span>  {{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</p>
+            <div class="card">
+                <img src="{{imgsrc}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">{{{name}}}</h4>
+                    <p class="card-text">{{{text}}}</p>
+                </div>
+                <div class="card-footer text-muted bckgnone">
+                    {{{readlnk}}}
+                    <p>{{timemodified}}  <span>{{{user}}}</span>
+                        {{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}
+                    </p>
+                </div>
+            </div>
+
+
         {{/match}}
+        </div>
     </div>
 </div>
+
+
+<style>
+    .card-deck.vavt-all-news .card {
+        margin-bottom: 20px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+</style>

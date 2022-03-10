@@ -9,6 +9,7 @@ global $CFG, $DB, $PAGE, $OUTPUT, $USER;
 
 require_once('../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
+require_once($CFG->libdir.'/filelib.php');
 
 $PAGE->set_url('/blocks/vavt_news/adding.php');
 
@@ -41,7 +42,7 @@ if ($mform->is_cancelled()) {
     redirect(new moodle_url($redirectLink));
 } else if ($data = $mform->get_data()) {
     //In this case you process validated data. $mform->get_data() returns data posted in form.
-print_object($data);
+
     $paragraph = $data->paragraph;
     unset($data->paragraph);
     $data->content = htmlentities($paragraph['text'], null, 'UTF-8');
@@ -53,7 +54,7 @@ print_object($data);
         'usermodified' => $data->usermodified,
         'timemodified' => $data->timemodified
     ];
-exit;
+
     if($data->action == 'edit'){
         $ob->id = $data->itemid;
         $DB->update_record('block_vavt_news', $ob);
@@ -62,12 +63,15 @@ exit;
         $itemid = $DB->insert_record('block_vavt_news', $ob);
         $ob->id = $itemid;
     }
-print_object($paragraph);
+
     $draftitemid = $paragraph['itemid'];
     $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
     $context = context_block::instance($fromid);
 
+
     // picture
+    file_prepare_draft_area($draftitemid, $context->id, 'block_vavt_news', 'pictures', $itemid, array('subdirs' => true));
+
     file_save_draft_area_files(
         $data->picture,
         $context->id,

@@ -4,13 +4,11 @@
  * Date: 08.03.2022
  * Time: 12:37
  */
-//require_once('../../config.php');
-
 
 function getContentHTML($data, $typenews)
 {
     global $DB, $USER, $CFG;
-
+    require_once($CFG->libdir . '/filelib.php');
     if (is_siteadmin()) {
         $addbtn = \html_writer::start_tag('div', array('style' => 'text-align: right'));
         $addbtn .= \html_writer::link(new \moodle_url('/blocks/vavt_news/adding.php', ['action' => 'add']), 'Добавить новость<i class="fa fa-plus-circle" aria-hidden="true" style="font-family: FontAwesome"></i>',
@@ -76,8 +74,15 @@ function getContentHTML($data, $typenews)
                 $context->id,
                 'block_vavt_news',
                 'pictures',
-                $d->id
+                NULL
             );
+//            $this->config->text = file_rewrite_pluginfile_urls($this->config->text,
+//                'pluginfile.php',
+//                $this->context->id,
+//                'block_html',
+//                'content',
+//                NULL);
+
             $params['picture'] = true;
         } else $imgsrc = $CFG->wwwroot.'/blocks/vavt_news/templates/itemimg.png';
 

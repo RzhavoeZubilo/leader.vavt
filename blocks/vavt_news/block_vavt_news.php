@@ -8,7 +8,16 @@
 
 class block_vavt_news extends block_base
 {
+    private $headerhidden = true;
 
+    // включаем глобальную настройку из settings.php
+    function has_config() {
+        return true;
+    }
+    // скрыть заголовок блока
+    function hide_header() {
+        return $this->headerhidden;
+    }
 
     public function init()
     {
@@ -18,7 +27,8 @@ class block_vavt_news extends block_base
     // will only be closed after there is another function added in the next section.
 
     public function get_content() {
-        global $DB, $OUTPUT;
+        global $DB, $OUTPUT,$CFG;
+        require_once($CFG->libdir . '/filelib.php');
 //        if (! empty($this->config->text)) {
 //            $this->content->text = $this->config->text;
 //        }
@@ -31,7 +41,7 @@ class block_vavt_news extends block_base
 //        $this->title = $this->config->title."({$cntnews})";
 
         $this->content         =  new stdClass;
-//        $this->content->text   = 'The content of our SimpleHTML block!';
+//        $this->content->text   = 'The content of our vavt_news block!';
         $this->content->footer = 'Footer here...';
 
         $data = $DB->get_records_sql("SELECT * FROM mdl_block_vavt_news ORDER BY timemodified DESC LIMIT 3");
@@ -52,6 +62,8 @@ class block_vavt_news extends block_base
 
         return $this->content;
     }
+
+
 
 //    public function specialization() {
 //        if (isset($this->config)) {
