@@ -4,23 +4,30 @@
     </div>
     <hr>
     <div class="col-md-12">
-        <div class="card-deck vavt-all-news">
         {{#match}}
-            <div class="card">
-                <img src="{{imgsrc}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h4 class="card-title">{{{name}}}</h4>
-                    <p class="card-text">{{{text}}}</p>
-                </div>
-                <div class="card-footer text-muted bckgnone">
-                    {{{readlnk}}}
-                    <p>{{timemodified}}  <span>{{{user}}}</span></p>
-                    <p style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</p>
+            <div class="card mb-3" style="max-width: 1100px; max-height: 199px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">{{{name}}}</h4>
+                            <p class="card-text">{{{text}}}</p>
+                            <p>{{{readlnk}}}</p>
+                            <p class="card-text"><small class="text-muted">{{timemodified}} <span>{{{user}}}</span></small>
+                                <span style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         {{/match}}
-        </div>
     </div>
+
+
+
+
 </div>
 
 
