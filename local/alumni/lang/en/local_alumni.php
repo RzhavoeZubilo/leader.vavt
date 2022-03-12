@@ -1,3 +1,3 @@
 <?php
 
-$string['pluginname'] = 'Alumni';
+$string['pluginname'] = 'Выпускники';

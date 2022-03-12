@@ -2,6 +2,7 @@
 
 require_once('../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
+require_once($CFG->dirroot.'/user/profile/lib.php');
 
 //$PAGE->set_url('/local/alumni/index.php', array('id' => $course->id));
 $PAGE->set_url('/local/alumni/index.php');
@@ -15,14 +16,6 @@ $PAGE->requires->css(new moodle_url('/lib/tablesorter/css/theme.default.min.css'
 
 echo $OUTPUT->header();
 
-
-
-
-//$data = $DB->get_records_sql("SELECT * FROM mdl_user_info_data");
-//$data = $DB->get_records_sql("SELECT * FROM mdl_user_info_field");
-//print_object($data);
-//$data = $DB->get_records_sql("SELECT * FROM mdl_user as u
-//INNER JOIN mdl_user_info_data as uid ON uid.userid = u.id");
 $arr = array();
 $data = $DB->get_records_sql("SELECT * FROM mdl_user");
 foreach ($data as $dat=>$d){
@@ -64,5 +57,3 @@ echo $OUTPUT->render_from_template("local_alumni/alumni", $params);
 $PAGE->requires->js_call_amd('local_alumni/script', 'init');
 
 echo $OUTPUT->footer();
-
-?>

@@ -4,13 +4,13 @@
             <thead>
             <tr>
                 <th>ФИО</th>
-                <th>Сайт предприятия</th>
+                <th data-sorter="false">Сайт предприятия</th>
                 <th>Предприятие</th>
                 <th class="filter-select filter-exact" data-placeholder="Все">Регион</th>
                 <th class="filter-select filter-exact" data-placeholder="Все">Специализация</th>
-                <th>Должность</th>
-                <th>Польза</th>
-                <th class="sorter-false filter-false">Сообщение</th>
+                <th data-sorter="false">Должность</th>
+                <th data-sorter="false">Польза</th>
+                <th class="sorter-false filter-false" data-sorter="false" data-filter="false">Сообщение</th>
             </tr>
             </thead>
             <tbody>
@@ -32,3 +32,15 @@
         </table>
     </div>
 </div>
+<style>
+    .tablesorter-bootstrap thead th {
+        font: 700 16px/20px Arial, Sans-serif;
+    }
+    .tablesorter-bootstrap:not(.table-dark) thead:not(.thead-dark) .tablesorter-header{
+        background-color: #940d6c;
+        color: #fff;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+    input.tablesorter-filter.form-control.disabled  { display: none; }
+</style>
