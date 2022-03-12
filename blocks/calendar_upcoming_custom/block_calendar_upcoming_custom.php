@@ -62,8 +62,8 @@ class block_calendar_upcoming_custom extends block_base {
 
         $render = [
             'name'=>$event->name,
-            'eventdayofweek'=>mb_strtoupper($arrdaystart[0]),
-            'eventday'=>mb_strtoupper($eventday),
+            'eventdayofweek'=>$arrdaystart[0],
+            'eventday'=>$eventday,
             'timestr'=>$timestr,
 
         ];
