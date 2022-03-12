@@ -5,6 +5,8 @@
  * Time: 00:44
  */
 
+require_once($CFG->libdir . '/adminlib.php');
+require_once($CFG->dirroot.'/user/profile/lib.php');
 
 class block_vavt_contact extends block_base
 {
@@ -29,58 +31,58 @@ class block_vavt_contact extends block_base
     public function get_content() {
         global $DB, $OUTPUT,$CFG, $USER;
 
-//        if (! empty($this->config->text)) {
-//            $this->content->text = $this->config->text;
-//        }
-//        if ($this->content !== null) {
-//            return $this->content;
-//        }
-
-//        $this->title = $this->config->title."({$cntnews})";
-
         $this->content         =  new stdClass;
-//        $this->content->text   = 'The content of our vavt_news block!';
-//        $this->content->footer = 'Footer here...';
+
+
+        if( $community = explode(",",  $this->config->community)){
+            $i = 0;
+            $arrcommunity = array();
+            foreach ($community as $key => $value){
+                $user = $DB->get_record('user', array('id' => $value));
+                $userpicture = $OUTPUT->user_picture($user, array('size'=>28));
+                $userurl = new moodle_url('/user/view.php', array('id' => $user->id));
+                $userlink = html_writer::link($userurl, $userpicture .' '. fullname($user));
+                $info = profile_user_record($user->id);
+
+                $arrcommunity[$i]['userpicture'] = $userpicture;
+                $arrcommunity[$i]['username'] = trim($user->firstname).' '.trim($user->lastname);
+                $arrcommunity[$i]['userphone'] = $info->phone;
+                $i++;
+            }
+        }
 
         if( $support = explode(",",  $this->config->support)){
+            $i = 0;
+
             $arrsupport = array();
             foreach ($support as $key => $value){
                 $user = $DB->get_record('user', array('id' => $value));
                 $userpicture = $OUTPUT->user_picture($user, array('size'=>28));
                 $userurl = new moodle_url('/user/view.php', array('id' => $user->id));
                 $userlink = html_writer::link($userurl, $userpicture .' '. fullname($user));
+                $info = profile_user_record($user->id);
 
-                $arrsupport['userpicture'] = $userpicture;
-                // todo не выводит имя
-                $arrsupport['username'] = stristr(trim($user->firstname), ' ', true).' '.trim($user->lastname);
+                $arrsupport[$i]['userpicture'] = $userpicture;
+                $arrsupport[$i]['username'] =  trim($user->firstname).' '.trim($user->lastname);
+                $arrsupport[$i]['userphone'] = $info->phone;
+                $i++;
             }
         }
 
-//        if( $community = explode(",",  $this->config->community)){
-//            $arrcommunity = array();
-//            foreach ($community as $key => $value){
-//                $user = $DB->get_record('user', array('id' => $value));
-//                $userpicture = $OUTPUT->user_picture($user, array('size'=>28));
-//                $userurl = new moodle_url('/user/view.php', array('id' => $user->id));
-//                $userlink = html_writer::link($userurl, $userpicture .' '. fullname($user));
-//
-//                $arrcommunity['userpicture'] = $userpicture;
-//                // todo не выводит имя
-//                $arrcommunity['username'] = stristr(trim($user->firstname), ' ', true).' '.trim($user->lastname);
-//            }
-//        }
-
         if( $paidprograms = explode(",",  $this->config->paidprograms)){
+            $i = 0;
             $arrpaidprograms = array();
             foreach ($paidprograms as $key => $value){
                 $user = $DB->get_record('user', array('id' => $value));
                 $userpicture = $OUTPUT->user_picture($user, array('size'=>28));
                 $userurl = new moodle_url('/user/view.php', array('id' => $user->id));
                 $userlink = html_writer::link($userurl, $userpicture .' '. fullname($user));
+                $info = profile_user_record($user->id);
 
-                $arrpaidprograms['userpicture'] = $userpicture;
-                // todo не выводит имя
-                $arrpaidprograms['username'] = stristr(trim($user->firstname), ' ', true).' '.trim($user->lastname);
+                $arrpaidprograms[$i]['userpicture'] = $userpicture;
+                $arrpaidprograms[$i]['username'] =  trim($user->firstname).' '.trim($user->lastname);
+                $arrpaidprograms[$i]['userphone'] = $info->phone;
+                $i++;
             }
         }
 
@@ -89,9 +91,8 @@ class block_vavt_contact extends block_base
 
 //        $render['userpic'] =  $OUTPUT->user_picture($USER, array('size'=>28));
 
+        $render['arrcommunity'] =  $arrcommunity;
         $render['arrsupport'] =  $arrsupport;
-//        $render['arrcommunity'] =  $arrcommunity;
-        $render['arrcommunity'] =  '';
         $render['arrpaidprograms'] =  $arrpaidprograms;
 
         $this->content->text = $OUTPUT->render_from_template("block_vavt_contact/item", $render);

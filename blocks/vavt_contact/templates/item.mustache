@@ -1,23 +1,50 @@
 
     <div class="contact_vavt" style="width: 100%">
-        <h5>Связаться с нами</h5>
+        <h5>СВЯЗАТЬСЯ С НАМИ</h5>
+        <div class="title_type_contact"><span style="padding-left: 15px;">По сообществу</span></div>
+        <table>
         {{#arrcommunity}}
-            <div>По сообществу</div>
-            {{{userpicture}}}{{username}}
+            <tr>
+                <td>{{{userpicture}}}</td>
+                <td class="nameandphone">{{username}}<br>{{userphone}}</td>
+            </tr>
         {{/arrcommunity}}
+    </table>
+
+        <div class="title_type_contact"><span style="padding-left: 15px;">Служба ТП</span></div>
+        <table>
         {{#arrsupport}}
-            <div>Служба ТП</div>
-            {{{userpicture}}}{{username}}
+            <tr>
+                <td>{{{userpicture}}}</td>
+                <td class="nameandphone">{{username}}<br>{{userphone}}</td>
+            </tr>
         {{/arrsupport}}
+        </table>
+        <div class="title_type_contact"><span style="padding-left: 15px;">Платные программы</span></div>
+            <table>
         {{#arrpaidprograms}}
-            <div>Платные программы</div>
-            {{{userpicture}}}{{username}}
+            <tr>
+                <td>{{{userpicture}}}</td>
+                <td class="nameandphone">{{username}}<br>{{userphone}}</td>
+            </tr>
         {{/arrpaidprograms}}
+            </table>
     </div>
 <style>
-    .contact_vavt div{
-        background-color: #940d6c;
+    section .block_vavt_contact{
+        background-color: #4e4e4e;
         color: #fff;
+    }
+    section .block_vavt_contact .nameandphone {
+        font-size: 12px;
+    }
+    .contact_vavt h5{
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+    .contact_vavt div.title_type_contact{
+        background-color: #fff;
+        color: #4e4e4e;
         font-weight: 700;
         margin-bottom: 10px;
         margin-top: 10px;
