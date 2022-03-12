@@ -6,11 +6,11 @@
  * Time: 21:41
  */
 require_once('../../config.php');
-$PAGE->set_url('/local/alumni/index.php');
+$PAGE->set_url('/local/tilda/index.php');
 
-$PAGE->set_title("Наши преподаватели");
-$PAGE->set_heading("Наши преподаватели");
-//$PAGE->navbar->add("Выпускники");
+$PAGE->set_title("Эксперты");
+$PAGE->set_heading("Эксперты");
+
 
 echo $OUTPUT->header();
 
@@ -43,7 +43,7 @@ for ($i = 0; $i <= $teacherCount; $i++ ) {
 
     $teachers[] = (array)$teacher;
 }
-//print_object($teachers);
+
 $render = ['teacher' => $teachers];
 echo $OUTPUT->render_from_template("local_tilda/teachers", $render);
 
