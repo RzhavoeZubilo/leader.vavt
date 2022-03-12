@@ -66,7 +66,7 @@ if ($mform->is_cancelled()) {
 
     $draftitemid = $paragraph['itemid'];
     // $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
-    $fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news']);
+    $fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news'],1);
     $context = context_block::instance($fromid);
 
 

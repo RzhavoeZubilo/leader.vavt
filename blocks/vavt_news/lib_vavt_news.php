@@ -47,7 +47,7 @@ function getContentHTML($data, $typenews)
 
         // picture
         // $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_news']);
-        $fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news']);
+        $fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news'], 1);
         $context = context_block::instance($fromid);
 
         $fs = get_file_storage();
@@ -115,7 +115,8 @@ function getContentHTML($data, $typenews)
 
         $i++;
     }
-    $render = ['match' => $match, 'addbtn' => $addbtn, 'cntnews' => $cntnews];
+    $render = ['match' => $match, 'cntnews' => $cntnews];
+    if(isset($addbtn) && !empty($addbtn)) $render['addbtn'] = $addbtn;
 
     return $render;
 }

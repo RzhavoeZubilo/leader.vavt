@@ -24,7 +24,7 @@ $PAGE->navbar->add('Новости', new \moodle_url('/blocks/vavt_news/index.ph
 
 echo $OUTPUT->header();
 
-$fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news']);
+$fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_news'],1);
 $context = context_block::instance($fromid);
 
 $params = (array)getParams($data->params);
@@ -89,3 +89,5 @@ $render = [
 ];
 
 echo $OUTPUT->render_from_template("block_vavt_news/item", $render);
+
+echo $OUTPUT->footer();
