@@ -1,0 +1,102 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template unilabeltype_grid/grid
+    Template to show a bootstrap modal dialog.
+
+    Example context (json):
+    {
+        "showintro": false,
+        "intro": "",
+        "columnssmall": 1,
+        "height": "300",
+        "autoheight": false,
+        "tiles": [
+            {
+                "id": "1",
+                "gridid": "1",
+                "title": "Title 1",
+                "url": "",
+                "content": "<p>fdsafsdf<br><\/p>",
+                "imageurl": "https://url-to-image",
+                "imagemobileurl": "",
+                "nr": 0
+            },
+            {
+                "id": "2",
+                "gridid": "1",
+                "title": "Title 2",
+                "url": "",
+                "content": "<p>fdfdfdfdf<br><\/p>",
+                "imageurl": "https://url-to-image",
+                "imagemobileurl": "",
+                "nr": 1
+            }
+        ],
+        "hastiles": true,
+        "cmid": "55",
+        "colclasses": "col-lg-3 col-md-6 col-sm-12"
+    }
+}}
+
+{{#showintro}}
+    {{{intro}}}
+{{/showintro}}
+{{#hastiles}}
+    <div class="row mx-0">
+        {{#tiles}}
+            <div class="text-center {{{colclasses}}} py-4">
+                <!-- The overlay is used as button to show the modal dialog -->
+                {{#url}}
+                    <a href="{{{url}}}">
+                        <div class="unilabel-overlay-effect bg-primary h-100 w-100"></div>
+                    </a>
+                {{/url}}
+                {{^url}}
+                    <a href="#" data-toggle="modal" data-target="#grid-modal-{{cmid}}-{{nr}}">
+                        <div class="unilabel-overlay-effect bg-primary h-100 w-100"></div>
+                    </a>
+                {{/url}}
+                {{^autoheight}}<div style="height:{{{height}}}px;width:100%;">{{/autoheight}}
+
+                {{#imagemobileurl}}
+                    {{#imageurl}}
+                        <img class="img-fluid d-none d-md-inline" alt="{{title}}" src="{{{imageurl}}}"{{^autoheight}} style="height:100%;object-fit:contain;"{{/autoheight}}/>
+                    {{/imageurl}}
+                    <img class="img-fluid d-inline d-md-none" alt="{{title}}" src="{{{imagemobileurl}}}"{{^autoheight}} style="height:100%;object-fit:contain;"{{/autoheight}}/>
+                {{/imagemobileurl}}
+                {{^imagemobileurl}}
+                    {{#imageurl}}
+                        <img class="img-fluid" alt="{{title}}" src="{{{imageurl}}}"{{^autoheight}} style="height:100%;object-fit:contain;"{{/autoheight}}/>
+                    {{/imageurl}}
+                {{/imagemobileurl}}
+
+                {{^autoheight}}</div>{{/autoheight}}
+                <h5>{{title}}</h5>
+            </div>
+        {{/tiles}}
+    </div>
+
+    {{#tiles}}
+        {{^url}}
+            {{> unilabeltype_grid/dialog }}
+        {{/url}}
+    {{/tiles}}
+{{/hastiles}}
+{{^hastiles}}
+<span>{{#str}} nocontent , unilabeltype_grid {{/str}}</span>
+{{/hastiles}}

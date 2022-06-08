@@ -1,0 +1,50 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template unilabeltype_grid/colourpicker
+    Template to show a colour picker in the content settings form to choose the background colour.
+
+    Example context (json):
+    {
+        "iconurl": "https://<url-to-moodle>/theme/image.php/svg_bootstrap4/core/1544826417/i/colourpicker",
+        "inputname": "unilabeltype_grid_background",
+        "inputid": "id_unilabeltype_grid_background_colourpicker",
+        "label": "Background",
+        "defaultvalue": "#A0E2FD"
+    }
+}}
+
+<div class="form-group row  fitem   ">
+    <div class="col-md-3">
+        <span class="float-sm-right text-nowrap"> </span>
+        <label class="col-form-label d-inline " for="{{inputid}}">
+            {{label}}
+        </label>
+    </div>
+
+    <div class="col-md-9 form-inline felement" data-fieldtype="text">
+        <div class="form-colourpicker defaultsnext">
+            <div class="admin_colourpicker clearfix">
+                <img alt="" class="colourdialogue" src="{{{iconurl}}}">
+                <div class="previewcolour" style="width: 50px; height: 50px; background-color: rgb(137, 27, 0);"></div>
+                <div class="currentcolour" style="width: 50px; height: 49px; background-color: rgb(58, 69, 75);"></div>
+            </div>
+            <input name="{{inputname}}" id="{{inputid}}" value="{{{defaultvalue}}}" size="12" class="form-control text-ltr" type="text">
+            <span>{{defaultvalue}}</span>
+        </div>
+    </div>
+</div>

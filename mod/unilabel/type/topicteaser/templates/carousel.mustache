@@ -1,0 +1,134 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template unilabeltype_topicteaser/carousel
+    Template to show a bootstrap modal dialog.
+
+    Example context (json):
+    {
+        "title": "TEST copy 1",
+        "showintro": false,
+        "intro": "",
+        "interval": "5",
+        "height": 300,
+        "items": [
+            {
+                "name": "Topic 1",
+                "section": "1",
+                "viewurl": "https://url-to-view",
+                "summary": "",
+                "cmlist": "<ul class=\"section img-text\"><\/ul>",
+                "nr": 0,
+                "first": true
+            },
+            {
+                "name": "Topic 2",
+                "section": "2",
+                "viewurl": "https://url-to-view",
+                "summary": "",
+                "cmlist": "<ul class=\"section img-text\"><\/ul>",
+                "nr": 1
+            },
+            {
+                "name": "Topic 3",
+                "section": "3",
+                "viewurl": "https://url-to-view",
+                "summary": "",
+                "cmlist": "<ul class=\"section img-text\"><\/ul>",
+                "nr": 2
+            },
+            {
+                "name": "Topic 4",
+                "section": "4",
+                "viewurl": "https://url-to-view",
+                "summary": "",
+                "cmlist": "<ul class=\"section img-text\"><\/ul>",
+                "nr": 3
+            }
+        ],
+        "hasitems": true,
+        "custombuttons": true,
+        "cssjsonstring": "'css-selector {overflow: hidden;}'",
+        "openmodal": true,
+        "opencourseurl": false,
+        "cmid": "55"
+    }
+}}
+
+{{> unilabeltype_topicteaser/intro }}
+{{#hasitems}}
+    <div id="{{plugin}}-{{cmid}}" class="{{plugin}} carousel slide my-2" data-ride="carousel" data-interval="{{#interval}}{{.}}000{{/interval}}{{^interval}}false{{/interval}}">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            {{#items}}
+                <li data-target="#{{plugin}}-{{cmid}}" data-slide-to="{{nr}}"{{#first}} class="active"{{/first}}></li>
+            {{/items}}
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            {{#items}}
+                <div class="carousel-item text-center py-4{{#first}} active{{/first}}">
+                    <!-- The overlay is used as button to show the modal dialog -->
+                    <a href="{{{viewurl}}}"{{#openmodal}} data-toggle="modal" data-target="#topicteaser-modal-{{cmid}}-{{nr}}"{{/openmodal}}>
+                        <div class="unilabel-overlay-effect bg-primary h-100 w-100"></div>
+                    </a>
+                    <h3>{{name}}</h3>
+                    {{{summary}}}
+                </div>
+            {{/items}}
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#{{plugin}}-{{cmid}}" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#{{plugin}}-{{cmid}}" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    {{#openmodal}}
+        {{#items}}
+            {{> unilabeltype_topicteaser/dialog }}
+        {{/items}}
+    {{/openmodal}}
+{{/hasitems}}
+
+{{^hasitems}}
+    <span>{{#str}} nocontent , unilabeltype_topicteaser {{/str}}</span>
+{{/hasitems}}
+{{#js}}
+    require(['theme_boost/loader']);
+    require(['theme_boost/bootstrap/carousel']);
+    {{#interval}}
+    require(['mod_unilabel/carouselstart'], function(mod) {
+        mod.init('{{plugin}}-{{cmid}}');
+    });
+    {{/interval}}
+
+    {{#hasitems}}
+        {{#custombuttons}}
+            require(['mod_unilabel/add_css'], function(mod) {
+                // To make sure we have clean html we have to put the css into the <head> by using javascript.
+                mod.init({{{cssjsonstring}}});
+            });
+        {{/custombuttons}}
+    {{/hasitems}}
+
+{{/js}}

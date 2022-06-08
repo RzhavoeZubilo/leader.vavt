@@ -1,0 +1,7 @@
+span.unilabeltype-collapsed-caret:after {
+    content: "\f0d7";
+    font: normal normal normal 16px/1 FontAwesome;
+}
+a.unilabel-title.collapsed span.unilabeltype-collapsed-caret::after {
+    content: "\f0da";
+}

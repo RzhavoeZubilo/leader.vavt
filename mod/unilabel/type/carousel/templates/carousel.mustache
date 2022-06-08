@@ -1,0 +1,144 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template unilabeltype_carousel/carousel
+    Template to show a bootstrap carousel.
+
+    Example context (json):
+    {
+        "showintro": false,
+        "intro": "",
+        "interval": "5",
+        "height": "300",
+        "autoheight": false,
+        "background": "#A0E2FD",
+        "slides": [
+            {
+                "id": "4",
+                "carouselid": "1",
+                "url": "",
+                "caption": "<p>Slide 1<br><\/p>",
+                "imageurl": "https://url-to-image",
+                "imagemobileurl": "",
+                "nr": 0
+            },
+            {
+                "id": "5",
+                "carouselid": "1",
+                "url": "",
+                "caption": "<p>Slide 2<br><\/p>",
+                "imageurl": "https://url-to-image",
+                "imagemobileurl": "",
+                "nr": 1
+            },
+            {
+                "id": "6",
+                "carouselid": "1",
+                "url": "",
+                "caption": "<p>Slide 3<br><\/p>",
+                "imageurl": "https://url-to-image",
+                "imagemobileurl": "",
+                "nr": 2
+            }
+        ],
+        "hasslides": true,
+        "custombuttons": true,
+        "cssjsonstring": "'css-selector {overflow: hidden;}'",
+        "cmid": "55"
+    }
+}}
+
+{{#showintro}}
+    {{{intro}}}
+{{/showintro}}
+{{#hasslides}}
+    <div id="{{plugin}}-{{cmid}}" class="{{plugin}} carousel slide my-2" data-ride="carousel" data-interval="{{#interval}}{{.}}000{{/interval}}{{^interval}}false{{/interval}}">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            {{#slides}}
+                <li data-target="#{{plugin}}-{{cmid}}" data-slide-to="{{nr}}"{{^nr}} class="active"{{/nr}}></li>
+            {{/slides}}
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner" style="background-color:{{background}};">
+            {{#slides}}
+                <div class="carousel-item text-center py-4{{^nr}} active{{/nr}}">
+                    {{#url}}
+                        <!-- The overlay is used as button to show the modal dialog -->
+                        <a href="{{{url}}}">
+                            <div class="unilabel-overlay-effect bg-primary h-100 w-100"></div>
+                        </a>
+                    {{/url}}
+                    {{^autoheight}}<div style="height:{{{height}}}px;width:100%;">{{/autoheight}}
+
+                    {{#imagemobileurl}}
+                        {{#imageurl}}
+                        <img class="img-fluid d-none d-md-inline" alt="{{captionplain}}" src="{{{imageurl}}}"{{^autoheight}} style="height:100%;object-fit:contain;"{{/autoheight}}/>
+                        {{/imageurl}}
+                        <img class="img-fluid d-inline d-md-none" alt="{{captionplain}}" src="{{{imagemobileurl}}}"{{^autoheight}} style="height:100%;object-fit:contain;"{{/autoheight}}/>
+                    {{/imagemobileurl}}
+                    {{^imagemobileurl}}
+                        {{#imageurl}}
+                        <img class="img-fluid" alt="{{captionplain}}" src="{{{imageurl}}}"{{^autoheight}} style="height:100%;object-fit:contain;"{{/autoheight}}/>
+                        {{/imageurl}}
+                    {{/imagemobileurl}}
+
+                    {{^autoheight}}</div>{{/autoheight}}
+
+                    {{#caption}}
+                        <div class="carousel-caption">
+                            {{{caption}}}
+                        </div>
+                    {{/caption}}
+
+                </div>
+            {{/slides}}
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#{{plugin}}-{{cmid}}" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#{{plugin}}-{{cmid}}" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+{{/hasslides}}
+{{^hasslides}}
+    <span>{{#str}} nocontent , unilabeltype_carousel {{/str}}</span>
+{{/hasslides}}
+{{#js}}
+    require(['theme_boost/loader']);
+    require(['theme_boost/bootstrap/carousel']);
+    {{#interval}}
+    require(['mod_unilabel/carouselstart'], function(mod) {
+        mod.init('{{plugin}}-{{cmid}}');
+    });
+    {{/interval}}
+
+    {{#hasslides}}
+        {{#custombuttons}}
+            require(['mod_unilabel/add_css'], function(mod) {
+                // To make sure we have clean html we have to put the css into the <head> by using javascript.
+                mod.init({{{cssjsonstring}}});
+            });
+        {{/custombuttons}}
+    {{/hasslides}}
+
+{{/js}}

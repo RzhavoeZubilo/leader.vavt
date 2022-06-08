@@ -1,0 +1,97 @@
+/* Use the same css like a label */
+.unilabel .mod-indent {
+    float: left;
+    padding-top: 20px;
+}
+.section .unilabel .mod-indent-outer {
+    padding-left: 24px;
+    display: block;
+}
+.section .unilabel .mod-indent-outer .contentwithoutlink {
+    display: inline;
+}
+.section .unilabel .mod-indent-outer .unilabel-content {
+    margin-bottom: 1rem;
+}
+
+/* If the carousel item is a link it overlaps the controls */
+.unilabel .carousel .carousel-control-prev,
+.unilabel .carousel .carousel-control-next {
+    z-index: 998;
+    mix-blend-mode: difference;
+}
+
+/* Nice overlay effect which can be used in subplugins */
+.unilabel-overlay-effect:hover {
+    opacity: 0.3;
+}
+.unilabel-overlay-effect {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s ease;
+    overflow: hidden;
+    z-index: 998;
+}
+/***********************************************/
+/*
+This is a workaround for a five-column grid.
+We have to put it here because in <plugin>/styles.css it is loaded before bootstrap and overriden.
+*/
+.unilabel-content .col-2dot4,
+.unilabel-content .col-sm-2dot4,
+.unilabel-content .col-md-2dot4,
+.unilabel-content .col-lg-2dot4,
+.unilabel-content .col-xl-2dot4 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.unilabel-content .col-2dot4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+@media (min-width: 576px) {
+    .unilabel-content .col-sm-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (min-width: 768px) {
+    .unilabel-content .col-md-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (min-width: 992px) {
+    .unilabel-content .col-lg-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .unilabel-content .col-xl-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+/***********************************************/

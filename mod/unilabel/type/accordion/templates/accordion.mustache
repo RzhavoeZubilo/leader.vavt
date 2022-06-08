@@ -1,0 +1,39 @@
+{{!
+This file is part of Moodle - http://moodle.org/
+
+Moodle is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Moodle is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template unilabeltype_accordion/accordion
+}}
+
+{{#showintro}}
+    {{{intro}}}
+{{/showintro}}
+<div class="accordion" id="accordion-{{cmid}}">
+{{#segments}}
+  <div class="card" id="accordion-{{cmid}}-{{id}}">
+    <div class="card-header" id="accordion-heading-{{cmid}}-{{id}}">
+      <button class="btn btn-link btn-block" type="button" data-toggle="collapse" data-target="#accordion-segment-{{cmid}}-{{id}}" aria-expanded="false" aria-controls="accordion-segment-{{cmid}}-{{id}}">
+        {{{ heading }}}
+      </button>
+    </div>
+    <div id="accordion-segment-{{cmid}}-{{id}}" class="collapse" aria-labelledby="accordion-heading-{{cmid}}-{{id}}" data-parent="#accordion-{{cmid}}">
+      <div class="card-body">
+        {{{ content }}}
+      </div>
+    </div>
+  </div>
+{{/segments}}
+</div>
