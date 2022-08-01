@@ -236,3 +236,17 @@ function theme_boost_campus_infobanner_reset_visibility() {
         set_config('perpibresetvisibility', 0, 'theme_boost_campus');
     }
 }
+
+function theme_boost_campus_page_init(moodle_page $page) {
+    // There is no need to $page->requires->jquery() if the theme does not use jQuery.
+    //    $page->requires->jquery_plugin('sometheme-ui-css', 'theme_boost');
+    //    $page->requires->jquery_override_plugin('ui-css', 'sometheme-ui-css');
+
+    //$PAGE->requires->jquery();
+    //$PAGE->requires->jquery_plugin('ui');
+    //$PAGE->requires->jquery_plugin('ui-css');
+    //$PAGE->requires->js_call_amd('core_user/autocompl', 'init');
+    //$PAGE->requires->css(new moodle_url('/user/css/jquery-ui.css'));
+
+    $page->requires->jquery_plugin('ui-css');
+}

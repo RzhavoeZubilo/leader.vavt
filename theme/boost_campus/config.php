@@ -171,3 +171,4 @@ if (get_config('theme_boost_campus', 'addablockposition') == 'positionnavdrawer'
 } else {
     $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_DEFAULT;
 }
+$THEME->javascripts_footer = array('autocomplinn');
