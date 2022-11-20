@@ -52,9 +52,9 @@ function block_vavt_news_pluginfile($course, $birecord_or_cm, $context, $fileare
         // At this point there is no way to check SYSTEM context, so ignoring it.
     }
 
-    if ($filearea !== 'pictures') {
-        send_file_not_found();
-    }
+//    if ($filearea !== 'pictures') {
+//        send_file_not_found();
+//    }
 
     $itemid = array_shift($args); // The first item in the $args array.
 
@@ -63,9 +63,11 @@ function block_vavt_news_pluginfile($course, $birecord_or_cm, $context, $fileare
     $filename = array_pop($args);
     $filepath = $args ? '/'.implode('/', $args).'/' : '/';
 
-    if (!$file = $fs->get_file($context->id, 'block_vavt_news', 'pictures', $itemid, $filepath, $filename) or $file->is_directory()) {
-        send_file_not_found();
-    }
+    $file = $fs->get_file($context->id, 'block_vavt_news', $filearea, $itemid, $filepath, $filename);
+
+//    if (!$file = $fs->get_file($context->id, 'block_vavt_news', 'content', $itemid, $filepath, $filename) or $file->is_directory()) {
+//        send_file_not_found();
+//    }
 
     if ($parentcontext = context::instance_by_id($birecord_or_cm->parentcontextid, IGNORE_MISSING)) {
         if ($parentcontext->contextlevel == CONTEXT_USER) {

@@ -1,0 +1,28 @@
+body{
+  font-family: PTSans,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+#fitem_id_firstnamephonetic,
+#fitem_id_lastnamephonetic ,
+#fitem_id_alternatename ,
+#fitem_id_moodlenetprofile,
+
+fieldset#id_moodle_interests ,
+fieldset#id_moodle_optional ,
+#fitem_id_profile_field_UF_VAVTADJSONS ,
+#fitem_id_profile_field_UF_VAVT1CUNIID
+
+{
+  display: none;
+}
+
+.addfavoritevavt:before{
+  cursor: pointer;
+  content: "\f097";
+  font-family: "FontAwesome";
+}
+.addfavoritevavt.addfav:before{
+  font-family: "FontAwesome";
+  content: "\f02e";
+  color: #940d6c;
+}

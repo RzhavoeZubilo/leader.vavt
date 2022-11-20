@@ -221,7 +221,8 @@ class content_type extends \mod_unilabel\content_type {
             $items = $this->get_course_infos($unilabel);
             $content = [
                 'showintro' => $showintro,
-                'intro' => $showintro ? $intro : '',
+                'intro' => $showintro ? $unilabel->intro : '',
+                'cntcourse' => count($items),
                 'interval' => $unilabeltyperecord->carouselinterval,
                 'height' => 300,
                 'items' => array_values($items),
@@ -366,6 +367,7 @@ class content_type extends \mod_unilabel\content_type {
             $item->courseid = $course->id;
             $item->courseurl = new \moodle_url('/course/view.php', array('id' => $course->id));
             $item->title = $course->fullname;
+//            $item->title = mb_strimwidth($course->fullname, 0, 49, "...");
             if ($cil->has_course_overviewfiles()) {
                 $overviewfiles = $cil->get_course_overviewfiles();
 

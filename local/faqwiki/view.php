@@ -20,7 +20,7 @@ $data = $DB->get_record_sql("SELECT * FROM mdl_faqwiki WHERE id = {$id}");
 
 $PAGE->set_heading($data->name);
 
-$PAGE->navbar->add('База знаний сообщества', new \moodle_url('/local/faqwiki/index.php'));
+$PAGE->navbar->add('Лучшие практики', new \moodle_url('/local/faqwiki/index.php'));
 //$PAGE->navbar->add($namescreen, new \moodle_url('/mod/longread/view.php', array('id'=>$id, 'action'=>'editscreen', 'screenid'=>$screenid)));
 
 echo $OUTPUT->header();

@@ -123,6 +123,19 @@
 {{^hasslides}}
     <span>{{#str}} nocontent , unilabeltype_carousel {{/str}}</span>
 {{/hasslides}}
+
+<style>
+    #page-site-index #page-content section#region-main{
+        padding-top: 0 !important;
+    }
+    #page-site-index #page-content section#region-main .sitetopic{
+        padding-top: 0 !important;
+    }
+    .unilabeltype_carousel .py-4 {
+        padding-top: 0 !important;
+    }
+</style>
+
 {{#js}}
     require(['theme_boost/loader']);
     require(['theme_boost/bootstrap/carousel']);

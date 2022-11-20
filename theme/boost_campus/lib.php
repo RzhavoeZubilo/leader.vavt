@@ -58,6 +58,9 @@ function theme_boost_campus_get_main_scss_content($theme) {
     // Post CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
     $post = file_get_contents($CFG->dirroot . '/theme/boost_campus/scss/post.scss');
 
+    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_campus/scss/main.scss');
+
+
     // Combine them together.
     return $pre . "\n" . $scss . "\n" . $post;
 }
@@ -249,4 +252,6 @@ function theme_boost_campus_page_init(moodle_page $page) {
     //$PAGE->requires->css(new moodle_url('/user/css/jquery-ui.css'));
 
     $page->requires->jquery_plugin('ui-css');
+    $page->requires->js_call_amd('local_vavt_scripts/script_favorite', 'init');
+
 }

@@ -6,7 +6,7 @@
         {{#arrcommunity}}
             <tr>
                 <td>{{{userpicture}}}</td>
-                <td class="nameandphone">{{username}}<br>{{userphone}}</td>
+                <td class="nameandphone">{{{username}}}<br>{{useremail}}</td>
             </tr>
         {{/arrcommunity}}
     </table>
@@ -16,7 +16,7 @@
         {{#arrsupport}}
             <tr>
                 <td>{{{userpicture}}}</td>
-                <td class="nameandphone">{{username}}<br>{{userphone}}</td>
+                <td class="nameandphone">{{{username}}}<br>{{useremail}}</td>
             </tr>
         {{/arrsupport}}
         </table>
@@ -25,7 +25,7 @@
         {{#arrpaidprograms}}
             <tr>
                 <td>{{{userpicture}}}</td>
-                <td class="nameandphone">{{username}}<br>{{userphone}}</td>
+                <td class="nameandphone">{{{username}}}<br>{{useremail}}</td>
             </tr>
         {{/arrpaidprograms}}
             </table>
@@ -50,5 +50,8 @@
         margin-top: 10px;
         width: 100%;
         padding: 5px;
+    }
+    .contact_vavt .nameandphone a{
+        color: #fff;
     }
 </style>

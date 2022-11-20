@@ -1,5 +1,6 @@
 <?php
 
+defined('MOODLE_INTERNAL') || die();
 
 class block_calendar_upcoming_custom extends block_base {
 
@@ -10,11 +11,17 @@ class block_calendar_upcoming_custom extends block_base {
         $this->title = get_string('pluginname', 'block_calendar_upcoming_custom');
     }
 
+    public function kurva() {
+        return 'kurva';
+    }
+
     /**
      * Return the content of this block.
      */
-    public function get_content() {
-        global $CFG, $OUTPUT;
+    public function get_content($eventnum = 0) {
+        global $CFG, $OUTPUT, $PAGE;
+
+        $PAGE->requires->js_call_amd('block_calendar_upcoming_custom/script', 'init');
 
         require_once($CFG->dirroot.'/calendar/lib.php');
 
@@ -45,6 +52,10 @@ class block_calendar_upcoming_custom extends block_base {
         $timeend = calendar_time_representation($event->timestart + $event->timeduration);
 
         // пошли костыли  =)
+        if(empty($data->events)){
+            $this->content->text = '<h5>Нет предстоящих событий</h5>';
+            return $this->content;
+        }
 
         $arrdaystart = explode(' ', substr(trim($daystart),0,-1));
 
@@ -60,23 +71,29 @@ class block_calendar_upcoming_custom extends block_base {
         $timestr = $timestart;
         if(!empty($timeend)) $timestr .=  ' - ' . $timeend;
 
+        $daystart = 0;
         $render = [
             'name'=>$event->name,
             'eventdayofweek'=>$arrdaystart[0],
             'eventday'=>$eventday,
             'timestr'=>$timestr,
+            'allevent'=>json_encode($data->events),
 
         ];
 
         $this->content->text = $OUTPUT->render_from_template("block_calendar_upcoming_custom/upcoming_block", $render);
 
+        $linkparams['view'] = 'month';
+        $url = calendar_get_link_href(new \moodle_url(CALENDAR_URL . 'view.php', $linkparams), 0, 0, 0, $starttime);
 
-        $this->content->footer = html_writer::div(
-            html_writer::link($url, get_string('gotocalendar', 'block_calendar_upcoming_custom')),
-            'gotocal'
-        );
+        $footernav = '<input type="hidden" id="numevent" value="0">';
+        $footernav .= '<i class="fa fa-caret-left fa-2x prevcal prevdis" id="cal-prev" aria-hidden="true" style="padding-right: 10px;"></i>';
+        $footernav .= '<i class="fa fa-caret-right fa-2x prevcal" id="cal-next" aria-hidden="true" style="padding-left: 10px;padding-right: 10px;"></i>';
+        $footernav .= html_writer::link($url, get_string('gotocalendar', 'block_calendar_upcoming_custom'));
+        $this->content->footer = html_writer::div($footernav, 'gotocal');
 
         return $this->content;
     }
+
 
 }

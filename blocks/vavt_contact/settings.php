@@ -18,8 +18,16 @@ defined('MOODLE_INTERNAL') || die;
     }
     //-------------------------------------------------------------------
     $ADMIN->add('vavtsettings', new admin_category('blockcontact', 'Блок контакты'));
-    $ADMIN->add('blockcontact', new admin_externalpage('blockcontactset', 'Настройка блока Контакты (справа на главной)', $CFG->wwwroot . '/?bui_editid=62'));
+
+    // настройка через шестеренку настройки блока
+    //$ADMIN->add('blockcontact', new admin_externalpage('blockcontactset', 'Настройка блока Контакты (справа на главной)', $CFG->wwwroot . '/?bui_editid='));
     //-------------------------------------------------------------------
+
+    //-------------------------------------------------------------------
+    $ADMIN->add('vavtsettings', new admin_category('sidemenu', 'Главное меню'));
+    $ADMIN->add('blockcontact', new admin_externalpage('sidemenuset', 'Настройка меню', $CFG->wwwroot . '/local/vavt_scripts/set_menu.php'));
+    //-------------------------------------------------------------------
+
 
     $ADMIN->add('vavtsettings', new admin_category('contact_vavt', 'Контакты ВАВТ'));
 

@@ -5,6 +5,9 @@
  * Time: 02:21
  */
 
+
+// ФОРМА которая появляется при вызове настроек блока через шестеренку
+
 class block_vavt_contact_edit_form extends block_edit_form {
 
     protected function specific_definition($mform) {
@@ -13,16 +16,19 @@ class block_vavt_contact_edit_form extends block_edit_form {
 //        $mform->addElement('header', 'config_header', get_string('blocksettings', 'block'));
 
         // A sample string variable with a default value.
+
+        $mform->addElement('html', '<b>Введите ID пользователей через запятую</b><br>');
+
         $mform->addElement('text', 'config_community', 'Сообщество');
-        $mform->setDefault('config_community', 'default value');
+        $mform->setDefault('config_community', '');
         $mform->setType('config_community', PARAM_RAW);
 
         $mform->addElement('text', 'config_support', 'Служба ТП');
-        $mform->setDefault('config_support', 'default value');
+        $mform->setDefault('config_support', '');
         $mform->setType('config_support', PARAM_RAW);
 
         $mform->addElement('text', 'config_paidprograms', 'Платные программы');
-        $mform->setDefault('config_paidprograms', 'default value');
+        $mform->setDefault('config_paidprograms', '');
         $mform->setType('config_paidprograms', PARAM_RAW);
 
     }

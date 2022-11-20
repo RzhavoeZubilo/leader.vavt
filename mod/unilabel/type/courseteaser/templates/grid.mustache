@@ -44,27 +44,63 @@
 }}
 
 {{#showintro}}
-    {{{intro}}}
+    <div class="titlemodulecourseteaser"><h5>{{{intro}}} ({{cntcourse}})</h5></div>
 {{/showintro}}
 {{#hasitems}}
-    <div class="row mx-0">
+    <div class="row mx-0 content-courseteaser text-center">
         {{#items}}
             <div class="text-center {{{colclasses}}}">
                 <!-- The overlay is used as button to show the modal dialog -->
-                <a href="{{{courseurl}}}">
-                    <div class="unilabel-overlay-effect bg-primary h-100 w-100"></div>
-                </a>
-                <h3>{{title}}</h3>
                 {{#imageurl}}
                     <div style="width:100%;">
                         <img class="img-fluid mh-100 mb-3" src="{{{imageurl}}}" style="object-fit:contain;"/>
                     </div>
                 {{/imageurl}}
+                <a href="{{{courseurl}}}">
+                    <div class="unilabel-overlay-effect bg-primary h-100 w-100"></div>
+                </a>
+                <h4>{{title}}</h4>
             </div>
         {{/items}}
+
+        <div class="showallcourse">
+            <a type="button" class="btn"
+               target="_blank" href="/course/index.php">
+                Показать все курсы
+            </a>
+        </div>
     </div>
 {{/hasitems}}
 
 {{^hasitems}}
-    <span>{{#str}} nocontent , unilabeltype_courseteaser {{/str}}</span>
+    <span>{{#str}} пока нет содержимого, надо добавить по кнопке "Редактировать содержимое" выше {{/str}}</span>
 {{/hasitems}}
+
+<style>
+    .titlemodulecourseteaser h5{
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    .content-courseteaser h4{
+        font-weight: bold;
+        text-align: left;
+    }
+    .showallcourse{
+        flex: 50%;
+    }
+    .showallcourse .btn{
+        background-image: linear-gradient(to right,#ffb02c 0%,#ffc15a 7%,#ffaa1b 56%);
+        margin-top: 50px;
+        padding: 10px 50px 10px 50px;
+        color: #fff;
+        font-weight: 600;
+
+        text-align: center;
+        transition: 0.5s;
+        background-size: 200% auto;
+    }
+    .showallcourse .btn:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #545869;
+    }
+</style>

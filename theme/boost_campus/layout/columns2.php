@@ -40,8 +40,9 @@ require_once($CFG->dirroot . '/theme/boost_campus/locallib.php');
 if (isloggedin()) {
     $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
 } else {
-    $navdraweropen = false;
+    $navdraweropen = TRUE;
 }
+
 $extraclasses = [];
 if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';

@@ -32,9 +32,9 @@ class block_vavt_contact extends block_base
         global $DB, $OUTPUT,$CFG, $USER;
 
         $this->content         =  new stdClass;
+print_object($this->config);
 
-
-        if( $community = explode(",",  $this->config->community)){
+        if( $community = explode(",",  $this->config->community)  && !empty($community)){
             $i = 0;
             $arrcommunity = array();
             foreach ($community as $key => $value){
@@ -45,13 +45,13 @@ class block_vavt_contact extends block_base
                 $info = profile_user_record($user->id);
 
                 $arrcommunity[$i]['userpicture'] = $userpicture;
-                $arrcommunity[$i]['username'] = trim($user->firstname).' '.trim($user->lastname);
-                $arrcommunity[$i]['userphone'] = $info->phone;
+                $arrcommunity[$i]['username'] = '<a target="_blank" href="https://community-lp.vavt.ru/message/index.php?id='.$user->id.'">'.trim($user->firstname).' '.trim($user->lastname).'</a>';
+                $arrcommunity[$i]['useremail'] = $user->email;
                 $i++;
             }
         }
 
-        if( $support = explode(",",  $this->config->support)){
+        if( $support = explode(",",  $this->config->support)  && !empty($support)){
             $i = 0;
 
             $arrsupport = array();
@@ -60,16 +60,15 @@ class block_vavt_contact extends block_base
                 $userpicture = $OUTPUT->user_picture($user, array('size'=>28));
                 $userurl = new moodle_url('/user/view.php', array('id' => $user->id));
                 $userlink = html_writer::link($userurl, $userpicture .' '. fullname($user));
-                $info = profile_user_record($user->id);
 
                 $arrsupport[$i]['userpicture'] = $userpicture;
-                $arrsupport[$i]['username'] =  trim($user->firstname).' '.trim($user->lastname);
-                $arrsupport[$i]['userphone'] = $info->phone;
+                $arrsupport[$i]['username'] =  '<a target="_blank" href="https://community-lp.vavt.ru/message/index.php?id='.$user->id.'">'.trim($user->firstname).' '.trim($user->lastname).'</a>';
+                $arrsupport[$i]['useremail'] = $user->email;
                 $i++;
             }
         }
 
-        if( $paidprograms = explode(",",  $this->config->paidprograms)){
+        if( $paidprograms = explode(",",  $this->config->paidprograms)  && !empty($paidprograms)){
             $i = 0;
             $arrpaidprograms = array();
             foreach ($paidprograms as $key => $value){
@@ -77,11 +76,10 @@ class block_vavt_contact extends block_base
                 $userpicture = $OUTPUT->user_picture($user, array('size'=>28));
                 $userurl = new moodle_url('/user/view.php', array('id' => $user->id));
                 $userlink = html_writer::link($userurl, $userpicture .' '. fullname($user));
-                $info = profile_user_record($user->id);
 
                 $arrpaidprograms[$i]['userpicture'] = $userpicture;
-                $arrpaidprograms[$i]['username'] =  trim($user->firstname).' '.trim($user->lastname);
-                $arrpaidprograms[$i]['userphone'] = $info->phone;
+                $arrpaidprograms[$i]['username'] =  '<a target="_blank" href="https://community-lp.vavt.ru/message/index.php?id='.$user->id.'">'.trim($user->firstname).' '.trim($user->lastname).'</a>';
+                $arrpaidprograms[$i]['useremail'] = $user->email;
                 $i++;
             }
         }

@@ -15,7 +15,12 @@ class TooManyRequests extends Exception
 class Dadata
 {
     private $clean_url = "https://cleaner.dadata.ru/api/v1/clean";
+//    private $suggest_url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs";
+//    private $suggest_url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+//    private $suggest_url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
+
     private $suggest_url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs";
+
     private $token;
     private $secret;
     private $handle;
@@ -166,6 +171,7 @@ $secret = "3d0d0761d9202d44566f42f9e28421263fa17347";
 //$token = '73a90bcdde33ae396c0dfd167d2e0788cba2ac68';
 //$secret = 'dd19188bfb2c4b017fb80d569dcb7a938d1d61a3';
 
+
 $dadata = new Dadata($token, $secret);
 $dadata->init();
 
@@ -183,7 +189,12 @@ $action = optional_param('action', 0, PARAM_TEXT);
 //$fields = array("query" => "3123035312", "count" => 5);
 $term = optional_param('term', 0, PARAM_TEXT);
 $fields = array("query" => $term, "count" => 5);
+
+
 $result = $dadata->suggest("party", $fields);
+//$result = $dadata->findById("address", $fields);
+//$result = $dadata->findById("party", $fields, 1);
+
 
 $myArray = array();
 foreach ($result['suggestions'] as $r) {

@@ -29,17 +29,16 @@ function getContentHTML($data, $typenews)
         $cntnews = $DB->count_records('block_vavt_news');
 
         $readlnk = \html_writer::link(new \moodle_url('/blocks/vavt_news/view.php', ['id' => $d->id]), 'ЧИТАТЬ НОВОСТЬ',
-            array('target' => '_blank', 'style' => 'font-weight: 800'));
+            array('style' => 'font-weight: 800'));
 
         if ($typenews == 'block') {
             $itemlnk = $d->name;
             $datenews = date('d.m.Y', $d->timemodified);
-            $username = $DB->get_field('user', 'concat(lastname, \' \', split_part(firstname, \' \', 1)) as nameuser', ['id' => $d->usermodified]);
+            $username = $DB->get_field('user', 'concat(split_part(firstname, \' \', 1), \' \', lastname) as nameuser', ['id' => $d->usermodified]);
         } else {
-            $itemlnk = \html_writer::link(new \moodle_url('/blocks/vavt_news/view.php', ['id' => $d->id]), $d->name,
-                array('target' => '_blank'));
+            $itemlnk = \html_writer::link(new \moodle_url('/blocks/vavt_news/view.php', ['id' => $d->id]), $d->name);
             $datenews = date('d.m.Y H:i:s', $d->timemodified);
-            $username = $DB->get_field('user', 'concat(lastname, \' \', firstname) as nameuser', ['id' => $d->usermodified]);
+            $username = $DB->get_field('user', 'concat(firstname, \' \', lastname) as nameuser', ['id' => $d->usermodified]);
         }
 
         $userlnk = \html_writer::link(new \moodle_url('/user/profile.php', ['id' => $d->usermodified]), $username,

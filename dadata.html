@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>    <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript">
+        $(function() {
+            $('#acInput').autocomplete({
+                source: 'dadata.php?action=inn',
+                // action: 'inn',
+                select: function( event, ui ) {
+                    $('#acInputName').val(ui.item.label);
+                    // console.log(ui.item.hid);
+                }
+            });
+            $('#acInputName').autocomplete({
+                source: 'dadata.php?action=nameorg',
+                select: function( event, ui ) {
+                    $('#acInput').val(ui.item.hid);
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<form>
+    <div class="ui-widget">
+        <label for="acInput">Введите ИНН: </label>
+        <input id="acInput"/>
+    </div>
+
+    <div class="ui-widget">
+        <label for="acInputName">Введите наименование организации: </label>
+        <input id="acInputName"/>
+    </div>
+</form>
+</body>
+</html>

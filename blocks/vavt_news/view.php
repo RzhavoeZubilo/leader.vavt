@@ -30,8 +30,10 @@ $context = context_block::instance($fromid);
 $params = (array)getParams($data->params);
 
 $params['content'] = html_entity_decode( $params['content'], null, 'UTF-8');
+$params['content'] = file_rewrite_pluginfile_urls($params['content'], 'pluginfile.php', $context->id, 'block_vavt_news', 'content', $id);
 
-$username = $DB->get_field('user', 'concat(lastname, \' \', firstname) as nameuser', ['id' => $data->usermodified]);
+
+$username = $DB->get_field('user', 'concat(firstname, \' \', lastname) as nameuser', ['id' => $data->usermodified]);
 $userlnk = \html_writer::link(new \moodle_url('/user/profile.php', ['id' => $data->usermodified]), $username,
     array('target' => '_blank'));
 

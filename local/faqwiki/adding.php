@@ -12,8 +12,8 @@ require_once($CFG->libdir . '/adminlib.php');
 
 $PAGE->set_url('/local/faqwiki/adding.php');
 
-$PAGE->set_title("База знаний");
-$PAGE->set_heading("База знаний сообщества");
+$PAGE->set_title("Лучшие практики");
+$PAGE->set_heading("Лучшие практики");
 
 echo $OUTPUT->header();
 

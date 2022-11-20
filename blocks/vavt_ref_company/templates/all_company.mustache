@@ -1,0 +1,54 @@
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-12" style="margin-bottom: 20px;">
+        {{{addbtn}}}
+    </div>
+    <hr>
+    <div class="col-md-12">
+        <div class="card-deck vavt-all-company">
+            {{#match}}
+                <div class="card">
+                    <img src="{{imgsrc}}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">{{{name}}}</h4>
+<!--                        <p class="card-text">{{{text}}}</p>-->
+                        <div class="card-text">
+                            <span>{{{tagregion}}}</span>
+                            <span>{{{tagindustry}}}</span>
+                            <span>{{{tagcategory}}}</span>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted bckgnone">
+                        {{{readlnk}}}
+<!--                        <p style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</p>-->
+                    </div>
+                </div>
+
+
+            {{/match}}
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .vavt-all-company .card-text span {
+        background: #940d6c;
+        color: #fff;
+        padding: 2px 8px;
+        margin-right: 5px;
+        display: inline-block;
+        margin-bottom: 3px;
+    }
+
+    .card-deck.vavt-all-company .card {
+        margin-bottom: 20px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+    .vavt-all-company .card-img-top
+    {
+        object-fit: cover;
+        max-height: 180px;
+    }
+</style>
+

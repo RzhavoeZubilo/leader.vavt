@@ -1,3 +1,3 @@
 <?php
 
-$string['pluginname'] = 'База знаний сообщества';
+$string['pluginname'] = 'Лучшие практики';

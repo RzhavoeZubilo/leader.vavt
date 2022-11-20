@@ -31,7 +31,7 @@ class news_item extends \moodleform
         $mform->addElement('hidden', 'itemid', 0);
         $mform->setType('itemid', PARAM_INT);
         $mform->addElement('hidden', 'action', 0);
-        $mform->setType('action', PARAM_INT);
+        $mform->setType('action', PARAM_TEXT);
         $mform->addElement('hidden', 'usermodified', $USER->id);
         $mform->setType('usermodified', PARAM_INT);
         $mform->addElement('hidden', 'timemodified', time());

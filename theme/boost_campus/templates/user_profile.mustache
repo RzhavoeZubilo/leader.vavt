@@ -1,0 +1,137 @@
+<!--<div class="row userprofile_data">-->
+<!--    <div class="col-md-12">-->
+<!--        <div class="userprofile_block">-->
+<!--            <div class="usr_fld">-->
+<!--                <span class="txt_usr_fld">{{userposition}}</span>-->
+<!--            </div>-->
+<!--            <div class="usr_fld">-->
+<!--                <span class="txt_usr_fld">{{orgname}}</span>-->
+<!--            </div>-->
+<!--            <div class="usr_fld">-->
+<!--                <span class="txt_usr_fld">{{region}}</span>-->
+<!--            </div>-->
+<!--            <div class="usr_fld">-->
+<!--                <span class="txt_usr_fld">{{potok}}</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="row userprofile_data">
+    <div class="col-md-6">
+        <div class="userprofile_block">
+            <div style="display: flex; justify-content: space-between">
+                <h3>ОБ УЧАСТНИКЕ</h3>
+                <span class="addfavoritevavt {{has_addfav}}" data-plugin="alumni" data-objid="{{userid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+            </div>
+            <div class="usr_fld">
+                <span class="txt_usr_fld">{{userposition}}</span>
+            </div>
+            <div class="usr_fld">
+                <span class="name_usr_fld">Предприятие</span>
+                <span class="txt_usr_fld">{{orgname}}</span>
+            </div>
+            <div class="usr_fld">
+                <span class="name_usr_fld">Регион</span>
+                <span class="txt_usr_fld">{{region}}</span>
+            </div>
+            <div class="usr_fld">
+                <span class="name_usr_fld">Отрасль</span>
+                <span class="txt_usr_fld">{{okved}}</span>
+            </div>
+            <div class="usr_fld">
+                <span class="name_usr_fld">Категория</span>
+                <span class="txt_usr_fld">{{category}}</span>
+            </div>
+            {{#activity}}
+            <div class="usr_fld">
+                <span class="name_usr_fld">Деятельность</span>
+                <span class="txt_usr_fld">{{activity}}</span>
+            </div>
+            {{/activity}}
+            {{#webpage}}
+            <div class="usr_fld">
+                <span class="name_usr_fld">Сайт предприятия</span>
+                <span class="txt_usr_fld">{{webpage}}</span>
+            </div>
+            {{/webpage}}
+        </div>
+
+    </div>
+    <div class="col-md-6 ">
+        <div class="userprofile_block">
+            <h3>ЭКСПЕРТИЗА</h3>
+            <div class="usr_fld">
+                <span class="name_usr_fld">Экспертиза</span>
+                <span class="txt_usr_fld">{{expertise}}</span>
+            </div>
+            <div class="usr_fld">
+                <span class="name_usr_fld">Могу быть полезен</span>
+                <span class="txt_usr_fld">{{polsa}}</span>
+            </div>
+            <div class="usr_fld">
+                <span class="name_usr_fld">Интересен опыт участников</span>
+                <span class="txt_usr_fld">{{experience}}</span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="userprofile_block">
+            <h3>КОНТАКТЫ</h3>
+            {{#contactfield}}
+                {{#contactfield.email}}
+                    <div class="usr_fld">
+                        <span class="name_usr_fld">Электронная почта</span>
+                        <span class="txt_usr_fld">{{contactfield.email}}</span>
+                    </div>
+                {{/contactfield.email}}
+                {{#contactfield.phone}}
+                    <div class="usr_fld">
+                        <span class="name_usr_fld">Мобильный телефон</span>
+                        <span class="txt_usr_fld">{{contactfield.phone}}</span>
+                    </div>
+                {{/contactfield.phone}}
+                {{#contactfield.other_contact}}
+                    <div class="usr_fld">
+                        <span class="name_usr_fld">Другой контакт</span>
+                        <span class="txt_usr_fld">{{contactfield.other_contact}}</span>
+                    </div>
+                {{/contactfield.other_contact}}
+            {{/contactfield}}
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <div class="userprofile_block">
+            <h3>СТАТУС</h3>
+            <div class="usr_fld">
+                <span class="txt_usr_fld">{{role_community}}</span>
+            </div>
+        </div>
+        Был на сайте {{lastaccess}}
+    </div>
+</div>
+
+<style>
+    .userprofile_data h3{
+        font-weight: 600;
+    }
+    .addfavoritevavt:before{
+        font-size: 1.6rem;
+    }
+    .userprofile_block{
+        border: solid 2px #edeef0;
+        padding: 15px 20px 20px 20px;
+        margin-bottom: 15px;
+    }
+    .usr_fld{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 15px;
+    }
+    .name_usr_fld {
+        font-weight: 600;
+    }
+</style>
