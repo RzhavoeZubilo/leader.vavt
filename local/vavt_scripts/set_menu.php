@@ -8,7 +8,7 @@
 /* Формат, принимаемый меню
  СООБЩЕСТВО|#||||||fa-group
 -Про сообщество|/blocks/vavt_contact/community.php||||||fa-group
--Новости|/blocks/vavt_news/||||||fa-newspaper-o
+-Новости|/blocks/vavt_event/||||||fa-newspaper-o
 -Выпускники|/local/alumni/||||||fa-sitemap
 -Эксперты|/local/tilda/index.php||||||fa-user
 ОБУЧЕНИЕ|#||||||fa-graduation-cap

@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <img src="{{picture_block_event}}">
+    </div>
+</div>
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-12" style="margin-bottom: 20px;">
+        {{{addbtn}}}
+    </div>
+    <hr>
+    <div class="col-md-12">
+
+        {{#match}}
+            {{#montblock}}
+                {{^firstblock}}</div>{{/firstblock}}
+                <h4>{{montblock}}</h4>
+                <div class="wrapper">
+            {{/montblock}}
+
+                <div class="item">
+                    <div class="body_item">
+                        <img src="{{imgsrc}}" class="imgforevent" alt="...">
+                        <div class="text_content">
+                            <div style="display: flex; justify-content: space-between;">
+                                <h4 class="card-title">{{{name}}}</h4>
+                                <span style="font-size: 1.4rem; padding-right: 15px" class="addfavoritevavt {{has_addfav}}" data-plugin="event" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                            </div>
+                            <p class="card-text">{{{text}}}</p>
+                            <p>{{{readlnk}}}</p>
+                            <span style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span>
+                        </div>
+                    </div>
+                    <div class="footer_item">
+                        <p class="card-text"><small class="text-muted">{{dateevent}}</small>
+                        </p>
+                    </div>
+                </div>
+
+        {{/match}}
+<!--        В старом стиле, надо занести в match если надо вернуть -->
+        <!--            <div class="card mb-3" style="max-width: 1100px;">-->
+        <!--                <div class="row no-gutters">-->
+        <!--                    <div class="col-md-4 imgforevent">-->
+        <!--                        <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">-->
+        <!--                    </div>-->
+        <!--                    <div class="col-md-8">-->
+        <!--                        <div class="card-body">-->
+        <!--                            <div style="display: flex; justify-content: space-between;">-->
+        <!--                                <h4 class="card-title">{{{name}}}</h4>-->
+        <!--                                <span class="addfavoritevavt {{has_addfav}}" data-plugin="event" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>-->
+        <!--                            </div>-->
+        <!--                            <p class="card-text">{{{text}}}</p>-->
+        <!--                            <p>{{{readlnk}}}</p>-->
+        <!--                            <p class="card-text"><small class="text-muted">{{dateevent}}</small>-->
+        <!--                                <span style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span>-->
+        <!--                            </p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+
+    </div>
+
+
+
+
+</div>
+
+
+<style>
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .item{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 22%;
+        margin: 15px 5px;
+        border: 2px solid #dbdbdb;
+        border-radius: 10px;
+    }
+    .body_item{
+        padding: 10px;
+    }
+    .imgforevent{
+        width: 100%;
+        align-items: center;
+        display: flex;
+        object-fit: cover;
+        height: 199px;
+        border-radius: 10px;
+    }
+    .footer_item{
+        padding: 0 10px 5px;
+    }
+</style>
