@@ -5,7 +5,7 @@
  * Time: 16:01
  */
 
-global $DB, $PAGE, $CFG, $OUTPUT;
+global $DB, $PAGE, $CFG, $USER, $OUTPUT;
 
 require_once('../../config.php');
 require_once($CFG->libdir . '/filelib.php');
@@ -83,12 +83,17 @@ if ( !empty($picture) )
 /////////////////////////
 ///
 $render = [
+    'eventid' => $id,
     'name' => $data->name,
     'text' => $params['content'],
     'user' => $userlnk,
     'timemodified' => date('d.m.Y', $data->timemodified),
     'imgsrc'=>$imgsrc
 ];
+
+if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'event', 'objid'=>$id])){
+    $render['has_addfav'] = 'addfav';
+}
 
 echo $OUTPUT->render_from_template("block_vavt_event/item", $render);
 
