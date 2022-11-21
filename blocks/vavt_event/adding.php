@@ -13,8 +13,8 @@ require_once($CFG->libdir.'/filelib.php');
 
 $PAGE->set_url('/blocks/vavt_event/adding.php');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_title("Новости");
-$PAGE->set_heading("Добавление новости");
+$PAGE->set_title("Мероприятия");
+$PAGE->set_heading("Добавление Мероприятия");
 
 echo $OUTPUT->header();
 

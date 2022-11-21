@@ -15,12 +15,12 @@ $id = optional_param('id', '0', PARAM_INT);
 
 $PAGE->set_context(context_system::instance());
 $PAGE->set_url('/blocks/vavt_event/view.php');
-$PAGE->set_title("Новости");
+$PAGE->set_title("Мероприятия");
 
 $data = $DB->get_record("block_vavt_event",  ['id' => $id]);
 
 $PAGE->set_heading($data->name);
-$PAGE->navbar->add('Новости', new \moodle_url('/blocks/vavt_event/index.php'));
+$PAGE->navbar->add('Мероприятия', new \moodle_url('/blocks/vavt_event/index.php'));
 
 echo $OUTPUT->header();
 

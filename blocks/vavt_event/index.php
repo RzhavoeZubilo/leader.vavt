@@ -12,8 +12,8 @@ require_once('lib_vavt_event.php');
 
 $PAGE->set_url('/blocks/vavt_event/index.php');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_title("Новости");
-$PAGE->set_heading("Новости");
+$PAGE->set_title("Мероприятия");
+$PAGE->set_heading("Мероприятия");
 
 echo $OUTPUT->header();
 
