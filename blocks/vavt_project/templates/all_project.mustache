@@ -1,0 +1,77 @@
+<div class="row">
+    {{#addbtn}}
+        <div class="col-md-12" style="margin-bottom: 20px;">
+            {{{addbtn}}}
+            <hr>
+        </div>
+    {{/addbtn}}
+
+    <div class="col-md-12 text-center">
+        <div style="display: flex; flex-direction: row; width: 100%; gap: 30px;">
+            <div style="display: flex; width: 50%; justify-content: flex-end;">
+                <button class="btn btn-outline-primary">Проекты Центра</button>
+            </div>
+            <div style="display: flex; width: 50%; justify-content: flex-start;">
+                <button class="btn btn-outline-primary">Инициативы выпускников</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 30px;">
+
+
+    <div class="col-md-12">
+        {{#match}}
+            <div class="card mb-3" style="max-width: 1100px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4 imgforevent">
+                        <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between;">
+                                <h4 class="card-title">{{{name}}}</h4>
+                                <span style="font-size: 1.6rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                            </div>
+                            <p class="card-text">{{{text}}}</p>
+                            <p>{{{readlnk}}}</p>
+                            <p class="card-text">
+                                <span style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/match}}
+    </div>
+
+
+
+
+</div>
+
+<div class="row text-center">
+    <div class="col-md-12">
+        <a class="sendmyproject" href="{{btnadd_link}}">
+            <img src="{{picture_btn_add}}">
+        </a>
+    </div>
+</div>
+
+
+<style>
+    .sendmyproject img:hover{
+        -webkit-box-shadow: 5px 5px 25px -5px rgba(34, 60, 80, 0.6);
+        -moz-box-shadow: 5px 5px 25px -5px rgba(34, 60, 80, 0.6);
+        box-shadow: 5px 5px 25px -5px rgba(34, 60, 80, 0.6);
+    }
+    .imgforevent{
+        width: 100%;
+        align-items: center;
+        display: flex;
+        object-fit: cover;
+        height: 199px;
+        border-radius: 10px;
+    }
+
+</style>

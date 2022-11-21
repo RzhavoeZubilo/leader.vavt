@@ -1,0 +1,47 @@
+
+    <div style="display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;">
+        <div>
+            <h5 style="font-weight: 700;">Проекты сообщества ({{cntevent}})</h5>
+        </div>
+        {{{btnallevent}}}
+    </div>
+
+
+<div class="row">
+    <div class="card-deck">
+        {{#match}}
+            <div class="card">
+                <img src="{{imgsrc}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">{{{name}}}</h4>
+                    <p class="card-text">{{{text}}}</p>
+                </div>
+                <div class="card-footer text-muted bckgnone">
+                    {{{readlnk}}}
+                    <p><span>{{{user}}}</span> {{timemodified}}</p>
+                </div>
+            </div>
+        {{/match}}
+    </div>
+</div>
+
+<style>
+    .block_vavt_project h5.card-title {
+        display: none !important;
+    }
+
+    .bckgnone {
+        background-color: rgba(0, 0, 0, .0);
+    }
+
+    .block_vavt_project .card-img-top {
+        object-fit: cover;
+        max-height: 180px;
+    }
+
+</style>
