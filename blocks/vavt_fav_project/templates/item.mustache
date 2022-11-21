@@ -1,0 +1,114 @@
+<div class="block_favorite_vavt" style="width: 100%;">
+    <div class="title_fvt">
+        <h5>ПРОЕКТЫ СООБЩЕСТВА</h5>
+        {{#hasdata}}
+            <div>
+                <span class="swiper-button-prev prjbtn"></span>
+                <span class="swiper-button-next prjbtn"></span>
+            </div>
+        {{/hasdata}}
+    </div>
+    {{#hasdata}}
+        <div class="swiper_vavt_fvt">
+            <div class="swiper projectSwiper">
+                <div class="swiper-wrapper">
+                    {{#arrevent}}
+                        {{#.}}
+                            <div class="swiper-slide slidesearch">
+                                <a href="{{lnkevt}}">
+                                    <div class="col_user">
+                                        <img style="height: 100px;" src="{{pic}}">
+                                        {{{name}}}
+                                    </div>
+                                </a>
+                            </div>
+                        {{/.}}
+                    {{/arrevent}}
+                </div>
+                <!--            <div class="swiper-pagination"></div>-->
+            </div>
+        </div>
+    {{/hasdata}}
+    {{^hasdata}}
+        <p>Здесь пока ничего нет. Добавьте материал в “Избранное” в соответствующем разделе портала.</p>
+    {{/hasdata}}
+</div>
+
+<script src="/theme/boost_campus/amd/src/swiper-bundle.js"></script>
+
+<script>
+    var swiper = new Swiper(".projectSwiper", {
+        navigation: {
+            nextEl: ".swiper-button-next.prjbtn",
+            prevEl: ".swiper-button-prev.prjbtn",
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 13
+            },
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 17
+            }
+        },
+    });
+</script>
+
+<!--<script src="/theme/boost_campus/amd/src/fvt_swiper.js"></script>-->
+
+        <!--{{#js}}-->
+<!--    require(['theme_boost_campus/fvt_swiper'], function(mod) {mod.initswiper();});-->
+        <!--{{/js}}-->
+
+<style>
+    .title_fvt{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .block_favorite_vavt  .swiper {
+        width: 100%;
+        /*height: 100%;*/
+        height: 130px;
+    }
+    .block_favorite_vavt  .swiper-wrapper{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .block_favorite_vavt  .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .block_favorite_vavt .col_user{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        align-items: center;
+
+        justify-content: space-between;
+        height: 100%;
+    }
+</style>
