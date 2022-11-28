@@ -54,6 +54,10 @@ class event_item extends \moodleform
 
         $mform->addElement('editor', 'paragraph', 'Описание', null, $editoroptions);
 
+        $mform->addElement('select', 'typeproject', 'Тип проекта',
+            [0=>'Проект сообщества', 1=>'Инициатива']
+        );
+
         $this->add_action_buttons();
     }
     function validation($data, $files)

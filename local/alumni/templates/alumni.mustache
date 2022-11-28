@@ -7,7 +7,10 @@
 
 <div class="row">
     <div class="col-md-12">
-
+        <div style="max-width: 400px;display: flex; align-items: baseline">
+            <p style="margin-right: 10px">Поиск:</p>
+            <input class="search form-control" type="search" data-column="all">
+        </div>
         <!-- pager -->
         <div class="pager">
             <img src="https://mottie.github.io/tablesorter/addons/pager/icons/first.png" class="first"/>
@@ -123,62 +126,42 @@
 
 <script>
     $('table').tablesorter({
-
-        // *** APPEARANCE ***
-        // Add a theme - try 'blackice', 'blue', 'dark', 'default'
-        //  'dropbox', 'green', 'grey' or 'ice'
-        // to use 'bootstrap' or 'jui', you'll need to add the "uitheme"
-        // widget and also set it to the same name
-        // this option only adds a table class name "tablesorter-{theme}"
         theme : 'bootstrap',
-
         // fix the column widths
         widthFixed: false,
-
         // Show an indeterminate timer icon in the header when the table
         // is sorted or filtered
         showProcessing: false,
-
         // header layout template (HTML ok); {content} = innerHTML,
         // {icon} = <i/> (class from cssIcon)
         headerTemplate: '{content}',
-
         // return the modified template string
         onRenderTemplate: null, // function(index, template){ return template; },
-
         // called after each header cell is rendered, use index to target the column
         // customize header HTML
         onRenderHeader: function(index) {
             // the span wrapper is added by default
             $(this).find('div.tablesorter-header-inner').addClass('roundedCorners');
         },
-
         // *** FUNCTIONALITY ***
         // prevent text selection in header
         cancelSelection: true,
-
         // other options: "ddmmyyyy" & "yyyymmdd"
         dateFormat: "mmddyyyy",
-
         // The key used to select more than one column for multi-column
         // sorting.
         sortMultiSortKey: "shiftKey",
-
         // key used to remove sorting on a column
         sortResetKey: 'ctrlKey',
-
         // false for German "1.234.567,89" or French "1 234 567,89"
         usNumberFormat: true,
-
         // If true, parsing of all table cell data will be delayed
         // until the user initializes a sort
         delayInit: false,
-
         // if true, server-side sorting should be performed because
         // client-side sorting will be disabled, but the ui and events
         // will still be used.
         serverSideSorting: false,
-
         // *** SORT OPTIONS ***
         // These are detected by default,
         // but you can change or disable them
@@ -299,6 +282,11 @@
             // and a match is found anywhere in the child row, then it will make
             // that row visible; default is false
             filter_childRows: false,
+
+
+            filter_external : '.search',
+            // add a default type search to the first name column
+            filter_defaultFilter: { 1 : '~{query}' },
 
             // filter widget: If true, a filter will be added to the top of
             // each table column.

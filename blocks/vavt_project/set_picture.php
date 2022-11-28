@@ -11,11 +11,11 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_title("Настройка картинки");
 $PAGE->set_heading("Настройка картинки");
 
+require_login();
+
 echo $OUTPUT->header();
 
-
 require_once('form/set_picture.php');
-
 
 $mform = new set_picture();
 

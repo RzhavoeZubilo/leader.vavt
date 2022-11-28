@@ -114,6 +114,7 @@ function create($data, $context)
 
     $ob = (object)[
         'name' => $data->name,
+        'typeproject' => $data->typeproject,
         'params' => serialize($data),
         'sortorder' => 0,
         'usermodified' => $data->usermodified,
@@ -153,6 +154,7 @@ function save($data, $context)
 
     $ob = (object)[
         'name' => $data->name,
+        'typeproject' => $data->typeproject,
         'params' => serialize($data),
         'sortorder' => 0,
         'usermodified' => $data->usermodified,

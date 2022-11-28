@@ -6,6 +6,8 @@ require_once('../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 require_once($CFG->libdir.'/filelib.php');
 
+require_login();
+
 $PAGE->set_url('/blocks/vavt_fav_alumni/set_field_view.php');
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title("Настройка меню");

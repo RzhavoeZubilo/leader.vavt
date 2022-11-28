@@ -16,3 +16,4 @@ defined('MOODLE_INTERNAL') || die;
 $ADMIN->add('vavtsettings', new admin_externalpage('setalumnifield', 'Поля выпускников', $CFG->wwwroot . '/blocks/vavt_fav_alumni/set_field_view.php'));
 
 $ADMIN->add('vavtsettings', new admin_externalpage('setpictureevent', 'Изображение на странице мероприятий', $CFG->wwwroot . '/blocks/vavt_event/set_picture.php'));
+$ADMIN->add('vavtsettings', new admin_externalpage('setbtnaddproject', 'Кнопка Предложить проект', $CFG->wwwroot . '/blocks/vavt_project/set_picture.php'));

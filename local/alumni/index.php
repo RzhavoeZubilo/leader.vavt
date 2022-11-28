@@ -6,6 +6,8 @@ require_once($CFG->dirroot.'/user/profile/lib.php');
 
 global $PAGE, $DB, $OUTPUT, $USER;
 
+require_login();
+
 //$PAGE->set_url('/local/alumni/index.php', array('id' => $course->id));
 $PAGE->set_url('/local/alumni/index.php');
 

@@ -9,6 +9,7 @@ require_once('../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 require_once('lib_vavt_ref_company.php');
 
+require_login();
 
 $PAGE->set_url('/blocks/vavt_ref_company/index.php');
 $PAGE->set_context(context_system::instance());

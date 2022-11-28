@@ -9,10 +9,10 @@
     <div class="col-md-12 text-center">
         <div style="display: flex; flex-direction: row; width: 100%; gap: 30px;">
             <div style="display: flex; width: 50%; justify-content: flex-end;">
-                <button class="btn btn-outline-primary">Проекты Центра</button>
+                <a href="#part1" class="btn btn-outline-primary">Проекты Центра</a>
             </div>
             <div style="display: flex; width: 50%; justify-content: flex-start;">
-                <button class="btn btn-outline-primary">Инициативы выпускников</button>
+                <a href="#part2" class="btn btn-outline-primary">Инициативы выпускников</a>
             </div>
         </div>
     </div>
@@ -21,8 +21,9 @@
 
 
     <div class="col-md-12">
+        <h3 id="part1">Проекты Центра</h3>
         {{#match}}
-            <div class="card mb-3" style="max-width: 1100px;">
+            <div class="card cardprojectblock mb-3" style="max-width: 1100px;">
                 <div class="row no-gutters">
                     <div class="col-md-4 imgforevent">
                         <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
@@ -30,19 +31,43 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <div style="display: flex; justify-content: space-between;">
-                                <h4 class="card-title">{{{name}}}</h4>
-                                <span style="font-size: 1.6rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                                <h4 class="card-title">
+                                    <span style="font-size: 1.6rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                                    {{{name}}}
+                                </h4>
                             </div>
                             <p class="card-text">{{{text}}}</p>
-                            <p>{{{readlnk}}}</p>
-                            <p class="card-text">
-                                <span style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span>
-                            </p>
+                            <p>{{{readlnk}}} <span style="text-align: right">        {{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span></p>
                         </div>
                     </div>
                 </div>
             </div>
         {{/match}}
+
+
+            <hr class="yellowhr">
+            <h3 id="part2">Инициативы выпускников</h3>
+        {{#iniciativa}}
+            <div class="card cardprojectblock mb-3" style="max-width: 1100px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4 imgforevent">
+                        <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between;">
+                                <h4 class="card-title">
+                                    <span style="font-size: 1.6rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                                    {{{name}}}
+                                </h4>
+                            </div>
+                            <p class="card-text">{{{text}}}</p>
+                            <p>{{{readlnk}}} <span style="text-align: right">        {{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/iniciativa}}
     </div>
 
 
@@ -60,6 +85,17 @@
 
 
 <style>
+    .cardprojectblock{
+        border: none;
+    }
+    .cardprojectblock .imgforevent img{
+        border-radius: 15px;
+    }
+    .yellowhr{
+        border: 1px solid #ffaa1b;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
     .sendmyproject img:hover{
         -webkit-box-shadow: 5px 5px 25px -5px rgba(34, 60, 80, 0.6);
         -moz-box-shadow: 5px 5px 25px -5px rgba(34, 60, 80, 0.6);

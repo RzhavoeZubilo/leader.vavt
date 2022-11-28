@@ -11,6 +11,8 @@ require_once('lib_vavt_project.php');
 
 global $PAGE, $DB, $OUTPUT;
 
+require_login();
+
 $PAGE->set_url('/blocks/vavt_project/index.php');
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title("Проекты сообщества");
@@ -18,7 +20,7 @@ $PAGE->set_heading("Проекты сообщества");
 
 echo $OUTPUT->header();
 
-$data = $DB->get_records_sql("SELECT * FROM mdl_block_vavt_project ORDER BY timemodified DESC");
+$data = $DB->get_records_sql("SELECT * FROM mdl_block_vavt_project ORDER BY id DESC");
 
 $render = getContentHTML($data, $typeevent='all');
 $context = context_system::instance();

@@ -1,33 +1,37 @@
+
 <div class="block_favorite_vavt" style="width: 100%;">
     <div class="title_fvt">
-        <h5 class="card-title">ПРОЕКТЫ СООБЩЕСТВА</h5>
+        <h5 class="card-title">БАЗА ЗНАНИЙ</h5>
         {{#hasdata}}
             <div>
-                <span class="swiper-button-prev prjbtn"></span>
-                <span class="swiper-button-next prjbtn"></span>
+                <span class="swiper-button-prev"></span>
+                <span class="swiper-button-next"></span>
             </div>
         {{/hasdata}}
     </div>
     {{#hasdata}}
-        <div class="swiper_vavt_fvt">
-            <div class="swiper projectSwiper">
-                <div class="swiper-wrapper">
-                    {{#arrevent}}
-                        {{#.}}
-                            <div class="swiper-slide slidesearch">
-                                <a href="{{lnkevt}}">
-                                    <div class="col_user">
-                                        <img style="height: 100px;" src="{{pic}}">
-                                        {{{name}}}
-                                    </div>
-                                </a>
-                            </div>
-                        {{/.}}
-                    {{/arrevent}}
-                </div>
-                <!--            <div class="swiper-pagination"></div>-->
+    <div class="swiper_vavt_fvt">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                {{#arrcommunity}}
+                    {{#.}}
+                        <div class="swiper-slide slidesearch">
+
+                                <div class="col_user">
+                                    <img style="height: 100px;" src="{{pic}}">
+                                    <a href="{{lnkevt}}">
+                                    {{{name}}}
+                                    </a>
+                                </div>
+
+
+                        </div>
+                    {{/.}}
+                {{/arrcommunity}}
             </div>
+            <div class="swiper-pagination"></div>
         </div>
+    </div>
     {{/hasdata}}
     {{^hasdata}}
         <p>Здесь пока ничего нет. Добавьте материал в “Избранное” в соответствующем разделе портала.</p>
@@ -37,33 +41,21 @@
 <script src="/theme/boost_campus/amd/src/swiper-bundle.js"></script>
 
 <script>
-    var swiper = new Swiper(".projectSwiper", {
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
         navigation: {
-            nextEl: ".swiper-button-next.prjbtn",
-            prevEl: ".swiper-button-prev.prjbtn",
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 13
-            },
-            992: {
-                slidesPerView: 4,
-                spaceBetween: 17
-            }
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
         },
     });
 </script>
 
 <!--<script src="/theme/boost_campus/amd/src/fvt_swiper.js"></script>-->
 
-        <!--{{#js}}-->
+<!--{{#js}}-->
 <!--    require(['theme_boost_campus/fvt_swiper'], function(mod) {mod.initswiper();});-->
-        <!--{{/js}}-->
+<!--{{/js}}-->
 
 <style>
     .title_fvt{

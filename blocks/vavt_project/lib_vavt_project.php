@@ -19,7 +19,8 @@ function getContentHTML($data, $typeevent)
     }
 
     $render = array();
-    $i = $monthevent = 0;
+    $i = 0;
+    $j = 0;
 
     foreach ($data as $d) {
 
@@ -34,10 +35,8 @@ function getContentHTML($data, $typeevent)
 
         if ($typeevent == 'block') {
             $itemlnk = $d->name;
-            $dateevent = $month.'‘'.date('Y',$d->dateevent);
         } else {
             $itemlnk = \html_writer::link(new \moodle_url('/blocks/vavt_project/view.php', ['id' => $d->id]), $d->name);
-            $dateevent = $month.'‘'.date('Y',$d->dateevent);
         }
 
         $context = context_system::instance();
@@ -73,14 +72,24 @@ function getContentHTML($data, $typeevent)
             $params['picture'] = true;
         } else $imgsrc = $CFG->wwwroot.'/blocks/vavt_project/templates/itemimg.png';
 
-        $match[$i] = [
-            'eventid' => $d->id,
-            'name' => $itemlnk,
-            'text' => trimString($params['content']),
-            'dateevent' => $dateevent,
-            'readlnk' => $readlnk,
-            'imgsrc' => $imgsrc
-        ];
+        if($d->typeproject == 0){
+            $match[$i] = [
+                'eventid' => $d->id,
+                'name' => $itemlnk,
+                'text' => trimString($params['content']),
+                'readlnk' => $readlnk,
+                'imgsrc' => $imgsrc
+            ];
+        }else{
+            $iniciativa[$j] = [
+                'eventid' => $d->id,
+                'name' => $itemlnk,
+                'text' => trimString($params['content']),
+                'readlnk' => $readlnk,
+                'imgsrc' => $imgsrc
+            ];
+        }
+
 
         if (is_siteadmin()) {
             $editlnk = \html_writer::link(new \moodle_url('/blocks/vavt_project/adding.php', ['action' => 'edit', 'id' => $d->id]), '<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-family: FontAwesome; margin-left: 15px;"></i>');
@@ -92,20 +101,29 @@ function getContentHTML($data, $typeevent)
                     'onclick' => 'return confirm("Действительно удалить?");'
                 ]
             );
-            if($i == 0){
-                $match[$i]['firstblock'] = true;
+            if($d->typeproject == 0) {
+                $match[$i]['editlnk'] = $editlnk;
+                $match[$i]['dellnk'] = $dellnk;
+                if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'project', 'objid'=>$d->id])){
+                    $match[$i]['has_addfav'] = 'addfav';
+                }
+            }else{
+                $iniciativa[$j]['editlnk'] = $editlnk;
+                $iniciativa[$j]['dellnk'] = $dellnk;
+                if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'project', 'objid'=>$d->id])){
+                    $iniciativa[$j]['has_addfav'] = 'addfav';
+                }
             }
-            $match[$i]['editlnk'] = $editlnk;
-            $match[$i]['dellnk'] = $dellnk;
 
-            if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'project', 'objid'=>$d->id])){
-                $match[$i]['has_addfav'] = 'addfav';
-            }
         }
-
-        $i++;
+        if($d->typeproject == 0) {
+            $i++;
+        }else{
+           $j++;
+        }
     }
-    $render = ['match' => $match, 'cntevent' => $cntevent];
+    $render = ['match' => $match, 'iniciativa'=>$iniciativa, 'cntevent' => $cntevent];
+
     if(isset($addbtn) && !empty($addbtn)) $render['addbtn'] = $addbtn;
 
     return $render;
@@ -132,9 +150,9 @@ function trimString($string)
 {
     $defstr = $string;
     $string = strip_tags($string);
-    $string = substr($string, 0, 250);
+    $string = substr($string, 0, 550);
     $string = rtrim($string, "!,.-");
-    if(strlen($string) >= 250){
+    if(strlen($string) >= 550){
         $string = substr($string, 0, strrpos($string, ' '));
         return $string . "...";
     }else{
