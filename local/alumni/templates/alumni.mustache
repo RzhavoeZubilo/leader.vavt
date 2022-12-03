@@ -12,19 +12,28 @@
             <input class="search form-control" type="search" data-column="all">
         </div>
         <!-- pager -->
-        <div class="pager">
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/first.png" class="first"/>
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/prev.png" class="prev"/>
-            <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/next.png" class="next"/>
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/last.png" class="last"/>
-            <select class="pagesize" title="Показывать по">
-                <option selected="selected" value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="all">Все</option>
-            </select>
-            <select class="gotoPage" title="Выбрать страницу"></select>
+        <div class="pager" style="display: flex; justify-content: space-between;">
+            <div>
+                <button class="first"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> </button>
+                <button class="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button>
+                <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+                <button class="next"> <i class="fa fa-angle-right" aria-hidden="true"></i> </button>
+                <button class="last"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+            </div>
+
+            <div>
+                Записей:
+                <select class="pagesize" title="Показывать по">
+                    <option selected="selected" value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="all">Все</option>
+                </select>
+                Страница:
+                <select class="gotoPage" title="Выбрать страницу"></select>
+            </div>
+
         </div>
 
         <table class="generaltable  tablesorter" id="tablealumni">
@@ -66,21 +75,7 @@
             </tbody>
         </table>
 
-        <!-- pager -->
-        <div class="pager">
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/first.png" class="first"/>
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/prev.png" class="prev"/>
-            <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/next.png" class="next"/>
-            <img src="https://mottie.github.io/tablesorter/addons/pager/icons/last.png" class="last"/>
-            <select class="pagesize" title="Показывать по">
-                <option selected="selected" value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="all">Все</option>
-            </select>
-            <select class="gotoPage" title="Выбрать страницу"></select>
-        </div>
+
 
     </div>
 </div>
@@ -171,12 +166,6 @@
             0: {
                 sorter: "text"
             },
-            1: {
-                sorter: "text"
-            },
-            3: {
-                sorter: "digit"
-            }
         },
 
         // ignore case while sorting
@@ -188,8 +177,6 @@
         // [[columnIndex, sortDirection], ... ]
         sortList: [
             [0, 0],
-            [1, 0],
-            [2, 0]
         ],
         // default sort that is added to the end of the users sort
         // selection.
@@ -419,7 +406,7 @@
         // output string - default is '{page}/{totalPages}';
         // possible variables:
         // {page}, {totalPages}, {startRow}, {endRow} and {totalRows}
-        output: 'от {startRow} до {endRow}.  (Всего {totalRows})',
+        output: 'Записи {startRow}-{endRow} из {totalRows}',
 
         // apply disabled classname to the pager arrows when the rows at
         // either extreme is visible - default is true
@@ -434,7 +421,7 @@
         // if true, the table will remain the same height no matter how many
         // records are displayed. The space is made up by an empty
         // table row set to a height to compensate; default is false
-        fixedHeight: true,
+        fixedHeight: false,
 
         // remove rows from the table to speed up the sort of large tables.
         // setting this to false, only hides the non-visible rows; needed
