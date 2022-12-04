@@ -52,6 +52,8 @@ function getContentHTML($data, $typeevent)
             $dateevent = $month.'‘'.date('Y',$d->dateevent);
         }
 
+        $dateevent = date('d.m.y H:i',$d->dateevent);
+
         // picture
         // $fromid = $DB->get_field('block', 'id', ['name'=>'vavt_event']);
         //$fromid = $DB->get_field('block_instances', 'id', ['blockname'=>'vavt_event'], 1);
@@ -104,6 +106,10 @@ function getContentHTML($data, $typeevent)
             'montblock' => $montblock
         ];
 
+        if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'event', 'objid'=>$d->id])){
+            $match[$i]['has_addfav'] = 'addfav';
+        }
+
         if (is_siteadmin()) {
             $editlnk = \html_writer::link(new \moodle_url('/blocks/vavt_event/adding.php', ['action' => 'edit', 'id' => $d->id]), '<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-family: FontAwesome; margin-left: 15px;"></i>');
             //        $dellnk = \html_writer::link(new \moodle_url('/local/faqwiki/adding.php', ['action' => 'del']), '<i class="fa fa-trash-o" aria-hidden="true" style="font-family: FontAwesome; margin-left: 15px;"></i>');
@@ -122,9 +128,6 @@ function getContentHTML($data, $typeevent)
             $match[$i]['editlnk'] = $editlnk;
             $match[$i]['dellnk'] = $dellnk;
 
-            if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'event', 'objid'=>$d->id])){
-                $match[$i]['has_addfav'] = 'addfav';
-            }
         }
 
         $i++;

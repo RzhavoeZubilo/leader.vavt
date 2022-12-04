@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12 text-center">
-        <img src="{{picture_block_event}}">
+        <img class="head_img_evt" src="{{picture_block_event}}">
     </div>
 </div>
 <div class="row" style="margin-top: 30px;">
@@ -19,11 +19,22 @@
 
                 <div class="item">
                     <div class="body_item">
-                        <img src="{{imgsrc}}" class="imgforevent" alt="...">
+                        <div style="position: relative;">
+                            <span class='fa-stack fa-lg crklfvt'>
+                                <span style="font-size: 1.4rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="event" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                            </span>
+                                <span class="date_evsp">
+                                <small>{{dateevent}}</small>
+                            </span>
+                            <img src="{{imgsrc}}" class="imgforevent" alt="...">
+                        </div>
+
+
+
                         <div class="text_content">
                             <div style="display: flex; justify-content: space-between;">
                                 <h4 class="card-title">{{{name}}}</h4>
-                                <span style="font-size: 1.4rem; padding-right: 15px" class="addfavoritevavt {{has_addfav}}" data-plugin="event" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+
                             </div>
                             <p class="card-text">{{{text}}}</p>
                             <p>{{{readlnk}}}</p>
@@ -31,44 +42,19 @@
                         </div>
                     </div>
                     <div class="footer_item">
-                        <p class="card-text"><small class="text-muted">{{dateevent}}</small>
-                        </p>
+<!--                        <p class="card-text"><small class="text-muted">{{dateevent}}</small></p>-->
                     </div>
                 </div>
 
         {{/match}}
-<!--        В старом стиле, надо занести в match если надо вернуть -->
-        <!--            <div class="card mb-3" style="max-width: 1100px;">-->
-        <!--                <div class="row no-gutters">-->
-        <!--                    <div class="col-md-4 imgforevent">-->
-        <!--                        <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">-->
-        <!--                    </div>-->
-        <!--                    <div class="col-md-8">-->
-        <!--                        <div class="card-body">-->
-        <!--                            <div style="display: flex; justify-content: space-between;">-->
-        <!--                                <h4 class="card-title">{{{name}}}</h4>-->
-        <!--                                <span class="addfavoritevavt {{has_addfav}}" data-plugin="event" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>-->
-        <!--                            </div>-->
-        <!--                            <p class="card-text">{{{text}}}</p>-->
-        <!--                            <p>{{{readlnk}}}</p>-->
-        <!--                            <p class="card-text"><small class="text-muted">{{dateevent}}</small>-->
-        <!--                                <span style="text-align: right">{{#editlnk}}{{{editlnk}}}{{/editlnk}} {{#dellnk}}{{{dellnk}}}{{/dellnk}}</span>-->
-        <!--                            </p>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-
-
     </div>
-
-
-
-
 </div>
 
 
 <style>
+    .head_img_evt{
+        max-width: 100%;
+    }
     .wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -77,13 +63,60 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 22%;
+        width: 31%;
+        /*min-width: 31%;*/
         margin: 15px 5px;
         border: 2px solid #dbdbdb;
         border-radius: 10px;
+        position: relative;
+    }
+    @media screen and (max-width: 998px) {
+        .item{
+            width: 48%;
+        }
+    }
+    @media screen and (max-width: 576px) {
+        .item{
+            width: 100%;
+        }
     }
     .body_item{
         padding: 10px;
+    }
+    .crklfvt{
+        font-size: 1.6rem;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        border-radius: 50%;
+        background: #4e4e4e;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+
+    .date_evsp{
+        position: absolute;
+        left: 15px;
+        bottom: 5px;
+        background: #4e4e4e;
+        /*width: 40px;*/
+        /*height: 40px;*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px 8px;
+        color: #fff;
+        border-radius: 5px;
+    }
+    .crklfvt .addfavoritevavt{
+        color: #fff;
+    }
+    .crklfvt .addfavoritevavt.addfav:before{
+        color: #fff;
     }
     .imgforevent{
         width: 100%;

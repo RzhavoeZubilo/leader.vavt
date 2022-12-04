@@ -1,8 +1,8 @@
-
-<link rel="stylesheet" href="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.css">
-<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.js"></script>
-<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
-<script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<link rel="stylesheet" href="tablesorter/addons/pager/jquery.tablesorter.pager.css">
+<script src="tablesorter/js/jquery.tablesorter.js"></script>
+<script src="tablesorter/js/jquery.tablesorter.widgets.js"></script>
+<script src="tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<script src="tablesorter/beta-testing/pager-custom-controls.js"></script>
 
 
 <div class="row">
@@ -11,29 +11,32 @@
             <p style="margin-right: 10px">Поиск:</p>
             <input class="search form-control" type="search" data-column="all">
         </div>
-        <!-- pager -->
-        <div class="pager" style="display: flex; justify-content: space-between;">
-            <div>
-                <button class="first"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> </button>
-                <button class="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button>
-                <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
-                <button class="next"> <i class="fa fa-angle-right" aria-hidden="true"></i> </button>
-                <button class="last"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+        <div class="pager">
+            <div style="display: flex; align-items: baseline;">
+                <nav class="right">
+                    <ul class="pagination">
+                        <li class="page-item"><button class="first page-link"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button></li>
+                        <li class="page-item"><button class="prev page-link"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button></li>
+                        <li class="page-item">
+                            <span class="pagecount page-link"></span>
+                            &nbsp;
+                        </li>
+                        <li class="page-item"><button class="next page-link"> <i class="fa fa-angle-right" aria-hidden="true"></i> </button></li>
+                        <li class="page-item"><button class="last page-link"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button></li>
+                    </ul>
+                </nav>
+                <span class="pagedisplay"></span>
             </div>
-
             <div>
-                Записей:
-                <select class="pagesize" title="Показывать по">
-                    <option selected="selected" value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="all">Все</option>
-                </select>
-                Страница:
-                <select class="gotoPage" title="Выбрать страницу"></select>
-            </div>
+                <nav class="left">
+                    <span style="color: #ffaa1b">Записей: </span>
+                    <a href="#" class="current">10</a> |
+                    <a href="#">25</a> |
+                    <a href="#">50</a> |
+                    <a href="#">100</a>
 
+                </nav>
+            </div>
         </div>
 
         <table class="generaltable  tablesorter" id="tablealumni">
@@ -43,20 +46,12 @@
                 {{#head}}
                     <th>{{.}}</th>
                 {{/head}}
-
-<!--                <th data-sorter="false">Должность</th>-->
-<!--                <th>Предприятие</th>-->
-<!--                <th class="filter-select filter-exact" data-placeholder="Все">Регион</th>-->
-<!--                <th class="filter-select filter-exact" data-placeholder="Все">Отрасль предприятия</th>-->
-
-<!--                <th data-sorter="false">Сайт предприятия</th>-->
-<!--                <th data-sorter="false">Польза</th>-->
                 <th class="sorter-false filter-false" data-sorter="false" data-filter="false"></th>
             </tr>
             </thead>
+
             <tbody>
             {{#array}}
-<!--                {{#.}}-->
                 <tr>
                     <td class="fullname">{{{name}}}</td>
                     {{{custom_field}}}
@@ -64,64 +59,102 @@
                     <td style="text-align: right;">
                         <div style="white-space: nowrap;">
                             {{{msg}}}
-                            <span class="addfavoritevavt {{has_addfav}}" data-plugin="alumni" data-objid="{{userid}}" aria-label="Добавить в избранное" title="Добавить в избранное">
-<!--                                <i class="fa fa-bookmark-o" aria-label="Добавить в избранное" title="Добавить в избранное"></i>-->
+                            <span class="addfavoritevavt {{has_addfav}}" data-plugin="alumni" data-objid="{{userid}}"
+                                  aria-label="Добавить в избранное" title="Добавить в избранное">
                             </span>
                         </div>
                     </td>
                 </tr>
-<!--                {{/.}}-->
             {{/array}}
             </tbody>
         </table>
-
 
 
     </div>
 </div>
 
 <style>
-    .addfavoritevavt:hover{
+    a.current{
+        font-weight: 600;
+        color: #ffaa1b;
+    }
+    .pager{
+        display: flex;
+        justify-content: space-between;
+    }
+    .pagination{
+        margin-bottom: unset;
+    }
+    .addfavoritevavt:hover {
         /*box-shadow: 0 1px 2px rgba(0,0,0,0.15);*/
     }
 
     .tablesorter-bootstrap thead th {
         font: 400 16px/20px Arial, Sans-serif;
     }
-    .fullname a{
+
+    .fullname a {
         /*font: 700 16px/20px Arial, Sans-serif;*/
         font-weight: 700;
         color: #000000 !important;
     }
-    .tablesorter-bootstrap:not(.table-dark) thead:not(.thead-dark) .tablesorter-header{
+
+    .tablesorter-bootstrap:not(.table-dark) thead:not(.thead-dark) .tablesorter-header {
         background-color: #4e4e4e;
         color: #fff;
         padding-bottom: 15px;
         padding-top: 15px;
     }
-    input.tablesorter-filter.form-control.disabled  { display: none; }
 
-    .tablesorter-bootstrap:not(.table-dark)>tbody>tr.odd td.primary {
+    input.tablesorter-filter.form-control.disabled {
+        display: none;
+    }
+
+    .tablesorter-bootstrap:not(.table-dark) > tbody > tr.odd td.primary {
         background-color: #dddddd;
     }
-    .tablesorter-bootstrap:not(.table-dark)>tbody>tr td.primary, .tablesorter-bootstrap:not(.table-dark)>tbody>tr.even td.primary {
+
+    .tablesorter-bootstrap:not(.table-dark) > tbody > tr td.primary, .tablesorter-bootstrap:not(.table-dark) > tbody > tr.even td.primary {
         background-color: #eaeaea;
     }
 
-    .tablesorter-bootstrap thead .tablesorter-headerUnSorted:not(.sorter-false){
+    .tablesorter-bootstrap thead .tablesorter-headerUnSorted:not(.sorter-false) {
         background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAAP///////yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
     }
 
     .tablesorter-bootstrap thead .tablesorter-headerAsc {
-        background-image: url(data:image/gif;base64,R0lGODlhBwAEAJEAAAAAAP////+7AP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAADACwAAAAABwAEAAACB5xlKavLDgsAOw==)    }
+        background-image: url(data:image/gif;base64,R0lGODlhBwAEAJEAAAAAAP////+7AP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAADACwAAAAABwAEAAACB5xlKavLDgsAOw==)
+    }
 
     .tablesorter-bootstrap thead .tablesorter-headerDesc {
-        background-image: url(data:image/gif;base64,R0lGODlhBwAEAJEAAAAAAP////+7AP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAADACwAAAAABwAEAAACCJQvgzlqDdkoADs=)    }
+        background-image: url(data:image/gif;base64,R0lGODlhBwAEAJEAAAAAAP////+7AP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAADACwAAAAABwAEAAACCJQvgzlqDdkoADs=)
+    }
 </style>
 
 <script>
-    $('table').tablesorter({
-        theme : 'bootstrap',
+
+    var $table = $('table'),
+            $pager = $('.pager');
+
+    $.tablesorter.customPagerControls({
+        table: $table,                   // point at correct table (string or jQuery object)
+        pager: $pager,                   // pager wrapper (string or jQuery object)
+        pageSize: '.left a',                // container for page sizes
+        currentPage: '.right a',               // container for page selectors
+        ends: 2,                        // number of pages to show of either end
+        aroundCurrent: 1,                        // number of pages surrounding the current page
+        // link: '<li class="page-item"> <a class="page-link" href="#">{page}</a></li>', // page element; use {page} to include the page number
+        link: '<a href="#">{page}</a>', // page element; use {page} to include the page number
+        currentClass: 'current',                // current page class name
+        adjacentSpacer: '<span> | </span>',       // spacer for page numbers next to each other
+        distanceSpacer: '<span> &#133; <span>',   // spacer for page numbers away from each other (ellipsis = &#133;)
+        addKeyboard: true,                     // use left,right,up,down,pageUp,pageDown,home, or end to change current page
+        pageKeyStep: 10                        // page step to use for pageUp and pageDown
+    });
+
+
+    $table.tablesorter({
+        theme: 'bootstrap',
         // fix the column widths
         widthFixed: false,
         // Show an indeterminate timer icon in the header when the table
@@ -134,7 +167,7 @@
         onRenderTemplate: null, // function(index, template){ return template; },
         // called after each header cell is rendered, use index to target the column
         // customize header HTML
-        onRenderHeader: function(index) {
+        onRenderHeader: function (index) {
             // the span wrapper is added by default
             $(this).find('div.tablesorter-header-inner').addClass('roundedCorners');
         },
@@ -142,7 +175,7 @@
         // prevent text selection in header
         cancelSelection: true,
         // other options: "ddmmyyyy" & "yyyymmdd"
-        dateFormat: "mmddyyyy",
+        dateFormat: "ddmmyyyy",
         // The key used to select more than one column for multi-column
         // sorting.
         sortMultiSortKey: "shiftKey",
@@ -205,10 +238,10 @@
         // extract text from the table - this is how is
         // it done by default
         textExtraction: {
-            0: function(node) {
+            0: function (node) {
                 return $(node).text();
             },
-            1: function(node) {
+            1: function (node) {
                 return $(node).text();
             }
         },
@@ -226,7 +259,7 @@
         // 'columns', 'filter', 'stickyHeaders' & 'resizable'
         // 'uitheme' is another widget, but requires loading
         // a different skin and a jQuery UI theme.
-        widgets: ["filter", "columns", "zebra", 'numbering', 'scroller'],
+        widgets: ["filter", "columns", "zebra"],
 
         widgetOptions: {
 
@@ -271,9 +304,9 @@
             filter_childRows: false,
 
 
-            filter_external : '.search',
+            filter_external: '.search',
             // add a default type search to the first name column
-            filter_defaultFilter: { 1 : '~{query}' },
+            filter_defaultFilter: {1: '~{query}'},
 
             // filter widget: If true, a filter will be added to the top of
             // each table column.
@@ -342,7 +375,8 @@
             // saveSort widget: If this option is set to false, new sorts will
             // not be saved. Any previous saved sort will be restored on page
             // reload.
-            saveSort: true,
+            saveSort: false,
+            // saveSort: true,
 
             // stickyHeaders widget: css class name applied to the sticky header
             stickyHeaders: "tablesorter-stickyHeader",
@@ -352,7 +386,8 @@
 
         // *** CALLBACKS ***
         // function called after tablesorter has completed initialization
-        initialized: function(table) {},
+        initialized: function (table) {
+        },
 
         // *** CSS CLASS NAMES ***
         tableClass: 'tablesorter',
@@ -396,7 +431,7 @@
         //   "data" : [{ "ID": 1, "Name": "Foo", "Last": "Bar" }],
         //   "total_rows" : 100
         // }
-        ajaxProcessing: function(ajax) {
+        ajaxProcessing: function (ajax) {
             if (ajax && ajax.hasOwnProperty('data')) {
                 // return [ "data", "total_rows" ];
                 return [ajax.data, ajax.total_rows];
@@ -428,25 +463,25 @@
         // if you plan to add/remove rows with the pager enabled.
         removeRows: false,
 
-        // css class names of pager arrows
-        // next page arrow
-        cssNext: '.next',
-        // previous page arrow
-        cssPrev: '.prev',
-        // go to first page arrow
-        cssFirst: '.first',
-        // go to last page arrow
-        cssLast: '.last',
-        // select dropdown to allow choosing a page
-        cssGoto: '.gotoPage',
-        // location of where the "output" is displayed
-        cssPageDisplay: '.pagedisplay',
-        // dropdown that sets the "size" option
-        cssPageSize: '.pagesize',
-        // class added to arrows when at the extremes
-        // (i.e. prev/first arrows are "disabled" when on the first page)
-        // Note there is no period "." in front of this class name
-        cssDisabled: 'disabled'
+        // // css class names of pager arrows
+        // // next page arrow
+        // cssNext: '.next',
+        // // previous page arrow
+        // cssPrev: '.prev',
+        // // go to first page arrow
+        // cssFirst: '.first',
+        // // go to last page arrow
+        // cssLast: '.last',
+        // // select dropdown to allow choosing a page
+        // cssGoto: '.gotoPage',
+        // // location of where the "output" is displayed
+        // cssPageDisplay: '.pagedisplay',
+        // // dropdown that sets the "size" option
+        // cssPageSize: '.pagesize',
+        // // class added to arrows when at the extremes
+        // // (i.e. prev/first arrows are "disabled" when on the first page)
+        // // Note there is no period "." in front of this class name
+        // cssDisabled: 'disabled'
 
     });
 

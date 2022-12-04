@@ -77,13 +77,16 @@ $resulthtml = '';
 if($child = $DB->get_records('course_categories', ['parent'=>$categoryid], 'sortorder')){
     //echo '<h1>'.$parrentcategori->name.'</h1>';
     foreach ($child as $c){
-        $linksubcat = new moodle_url($PAGE->url, ['categoryid' => $c->id]);
-        $namesubcat = "<h2>$c->name</h2><br>";
-        $resulthtml .= \html_writer::link($linksubcat, $namesubcat);
+        if($coursecat = get_couses_category($c->id)){
+            $linksubcat = new moodle_url($PAGE->url, ['categoryid' => $c->id]);
+            $namesubcat = "<h2>$c->name</h2><br>";
+            $resulthtml .= \html_writer::link($linksubcat, $namesubcat);
 
-        $resulthtml .= "<div class='grid-block'>";
-        $resulthtml .= get_couses_category($c->id);
-        $resulthtml .= '</div>';
+            $resulthtml .= "<div class='grid-block'>";
+            $resulthtml .= $coursecat;
+            $resulthtml .= '</div>';
+        }
+
     }
 }else{
     //echo $namesubcat = "<h2>$parrentcategori->name</h2><br>";
@@ -97,7 +100,7 @@ echo $OUTPUT->render_from_template("theme_boost_campus/courses_page", ['resultht
 
 function get_couses_category($id){
     global $DB, $USER;
-    $data = $DB->get_records('course', ['category'=>$id], 'sortorder');
+    $data = $DB->get_records('course', ['category'=>$id, 'visible'=>1], 'sortorder');
     $html ='';
     foreach ($data as $d){
         $html .= '<div class="grid-card"><div>';

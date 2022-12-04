@@ -41,19 +41,21 @@ class block_vavt_fav_wiki extends block_base
         if(!empty($data)){
             foreach ($data as $d){
                 $usr = array();
-                $name = $DB->get_field('course', 'shortname', ['id'=>$d->id]);
+                $name = $DB->get_record('course',  ['id'=>$d->objid]);
 
+                $name = !empty($name->shortname) ? $name->shortname : $name->fullname;
+                if(!empty($name)){
 
-                $user = \core_user::get_user($d->objid);
-
-
-                $usr['pic'] =  self::get_course_image($d->id);
-                if(empty($usr['userpic'])){
-                    $usr['pic'] = new \moodle_url('/theme/boost_campus/pix/course_default_sm.png');
+                    $usr['pic'] =  self::get_course_image($d->objid);
+                    if(empty($usr['userpic'])){
+                        $usr['pic'] = new \moodle_url('/theme/boost_campus/pix/course_default_sm.png');
+                    }
+                    $usr['lnkevt'] = "/course/view.php?id=$d->objid";
+                    $usr['name'] = $name;
+                    $userinfo[] = $usr;
                 }
-                $usr['lnkevt'] = "/course/view.php?id=$d->id";
-                $usr['name'] = $name;
-                $userinfo[] = $usr;
+
+
             }
 
             $render['arrcommunity'] =  $userinfo;

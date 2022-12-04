@@ -87,7 +87,7 @@ $render = [
     'name' => $data->name,
     'text' => $params['content'],
     'user' => $userlnk,
-    'timemodified' => date('d.m.Y', $data->timemodified),
+    'dateevent' => date('d.m.Y H:i', $data->dateevent),
     'imgsrc'=>$imgsrc
 ];
 
