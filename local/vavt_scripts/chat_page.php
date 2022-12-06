@@ -12,7 +12,11 @@ $PAGE->set_heading("Чаты");
 
 echo $OUTPUT->header();
 
-echo $OUTPUT->render_from_template("local_vavt_scripts/chat_page", []);
+$itemid = get_config('local_vavt_scripts', 'content_chat_page');
+
+$param['content'] = html_entity_decode($itemid);
+
+echo $OUTPUT->render_from_template("local_vavt_scripts/chat_page", $param);
 
 
 echo $OUTPUT->footer();
