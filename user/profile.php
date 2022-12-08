@@ -249,6 +249,22 @@ if (in_array('Не отображать никакие', $contact_show)){
 
 $info->contactfield = $contact;
 
+// ЗНАЧКИ
+
+if ($badges = badges_get_user_badges($USER->id)) {
+    require_once($CFG->dirroot . '/badges/renderer.php');
+    $badgerenderer = new core_badges_renderer($PAGE, '');
+
+    // Local badges.
+    $title = get_string('localbadgesp', 'badges', format_string($SITE->fullname));
+    $badgecontent = $badgerenderer->print_badges_list($badges, $user->id, true);
+
+} else {
+    $badgecontent = 'Пока нет значков для отображения';
+}
+
+$info->badges = $badgecontent;
+
 
 echo $OUTPUT->render_from_template("theme_boost_campus/user_profile", $info);
 
