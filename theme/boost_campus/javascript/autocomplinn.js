@@ -1,7 +1,10 @@
-require(['jquery', 'jqueryui'], function ($, jui) {
+require(['jquery', 'jqueryui', 'theme_boost_campus/jquery.maskedinput'], function ($, jui) {
 
     if($( "#page-user-editadvanced" ).hasClass( "path-user" ) || $( "#page-user-edit" ).hasClass( "path-user" )){
         $(document).ready(function () {
+
+            $("#id_profile_field_phone").mask("+7(999)999-99-99");
+
             $('#id_profile_field_inn').autocomplete({
                 source: '/dadata.php?action=inn',
                 select: function (event, ui) {
@@ -18,11 +21,14 @@ require(['jquery', 'jqueryui'], function ($, jui) {
             // ПОТОК ИЗ JSON
             var el = document.getElementById("id_profile_field_UF_VAVTADJSONS");
             var obj = el.getAttribute("value");
-            var UF_VAVTADJSONS = jQuery.parseJSON(obj);
+            console.log(obj.length);
+            if(obj.length > 0){
+                var UF_VAVTADJSONS = jQuery.parseJSON(obj);
+                $('#id_profile_field_potok').val(UF_VAVTADJSONS.statusList[0].groupName);
+                $('#id_profile_field_potok').text(UF_VAVTADJSONS.statusList[0].groupName);
+                $('#id_profile_field_potok').attr('readonly', true);
+            }
 
-            $('#id_profile_field_potok').val(UF_VAVTADJSONS.statusList[0].groupName);
-            $('#id_profile_field_potok').text(UF_VAVTADJSONS.statusList[0].groupName);
-            $('#id_profile_field_potok').attr('readonly', true);
 
             /// Справочник отраслей
             function get_category_fn(okved, cat = ''){

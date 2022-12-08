@@ -1,17 +1,15 @@
 body{
   font-family: PTSans,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
-
+div#fitem_id_city,
 #fitem_id_firstnamephonetic,
 #fitem_id_lastnamephonetic ,
 #fitem_id_alternatename ,
 #fitem_id_moodlenetprofile,
-
 fieldset#id_moodle_interests ,
 fieldset#id_moodle_optional ,
 #fitem_id_profile_field_UF_VAVTADJSONS ,
 #fitem_id_profile_field_UF_VAVT1CUNIID
-
 {
   display: none;
 }
@@ -29,4 +27,17 @@ fieldset#id_moodle_optional ,
 
 .localboostnavigationcollapsiblechild {
   padding-left: 40px;
+}
+
+
+
+/* подсказки при заполнении профиля */
+
+#fitem_id_profile_field_contact_show label.d-inline.word-break::after,
+#fitem_id_profile_field_expertise label.d-inline.word-break::after,
+#fitem_id_profile_field_role_community label.d-inline.word-break::after{
+  content: ' (для выбора неск. значений удерживайте Ctrl)';
+  font-size: 0.7rem;
+  color: #8d8d8d;
+  white-space: pre;
 }
