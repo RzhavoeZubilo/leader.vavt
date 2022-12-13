@@ -75,7 +75,6 @@ $parrentcategori = $DB->get_record('course_categories', ['id'=>$categoryid]);
 $resulthtml = '';
 
 if($child = $DB->get_records('course_categories', ['parent'=>$categoryid], 'sortorder')){
-    //echo '<h1>'.$parrentcategori->name.'</h1>';
     foreach ($child as $c){
         if($coursecat = get_couses_category($c->id)){
             $linksubcat = new moodle_url($PAGE->url, ['categoryid' => $c->id]);
@@ -89,7 +88,6 @@ if($child = $DB->get_records('course_categories', ['parent'=>$categoryid], 'sort
 
     }
 }else{
-    //echo $namesubcat = "<h2>$parrentcategori->name</h2><br>";
     $resulthtml .= "<div class='grid-block'>";
     $resulthtml .= get_couses_category($parrentcategori->id);
     $resulthtml .= '</div>';
@@ -105,15 +103,11 @@ function get_couses_category($id){
     foreach ($data as $d){
         $html .= '<div class="grid-card"><div>';
 
-        //$html .= '<i class="fa fa-vk fa-stack-1x fa-inverse"></i>';
-
         if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'wiki', 'objid'=>$d->id])){
             $has_addfav = 'addfav';
         }else{
             $has_addfav = '';
         }
-
-        //$html .= "<span class='addfavoritevavt $has_addfav'' data-plugin='wiki' data-objid='$d->id' aria-label='Добавить в избранное' title='Добавить в избранное'></span>";
 
         $html .= "
         <span class='fa-stack fa-lg crklfvt'>

@@ -16,25 +16,36 @@ $PAGE->set_title("Контакты");
 $PAGE->set_heading("Контакты");
 
 echo $OUTPUT->header();
-$mysetting_1 = get_config("block_vavt_contact_1");
-$mysetting_2 = get_config("block_vavt_contact_2");
 
-$arr_phone_1 = explode(',', $mysetting_1->phone);
-$arr_phone_2 = explode(',',$mysetting_2->phone);
+$itemid = get_config('blocks_vavt_contact', 'content_ccontact_page');
 
-$render = array();
-$render = [
-    'text1'=>  $mysetting_1->text1,
-    'phone1'=>  $arr_phone_1,
-    'mail1'=>  $mysetting_1->mail,
-    'text2'=>  $mysetting_1->text2,
-    'nameadmin'=>  $mysetting_2->nameadmin,
-    'phone'=>  $arr_phone_2,
-    'mail'=>  $mysetting_2->mail,
-    'site'=>  $mysetting_2->site,
-    'address'=>  $mysetting_2->address,
-    'maps'=>  $mysetting_2->maps
-];
-echo $OUTPUT->render_from_template("block_vavt_contact/contact", $render);
+$param['content'] = html_entity_decode($itemid);
+
+echo $OUTPUT->render_from_template("block_vavt_contact/contact", $param);
+
+
+
+
+// нормально было, по мудловски, с разделением на блоки... попросили сделать тупо все одним редактором
+//$mysetting_1 = get_config("block_vavt_contact_1");
+//$mysetting_2 = get_config("block_vavt_contact_2");
+//
+//$arr_phone_1 = explode(',', $mysetting_1->phone);
+//$arr_phone_2 = explode(',',$mysetting_2->phone);
+//
+//$render = array();
+//$render = [
+//    'text1'=>  $mysetting_1->text1,
+//    'phone1'=>  $arr_phone_1,
+//    'mail1'=>  $mysetting_1->mail,
+//    'text2'=>  $mysetting_1->text2,
+//    'nameadmin'=>  $mysetting_2->nameadmin,
+//    'phone'=>  $arr_phone_2,
+//    'mail'=>  $mysetting_2->mail,
+//    'site'=>  $mysetting_2->site,
+//    'address'=>  $mysetting_2->address,
+//    'maps'=>  $mysetting_2->maps
+//];
+//echo $OUTPUT->render_from_template("block_vavt_contact/contact", $render);
 
 echo $OUTPUT->footer();

@@ -9,11 +9,10 @@ class block_vavt_fav_event_edit_form extends block_edit_form {
 
     protected function specific_definition($mform) {
 
-        $mform->addElement('html', '<b>Введите ID пользователей через запятую</b><br>');
-
-        $mform->addElement('text', 'config_community', 'Сообщество');
-        $mform->setDefault('config_community', 'default value');
-        $mform->setType('config_community', PARAM_RAW);
+        // A sample string variable with a default value.
+        $mform->addElement('text', 'config_title', get_string('blocktitle', 'block_vavt_news'));
+        $mform->setDefault('config_title', 'default value');
+        $mform->setType('config_title', PARAM_TEXT);
 
     }
 }

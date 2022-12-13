@@ -17,14 +17,25 @@ class block_vavt_fav_wiki extends block_base
         return true;
     }
 
-    function hide_header() {
-        return $this->headerhidden;
-    }
+    // отключить вывод имени блока
+    //function hide_header() {
+    //    return $this->headerhidden;
+    //}
 
     public function init()
     {
-        $this->title = get_string('vavt_fav_wiki', 'block_vavt_fav_wiki');
+        $this->title = get_string('pluginname', 'block_vavt_fav_wiki');
     }
+
+    // получаем имя блока из настроек блока
+    public function specialization() {
+        if (empty($this->config->title)) {
+            $this->title = get_string('pluginname', 'block_vavt_fav_wiki');
+        } else {
+            $this->title = $this->config->title;
+        }
+    }
+
     // The PHP tag and the curly bracket for the class definition
     // will only be closed after there is another function added in the next section.
 
@@ -43,8 +54,18 @@ class block_vavt_fav_wiki extends block_base
                 $usr = array();
                 $name = $DB->get_record('course',  ['id'=>$d->objid]);
 
-                $name = !empty($name->shortname) ? $name->shortname : $name->fullname;
                 if(!empty($name)){
+
+                    $namecategory = $DB->get_field('course_categories', 'name', ['id'=>$name->category]);
+
+                    $name = !empty($name->shortname) ? $name->shortname : $name->fullname;
+
+                    if(strlen($name) >= 45){
+                        $name = substr($name, 0, strrpos($name, ' '));
+                        $name = $name . "...";
+                    }
+
+                    $name = $namecategory.'. '.$name;
 
                     $usr['pic'] =  self::get_course_image($d->objid);
                     if(empty($usr['userpic'])){

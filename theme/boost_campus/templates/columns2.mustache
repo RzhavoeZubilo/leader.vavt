@@ -93,22 +93,23 @@
 
     <div id="page" class="container-fluid d-print-block">
 
-        {{#timedinfobannershowonselectedpage}}
-            <div id="themeboostcampustimedinfobanner" class="alert {{#timedibcss}}alert-{{{ timedibcss }}}{{/timedibcss}} mt-3" role="alert">
-                {{{ timedibcontent }}}
-            </div>
-        {{/timedinfobannershowonselectedpage}}
+<!--                    типа убираем вывод всего на главной-->
+            <!--        {{#timedinfobannershowonselectedpage}}-->
+<!--            <div id="themeboostcampustimedinfobanner" class="alert {{#timedibcss}}alert-{{{ timedibcss }}}{{/timedibcss}} mt-3" role="alert">-->
+<!--                {{{ timedibcontent }}}-->
+<!--            </div>-->
+<!--        {{/timedinfobannershowonselectedpage}}-->
 
-        {{#perpinfobannershowonselectedpage}}
-            <div id="themeboostcampusperpinfobanner" class="alert {{#perpibcss}}alert-{{{ perpibcss }}}{{/perpibcss}} {{#perpibdismiss}}alert-dismissible fade show{{/perpibdismiss}} mt-3" role="alert">
-                {{{ perpibcontent }}}
-                {{#perpibdismiss}}
-                    <button type="button" id="themeboostcampusperpinfobannerclosebutton" class="close" data-dismiss="alert" aria-label="{{#str}}close, theme_boost_campus{{/str}}">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                {{/perpibdismiss}}
-            </div>
-        {{/perpinfobannershowonselectedpage}}
+<!--        {{#perpinfobannershowonselectedpage}}-->
+<!--            <div id="themeboostcampusperpinfobanner" class="alert {{#perpibcss}}alert-{{{ perpibcss }}}{{/perpibcss}} {{#perpibdismiss}}alert-dismissible fade show{{/perpibdismiss}} mt-3" role="alert">-->
+<!--                {{{ perpibcontent }}}-->
+<!--                {{#perpibdismiss}}-->
+<!--                    <button type="button" id="themeboostcampusperpinfobannerclosebutton" class="close" data-dismiss="alert" aria-label="{{#str}}close, theme_boost_campus{{/str}}">-->
+<!--                        <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                {{/perpibdismiss}}-->
+<!--            </div>-->
+<!--        {{/perpinfobannershowonselectedpage}}-->
 
         {{{ output.full_header }}}
 
@@ -191,3 +192,17 @@
         });
     {{/perpinfobannershowonselectedpage}}
 {{/js}}
+
+
+<style>
+    #page-site-index #page-content #region-main{
+        padding: unset !important;
+    }
+    #page-site-index #page-content #region-main .block-region section,
+    #page-site-index #page-content #region-main .block-region .card-text.content{
+        margin: unset !important;
+    }
+    #page-site-index #page-content #region-main .block-region .card-body.p-3{
+        padding: unset !important;
+    }
+</style>

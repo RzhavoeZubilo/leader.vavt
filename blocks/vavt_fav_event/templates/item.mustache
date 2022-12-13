@@ -1,7 +1,7 @@
 
 <div class="block_favorite_vavt" style="width: 100%;">
     <div class="title_fvt">
-        <h5 class="card-title">МЕРОПРИЯТИЯ</h5>
+<!--        <h5 class="card-title">МЕРОПРИЯТИЯ</h5>-->
         {{#hasdata}}
             <div>
                 <span class="swiper-button-prev eventbtn"></span>
@@ -19,7 +19,7 @@
                             <a href="{{lnkevt}}">
                             <div class="col_user">
                                 <img style="height: 100px;" src="{{pic}}">
-                                {{{name}}}
+                                <span style="line-height: 0.9">{{{name}}}</span>
                             </div>
                             </a>
                         </div>
@@ -76,7 +76,7 @@
     .block_favorite_vavt  .swiper {
         width: 100%;
         /*height: 100%;*/
-        height: 130px;
+        /*height: 130px;*/
     }
     .block_favorite_vavt  .swiper-wrapper{
         display: flex;

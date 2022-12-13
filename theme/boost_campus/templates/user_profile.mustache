@@ -21,7 +21,11 @@
         <div class="userprofile_block">
             <div style="display: flex; justify-content: space-between">
                 <h3>ОБ УЧАСТНИКЕ</h3>
-                <span class="addfavoritevavt {{has_addfav}}" data-plugin="alumni" data-objid="{{userid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                {{#hasotheruser}}
+                    <span class='fa-stack fa-lg crklfvt'>
+                        <span class="addfavoritevavt {{has_addfav}}" data-plugin="alumni" data-objid="{{userid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                    </span>
+                {{/hasotheruser}}
             </div>
             <div class="usr_fld">
                 <span class="txt_usr_fld">{{userposition}}</span>
@@ -115,6 +119,24 @@
 </div>
 
 <style>
+    .crklfvt{
+        font-size: 1.6rem;
+        border-radius: 50%;
+        background: #4e4e4e;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+    .crklfvt .addfavoritevavt{
+        color: #fff;
+    }
+    .crklfvt .addfavoritevavt.addfav:before{
+        color: #fff;
+    }
+
     .userprofile_data h3{
         font-weight: 600;
     }

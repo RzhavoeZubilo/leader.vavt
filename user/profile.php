@@ -220,9 +220,14 @@ $render = [];
 $info = profile_user_record($userid);
 $info->userid = $userid;
 
-if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'alumni', 'objid'=>$userid])){
-    $info->has_addfav = 'addfav';
+if($userid <> $USER->id){
+    $info->hasotheruser = true;
+
+    if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'alumni', 'objid'=>$userid])){
+        $info->has_addfav = 'addfav';
+    }
 }
+
 
 $info->email = $DB->get_field('user', 'email', ['id'=>$userid]);
 $info->lastaccess = date('d.m.Y', $DB->get_field('user', 'lastaccess', ['id'=>$userid]));

@@ -37,8 +37,8 @@ function has_config() {
 //}
 // Страница настроек задана в блоке vavt_contact
 
-$settings = new admin_settingpage('block_vavt_news', 'Блок Новости');
-$ADMIN->add('vavtsettings', $settings);
+//$settings = new admin_settingpage('block_vavt_news', 'Блок Новости');
+//$ADMIN->add('vavtsettings', $settings);
 
 $settings->add(new admin_setting_heading('block_vavt_contact_sett', 'Настройки блока Новости',
     'Отображается на главной и ЛК'));

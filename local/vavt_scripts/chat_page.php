@@ -5,6 +5,8 @@ require_once($CFG->dirroot.'/user/profile/lib.php');
 
 global $PAGE, $DB, $OUTPUT, $USER;
 
+require_login();
+
 $PAGE->set_url('/local/vavt_scripts/chat_page.php');
 
 $PAGE->set_title("Чаты");

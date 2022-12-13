@@ -1,46 +1,51 @@
 <div class="row vavtcontact">
-    <div class="col-md-6">
-        <h4 style="font-weight: 600;">{{{text1}}}</h4>
-
-        <div class="clearfix content-heading divcenter">
-            <img src="/blocks/vavt_contact/img/telephone.svg" class="tn-img" alt="...">
-            {{#phone1}}
-                <div><a href="tel:{{.}}">{{.}}</a></div>
-            {{/phone1}}
-        </div>
-
-        <div class="clearfix content-heading divcenter">
-            <img src="/blocks/vavt_contact/img/email.svg" class="tn-img" alt="...">
-            <a href="mailto: {{mail1}}">{{mail1}}</a>
-        </div>
-
-        <h4 style="font-weight: 600;">{{{text2}}} {{nameadmin}}:</h4>
-
-        <div class="clearfix content-heading divcenter">
-            <img src="/blocks/vavt_contact/img/address.svg" class="tn-img" alt="...">
-            <span class="ppp">{{address}}</span>
-        </div>
-
-        <div class="clearfix content-heading divcenter">
-            <img src="/blocks/vavt_contact/img/telephone.svg" class="tn-img" alt="...">
-            {{#phone}}
-                <div><a href="tel:{{.}}">{{.}}</a>&nbsp;&nbsp;&nbsp;</div>
-            {{/phone}}
-        </div>
-
-        <div class="clearfix content-heading divcenter">
-            <img src="/blocks/vavt_contact/img/email.svg" class="tn-img" alt="...">
-            <a href="mailto: {{mail1}}">{{mail1}}</a>
-        </div>
-
-        <div class="clearfix content-heading divcenter">
-            <img src="/blocks/vavt_contact/img/site.svg" class="tn-img" alt="...">
-            <a href="{{site}}" target="_blank">{{site}}</a>
-        </div>
+    <div class="col-md-12">
+        {{{content}}}
     </div>
-    <div class="col-md-6">
-        {{{maps}}}
-    </div>
+
+
+<!--    <div class="col-md-6">-->
+<!--        <h4 style="font-weight: 600;">{{{text1}}}</h4>-->
+
+<!--        <div class="clearfix content-heading divcenter">-->
+<!--            <img src="/blocks/vavt_contact/img/telephone.svg" class="tn-img" alt="...">-->
+<!--            {{#phone1}}-->
+<!--                <div><a href="tel:{{.}}">{{.}}</a></div>-->
+<!--            {{/phone1}}-->
+<!--        </div>-->
+
+<!--        <div class="clearfix content-heading divcenter">-->
+<!--            <img src="/blocks/vavt_contact/img/email.svg" class="tn-img" alt="...">-->
+<!--            <a href="mailto: {{mail1}}">{{mail1}}</a>-->
+<!--        </div>-->
+
+<!--        <h4 style="font-weight: 600;">{{{text2}}} {{nameadmin}}:</h4>-->
+
+<!--        <div class="clearfix content-heading divcenter">-->
+<!--            <img src="/blocks/vavt_contact/img/address.svg" class="tn-img" alt="...">-->
+<!--            <span class="ppp">{{address}}</span>-->
+<!--        </div>-->
+
+<!--        <div class="clearfix content-heading divcenter">-->
+<!--            <img src="/blocks/vavt_contact/img/telephone.svg" class="tn-img" alt="...">-->
+<!--            {{#phone}}-->
+<!--                <div><a href="tel:{{.}}">{{.}}</a>&nbsp;&nbsp;&nbsp;</div>-->
+<!--            {{/phone}}-->
+<!--        </div>-->
+
+<!--        <div class="clearfix content-heading divcenter">-->
+<!--            <img src="/blocks/vavt_contact/img/email.svg" class="tn-img" alt="...">-->
+<!--            <a href="mailto: {{mail1}}">{{mail1}}</a>-->
+<!--        </div>-->
+
+<!--        <div class="clearfix content-heading divcenter">-->
+<!--            <img src="/blocks/vavt_contact/img/site.svg" class="tn-img" alt="...">-->
+<!--            <a href="{{site}}" target="_blank">{{site}}</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--        {{{maps}}}-->
+<!--    </div>-->
 </div>
 
 <style>
@@ -48,10 +53,7 @@
         align-items: center;
         display: flex;
     }
-    .vavtcontact a, p, .ppp{
-        font-size: 16px;
-        font-weight: 600;
-    }
+
     .vavtcontact img.tn-img {
         max-width: 30px;
         float: left;

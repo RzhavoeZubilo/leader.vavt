@@ -17,16 +17,25 @@ class block_vavt_fav_event extends block_base
         return true;
     }
 
-    function hide_header() {
-        return $this->headerhidden;
-    }
+    //function hide_header() {
+    //    return $this->headerhidden;
+    //}
 
     public function init()
     {
-        $this->title = get_string('vavt_fav_event', 'block_vavt_fav_event');
+        $this->title = get_string('pluginname', 'block_vavt_fav_event');
     }
     // The PHP tag and the curly bracket for the class definition
     // will only be closed after there is another function added in the next section.
+
+    // получаем имя блока из настроек блока
+    public function specialization() {
+        if (empty($this->config->title)) {
+            $this->title = get_string('pluginname', 'block_vavt_fav_event');
+        } else {
+            $this->title = $this->config->title;
+        }
+    }
 
     public function get_content() {
         global $DB, $OUTPUT,$CFG, $USER;
@@ -45,17 +54,19 @@ class block_vavt_fav_event extends block_base
                 $evt = array();
                 $event = $DB->get_record('block_vavt_event', ['id'=>$d->objid]);
 
-                $params = (array)self::getParams($event->params);
+                if(isset($event) && !empty($event)){
+                    $params = (array)self::getParams($event->params);
 
-                if($imgsrc = self::get_vavt_imgurl($event->id, $context->id, 'block_vavt_event', 'pictures')){
+                    if($imgsrc = self::get_vavt_imgurl($event->id, $context->id, 'block_vavt_event', 'pictures')){
 
-                } else $imgsrc = $CFG->wwwroot.'/blocks/vavt_event/templates/itemimg.png';
+                    } else $imgsrc = $CFG->wwwroot.'/blocks/vavt_event/templates/itemimg.png';
 
-                $evt['lnkevt'] = "/blocks/vavt_event/view.php?id=$event->id";
-                $evt['pic'] = $imgsrc;
-                $evt['name'] = $params['name'];
+                    $evt['lnkevt'] = "/blocks/vavt_event/view.php?id=$event->id";
+                    $evt['pic'] = $imgsrc;
+                    $evt['name'] = $params['name'];
 
-                $eventinfo[]=$evt;
+                    $eventinfo[]=$evt;
+                }
             }
 
             $render['arrevent'] =  $eventinfo;

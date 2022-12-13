@@ -1,35 +1,30 @@
 
-<div class="block_favorite_vavt vavt_wiki" style="width: 100%;">
+<div class="block_favorite_vavt" style="width: 100%;">
     <div class="title_fvt">
-<!--        <h5 class="card-title">БАЗА ЗНАНИЙ</h5>-->
+<!--        <h5 class="card-title">ВЫПУСКНИКИ. ИЗБРАННОЕ</h5>-->
         {{#hasdata}}
             <div>
-                <span class="swiper-button-prev"></span>
-                <span class="swiper-button-next"></span>
+                <span class="swiper-button-prev almnbtn"></span>
+                <span class="swiper-button-next almnbtn"></span>
             </div>
         {{/hasdata}}
     </div>
     {{#hasdata}}
     <div class="swiper_vavt_fvt">
-        <div class="swiper mySwiper">
+        <div class="swiper alumnSwiper">
             <div class="swiper-wrapper">
                 {{#arrcommunity}}
                     {{#.}}
                         <div class="swiper-slide slidesearch">
-
-                                <div class="col_user">
-                                    <img style="height: 100px;" src="{{pic}}">
-                                    <a href="{{lnkevt}}">
-                                        <span style="line-height: 0.9">{{{name}}}</span>
-                                    </a>
-                                </div>
-
-
+                            <div class="col_user">
+                                    {{{userpic}}}
+                                    <span style="line-height: 0.9">{{{name}}}</span>
+                            </div>
                         </div>
                     {{/.}}
                 {{/arrcommunity}}
             </div>
-            <div class="swiper-pagination"></div>
+<!--            <div class="swiper-pagination"></div>-->
         </div>
     </div>
     {{/hasdata}}
@@ -41,12 +36,28 @@
 <script src="/theme/boost_campus/amd/src/swiper-bundle.js"></script>
 
 <script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,
-        spaceBetween: 30,
+    var swiper = new Swiper(".alumnSwiper", {
+        // pagination: {
+        //     el: ".swiper-pagination",
+        //     clickable: true,
+        // },
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".swiper-button-next.almnbtn",
+            prevEl: ".swiper-button-prev.almnbtn",
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 13
+            },
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 17
+            }
         },
     });
 </script>
@@ -64,10 +75,10 @@
         justify-content: space-between;
         width: 100%;
     }
-    .block_favorite_vavt.vavt_wiki .swiper {
+    .block_favorite_vavt  .swiper {
         width: 100%;
         /*height: 100%;*/
-
+        /*height: 130px;*/
     }
     .block_favorite_vavt  .swiper-wrapper{
         display: flex;

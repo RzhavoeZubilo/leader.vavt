@@ -80,6 +80,12 @@ function getContentHTML($data, $typeevent)
                 'readlnk' => $readlnk,
                 'imgsrc' => $imgsrc
             ];
+
+            $match[$i]['editlnk'] = $editlnk;
+            $match[$i]['dellnk'] = $dellnk;
+            if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'project', 'objid'=>$d->id])){
+                $match[$i]['has_addfav'] = 'addfav';
+            }
         }else{
             $iniciativa[$j] = [
                 'eventid' => $d->id,
@@ -88,8 +94,13 @@ function getContentHTML($data, $typeevent)
                 'readlnk' => $readlnk,
                 'imgsrc' => $imgsrc
             ];
-        }
 
+            $iniciativa[$j]['editlnk'] = $editlnk;
+            $iniciativa[$j]['dellnk'] = $dellnk;
+            if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'project', 'objid'=>$d->id])){
+                $iniciativa[$j]['has_addfav'] = 'addfav';
+            }
+        }
 
         if (is_siteadmin()) {
             $editlnk = \html_writer::link(new \moodle_url('/blocks/vavt_project/adding.php', ['action' => 'edit', 'id' => $d->id]), '<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-family: FontAwesome; margin-left: 15px;"></i>');
@@ -101,20 +112,6 @@ function getContentHTML($data, $typeevent)
                     'onclick' => 'return confirm("Действительно удалить?");'
                 ]
             );
-            if($d->typeproject == 0) {
-                $match[$i]['editlnk'] = $editlnk;
-                $match[$i]['dellnk'] = $dellnk;
-                if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'project', 'objid'=>$d->id])){
-                    $match[$i]['has_addfav'] = 'addfav';
-                }
-            }else{
-                $iniciativa[$j]['editlnk'] = $editlnk;
-                $iniciativa[$j]['dellnk'] = $dellnk;
-                if($DB->record_exists('vavt_favorite', ['usermodified' => $USER->id,  'nameplugin' => 'project', 'objid'=>$d->id])){
-                    $iniciativa[$j]['has_addfav'] = 'addfav';
-                }
-            }
-
         }
         if($d->typeproject == 0) {
             $i++;

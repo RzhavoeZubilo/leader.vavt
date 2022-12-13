@@ -5,12 +5,12 @@ require_once('../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 require_once($CFG->libdir.'/filelib.php');
 
-$PAGE->set_url('/local/vavt_scripts/set_content_chat_page.php');
+$PAGE->set_url('/blocks/vavt_contact/set_content_contact_page.php');
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title("Настройка контента");
 $PAGE->set_heading("Настройка контента");
 
-//require_login();
+require_login();
 
 echo $OUTPUT->header();
 
@@ -20,11 +20,11 @@ if(!is_siteadmin()){
     exit;
 }
 
-require_once('form/set_content_chat.php');
+require_once('form/set_contact_content.php');
 
-$mform = new set_content_chat();
+$mform = new set_contact_content();
 
-$redirectLink = $CFG->wwwroot.'/local/vavt_scripts/set_content_chat_page.php';
+$redirectLink = $CFG->wwwroot.'/blocks/vavt_contact/set_content_contact_page.php';
 $context = context_system::instance();
 
 if ($mform->is_cancelled()) {
@@ -34,14 +34,14 @@ if ($mform->is_cancelled()) {
     //$content_page = html_entity_decode($data->content_page['text']);
     $content_page = htmlentities($data->content_page['text']);
 
-    set_config('content_chat_page', $content_page, 'local_vavt_scripts');
+    set_config('content_ccontact_page', $content_page, 'blocks_vavt_contact');
 
     redirect($redirectLink, '', 100);
 
 } else {
     $toform = new stdClass();
 
-    $itemid = get_config('local_vavt_scripts', 'content_chat_page');
+    $itemid = get_config('blocks_vavt_contact', 'content_ccontact_page');
 
     $toform->content_page['text'] = html_entity_decode($itemid);
 

@@ -37,12 +37,12 @@ function has_config() {
 //}
 // Страница настроек задана в блоке vavt_contact
 
-$settings = new admin_settingpage('block_vavt_ref_company', 'Блок Витрина предприятий');
-$ADMIN->add('vavtsettings', $settings);
+//$settings = new admin_settingpage('block_vavt_ref_company', 'Блок Витрина предприятий');
+//$ADMIN->add('vavtsettings', $settings);
 
-$settings->add(new admin_setting_heading('block_vavt_contact_sett', 'Настройки блока Витрина предприятий',
-    'Отображается на главной и ЛК'));
-$ADMIN->add('block_vavt_ref_company', $settings);
+//$settings->add(new admin_setting_heading('block_vavt_contact_sett', 'Настройки блока Витрина предприятий',
+//    'Отображается на главной и ЛК'));
+//$ADMIN->add('block_vavt_ref_company', $settings);
 
 $settings->add(new admin_setting_configtext('block_vavt_contact_sett/cntitem', "Кол-во предприятий в блоке", "", 3));
 

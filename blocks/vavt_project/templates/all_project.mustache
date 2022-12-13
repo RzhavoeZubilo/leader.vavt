@@ -8,7 +8,7 @@
 
     <div class="col-md-12 text-center">
         <div style="display: flex; flex-direction: row; width: 100%; gap: 30px;">
-            <div style="display: flex; width: 50%; justify-content: flex-end;">
+            <div style="display: flex;  justify-content: flex-end;">
                 <a href="#part1" class="btn btn-outline-primary">Проекты Центра</a>
             </div>
             <div style="display: flex; width: 50%; justify-content: flex-start;">
@@ -26,13 +26,17 @@
             <div class="card cardprojectblock mb-3" style="max-width: 1100px;">
                 <div class="row no-gutters">
                     <div class="col-md-4 imgforevent">
-                        <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
+                        <div style="position: relative;">
+                            <span class='fa-stack fa-lg crklfvt'>
+                               <span style="font-size: 1.4rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                            </span>
+                            <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <div style="display: flex; justify-content: space-between;">
                                 <h4 class="card-title">
-                                    <span style="font-size: 1.6rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
                                     {{{name}}}
                                 </h4>
                             </div>
@@ -50,14 +54,18 @@
         {{#iniciativa}}
             <div class="card cardprojectblock mb-3" style="max-width: 1100px;">
                 <div class="row no-gutters">
-                    <div class="col-md-4 imgforevent">
-                        <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
+                    <div class="col-md-4">
+                        <div class="imgforevent" style="position: relative;">
+                            <span class='fa-stack fa-lg crklfvt'>
+                               <span style="font-size: 1.4rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
+                            </span>
+                            <img src="{{imgsrc}}" class="card-img-top" alt="..." style="object-fit: cover; max-height: 199px;">
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <div style="display: flex; justify-content: space-between;">
                                 <h4 class="card-title">
-                                    <span style="font-size: 1.6rem;" class="addfavoritevavt {{has_addfav}}" data-plugin="project" data-objid="{{eventid}}" aria-label="Добавить в избранное" title="Добавить в избранное"></span>
                                     {{{name}}}
                                 </h4>
                             </div>
@@ -77,14 +85,41 @@
 
 <div class="row text-center">
     <div class="col-md-12">
-        <a class="sendmyproject" href="{{btnadd_link}}">
-            <img src="{{picture_btn_add}}">
+        <a class="sendmyproject" href="{{btnadd_link}}" target="_blank">
+            <img class="picture_btn" src="{{picture_btn_add}}">
         </a>
     </div>
 </div>
 
 
 <style>
+    .crklfvt{
+        font-size: 1.6rem;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        border-radius: 50%;
+        background: #4e4e4e;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+
+    .crklfvt .addfavoritevavt{
+        color: #fff;
+    }
+    .crklfvt .addfavoritevavt.addfav:before{
+        color: #fff;
+    }
+
+
+    .picture_btn{
+        max-width: 300px;
+        max-height: 200px;
+    }
     .cardprojectblock{
         border: none;
     }

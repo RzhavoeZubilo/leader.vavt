@@ -1,6 +1,14 @@
 body{
   font-family: PTSans,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
+
+@media screen and (max-width:580px){
+  #nav-drawer .list-group{
+    margin-top: 60px;
+  }
+}
+
+
 div#fitem_id_city,
 #fitem_id_firstnamephonetic,
 #fitem_id_lastnamephonetic ,

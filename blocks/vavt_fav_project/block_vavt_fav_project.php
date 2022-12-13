@@ -17,14 +17,24 @@ class block_vavt_fav_project extends block_base
         return true;
     }
 
-    function hide_header() {
-        return $this->headerhidden;
-    }
+    //function hide_header() {
+    //    return $this->headerhidden;
+    //}
 
     public function init()
     {
-        $this->title = get_string('vavt_fav_project', 'block_vavt_fav_project');
+        $this->title = get_string('pluginname', 'block_vavt_fav_project');
     }
+
+    // получаем имя блока из настроек блока
+    public function specialization() {
+        if (empty($this->config->title)) {
+            $this->title = get_string('pluginname', 'block_vavt_fav_project');
+        } else {
+            $this->title = $this->config->title;
+        }
+    }
+
     // The PHP tag and the curly bracket for the class definition
     // will only be closed after there is another function added in the next section.
 
