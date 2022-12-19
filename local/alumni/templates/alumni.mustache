@@ -50,7 +50,7 @@
             <tr>
                 <th>ФИО</th>
                 {{#head}}
-                    <th>{{.}}</th>
+                    <th {{{type}}}>{{name}}</th>
                 {{/head}}
                 <th class="sorter-false filter-false" data-sorter="false" data-filter="false"></th>
             </tr>
@@ -93,7 +93,9 @@
         !important;
         background-size: 10px 10px;
     }
-    .searchcontrols
+
+    /*.searchcontrols */
+
     .crklfvt{
         /*font-size: 1.6rem;*/
         border-radius: 50%;
@@ -373,6 +375,8 @@
                 'form-control',
                 'form-control'
             ],
+
+            // filter_cssFilter   : '',
 
             // filter widget: Customize the filter widget by adding a select
             // dropdown with content, custom options or custom filter functions

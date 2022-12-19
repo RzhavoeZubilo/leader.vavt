@@ -28,11 +28,20 @@ $custom_field = unserialize($text);
 
 $custom_field_header = array();
 foreach ($custom_field as $key=>$value){
-    if($fieldname = $DB->get_field('user_info_field', 'name', ['shortname'=>$value])) $custom_field_header[] = $fieldname;
+    if($fieldname = $DB->get_field('user_info_field', 'name', ['shortname'=>$value]))
+        $obj = new stdClass();
+    $obj->name = $fieldname;
 
-    if($value == 'email') $custom_field_header[] = 'Email';
-    if($value == 'city') $custom_field_header[] = 'Город';
-    if($value == 'country') $custom_field_header[] = 'Страна';
+    if($value == 'email') $obj->name = 'Email';
+    if($value == 'city')$obj->name = 'Город';
+    if($value == 'country') $obj->name = 'Страна';
+
+    if($value == 'okved' || $value == 'category')
+        $obj->type = 'class = "filter-select" data-placeholder="Выберите"';
+    else $obj->type = '';
+
+    $custom_field_header[] = $obj;
+
 }
 
 foreach ($data as $dat=>$d){
